@@ -1,9 +1,10 @@
 import type {ValueOf} from "type-fest";
+import {radius} from "./index.ts";
 
 export const radiusVariants = {
-    RADIUS_LG: '40px',
-    RADIUS_MD: '32px',
-    RADIUS_SM: '24px',
+    RADIUS_LG: radius.lg,
+    RADIUS_MD: radius.md,
+    RADIUS_SM: radius.sm,
 }
 
 export type Radius = ValueOf<typeof radiusVariants>
