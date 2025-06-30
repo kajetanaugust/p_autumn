@@ -1,0 +1,36 @@
+---
+import type {ResponsiveRadius} from "../../tokens/Radius/types";
+
+interface Props {
+    children: astroHTML.JSX.Element;
+    bgColor?: BackgroundColor
+    borderRadius?: ResponsiveRadius
+    borderWidth?: number | string
+    borderColor?: BorderColor
+    direction?: ResponsiveDirection
+    justify?: ResponsiveJustify
+    align?: ResponsiveAlign
+    gap?: ResponsiveGap
+    width?: ResponsiveSize
+    maxWidth?: ResponsiveSize
+    minWidth?: ResponsiveSize
+    height?: ResponsiveSize
+    maxHeight?: ResponsiveSize
+    minHeight?: ResponsiveSize
+    wrap?: ResponsiveWrap
+    overflow?: ResponsiveOverflow
+    zIndex?: number
+    display?: React.CSSProperties['display']
+    role?: AriaRole
+    component?: T
+    'data-testid'?: string
+}
+// & Spacing &
+// Position
+---
+
+<div class="box">
+    {children}
+</div>
+
+
