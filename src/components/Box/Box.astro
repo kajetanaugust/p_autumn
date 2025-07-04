@@ -1,39 +1,37 @@
 ---
 import type {ResponsiveRadius} from "../../tokens/Radius/types";
 import type {Color} from "../../tokens/Colors/types";
-import {Shadow} from "../../tokens/Shadows/types";
+import type {Shadow} from "../../tokens/Shadows/types";
+import type {Align, Direction, Display, Justify, Overflow, Position, Wrap} from "../../utils/types";
 
 interface Props {
-    children: astroHTML.JSX.Element;
     bgColor?: Color
     shadow?: Shadow
+    position?: Position
     borderRadius?: ResponsiveRadius
-    borderWidth?: number | string
-    borderColor?: BorderColor
-    direction?: ResponsiveDirection
-    justify?: ResponsiveJustify
-    align?: ResponsiveAlign
-    gap?: ResponsiveGap
-    width?: ResponsiveSize
-    maxWidth?: ResponsiveSize
-    minWidth?: ResponsiveSize
-    height?: ResponsiveSize
-    maxHeight?: ResponsiveSize
-    minHeight?: ResponsiveSize
-    wrap?: ResponsiveWrap
-    overflow?: ResponsiveOverflow
+    isWithBorder?: boolean
+    direction?: Direction
+    justify?: Justify
+    align?: Align
+    gap?: number
+    width?: number | '100%'
+    maxWidth?: number | '100%'
+    minWidth?: number | '100%'
+    height?: number | '100%'
+    maxHeight?: number | '100%'
+    minHeight?: number | '100%'
+    wrap?: Wrap
+    overflow?: Overflow
     zIndex?: number
-    display?: React.CSSProperties['display']
-    role?: AriaRole
-    component?: T
+    display?: Display
+    role?: astroHTML.JSX.HTMLAttributes['role']
     'data-testid'?: string
 }
-// & Spacing &
-// Position
+
 ---
 
 <div class="box">
-    {children}
+    <slot />
 </div>
 
 
