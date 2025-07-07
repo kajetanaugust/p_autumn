@@ -1,37 +1,101 @@
 ---
-import type {ResponsiveRadius} from "../../tokens/Radius/types";
-import type {Color} from "../../tokens/Colors/types";
+import {
+    boxRecipe,
+    bgColorVariants,
+    shadowVariants,
+    radiusVariants,
+    gapVariants,
+    widthVariants,
+    heightVariants,
+    zIndexVariants
+} from './styles.css.ts';
 import type {Shadow} from "../../tokens/Shadows/types";
 import type {Align, Direction, Display, Justify, Overflow, Position, Wrap} from "../../utils/types";
+import type {Radius} from "../../tokens/Radius/types";
+import type {Color} from "../../tokens/Colors/types";
+import {theme} from "../../styles/theme.css";
+
+type SizeVariant = 'full' | 'auto' | 'fit' | 'min' | 'max';
+type HeightVariant = SizeVariant | 'screen';
+type ZIndexVariant = 'auto' | '0' | '10' | '20' | '30' | '40' | '50';
 
 interface Props {
-    bgColor?: Color
-    shadow?: Shadow
-    position?: Position
-    borderRadius?: ResponsiveRadius
-    isWithBorder?: boolean
-    direction?: Direction
-    justify?: Justify
-    align?: Align
-    gap?: number
-    width?: number | '100%'
-    maxWidth?: number | '100%'
-    minWidth?: number | '100%'
-    height?: number | '100%'
-    maxHeight?: number | '100%'
-    minHeight?: number | '100%'
-    wrap?: Wrap
-    overflow?: Overflow
-    zIndex?: number
-    display?: Display
-    role?: astroHTML.JSX.HTMLAttributes['role']
-    'data-testid'?: string
+    bgColor?: Color;
+    shadow?: Shadow;
+    position?: Position;
+    borderRadius?: Radius;
+    isWithBorder?: boolean;
+    direction?: Direction;
+    justify?: Justify;
+    align?: Align;
+    gap?: keyof typeof theme.spacing;
+    width?: SizeVariant;
+    height?: HeightVariant;
+    zIndex?: ZIndexVariant;
+    wrap?: Wrap;
+    overflow?: Overflow;
+    display?: Display;
+    role?: astroHTML.JSX.HTMLAttributes['role'];
+    'data-testid'?: string;
+    class?: string;
 }
 
+const {
+    bgColor,
+    shadow,
+    position = 'static',
+    borderRadius,
+    isWithBorder = false,
+    direction = 'row',
+    justify = 'flex-start',
+    align = 'flex-start',
+    gap,
+    width,
+    height,
+    zIndex,
+    wrap = 'nowrap',
+    overflow = 'visible',
+    display = 'flex',
+    class: className = '',
+} = Astro.props;
+
+// Build class names - all through Vanilla Extract
+const baseClass = boxRecipe({
+    display,
+    position,
+    direction,
+    justify,
+    align,
+    wrap,
+    overflow,
+    isWithBorder,
+});
+
+const bgColorClass = bgColor ? bgColorVariants[bgColor] : '';
+const shadowClass = shadow ? shadowVariants[shadow] : '';
+const radiusClass = borderRadius && typeof borderRadius === 'string' ? radiusVariants[borderRadius] : '';
+const gapClass = gap ? gapVariants[gap] : '';
+const widthClass = width ? widthVariants[width] : '';
+const heightClass = height ? heightVariants[height] : '';
+const zIndexClass = zIndex ? zIndexVariants[zIndex] : '';
+
+const allClasses = [
+    baseClass,
+    bgColorClass,
+    shadowClass,
+    radiusClass,
+    gapClass,
+    widthClass,
+    heightClass,
+    zIndexClass,
+    className
+].filter(Boolean).join(' ');
 ---
 
-<div class="box">
+<div
+        class={allClasses}
+        role={Astro.props.role}
+        data-testid={Astro.props['data-testid']}
+>
     <slot />
 </div>
-
-

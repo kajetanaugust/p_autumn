@@ -9,7 +9,4 @@ export const radiusVariants = {
 
 export type Radius = ValueOf<typeof radiusVariants>
 
-export type ResponsiveRadius =
-    | Radius
-    | [Radius, Radius]
 
