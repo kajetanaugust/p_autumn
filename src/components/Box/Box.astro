@@ -14,6 +14,7 @@ import type {Align, Direction, Display, Justify, Overflow, Position, Wrap} from 
 import type {Radius} from "../../tokens/Radius/types";
 import type {Color} from "../../tokens/Colors/types";
 import {theme} from "../../styles/theme.css";
+import {colors} from "../../tokens/Colors";
 
 type SizeVariant = 'full' | 'auto' | 'fit' | 'min' | 'max';
 type HeightVariant = SizeVariant | 'screen';
@@ -59,7 +60,6 @@ const {
     class: className = '',
 } = Astro.props;
 
-// Build class names - all through Vanilla Extract
 const baseClass = boxRecipe({
     display,
     position,
@@ -72,9 +72,9 @@ const baseClass = boxRecipe({
 });
 
 const bgColorClass = bgColor ? bgColorVariants[bgColor] : '';
-const shadowClass = shadow ? shadowVariants[shadow] : '';
+const shadowClass = shadow && shadow in shadowVariants ? shadowVariants[shadow] : '';
 const radiusClass = borderRadius && typeof borderRadius === 'string' ? radiusVariants[borderRadius] : '';
-const gapClass = gap ? gapVariants[gap] : '';
+const gapClass = gap && gap in gapVariants ? gapVariants[gap] : '';
 const widthClass = width ? widthVariants[width] : '';
 const heightClass = height ? heightVariants[height] : '';
 const zIndexClass = zIndex ? zIndexVariants[zIndex] : '';

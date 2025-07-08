@@ -14,6 +14,9 @@ export const boxRecipe = recipe({
             flex: { display: 'flex' },
             block: { display: 'block' },
             inline: { display: 'inline' },
+            'inline-flex': { display: 'inline-flex' },
+            grid: { display: 'grid' },
+            'inline-grid': { display: 'inline-grid' },
             'inline-block': { display: 'inline-block' },
             none: { display: 'none' },
         },
@@ -40,6 +43,10 @@ export const boxRecipe = recipe({
             'space-between': { justifyContent: 'space-between' },
             'space-around': { justifyContent: 'space-around' },
             'space-evenly': { justifyContent: 'space-evenly' },
+            start: {justifyContent: 'start'},
+            end: {justifyContent: "end"},
+            stretch: {justifyContent: "stretch"}
+
         },
 
         align: {
@@ -48,6 +55,8 @@ export const boxRecipe = recipe({
             center: { alignItems: 'center' },
             baseline: { alignItems: 'baseline' },
             stretch: { alignItems: 'stretch' },
+            start: {justifyContent: 'start'},
+            end: {justifyContent: "end"},
         },
 
         wrap: {
@@ -60,6 +69,7 @@ export const boxRecipe = recipe({
             visible: { overflow: 'visible' },
             hidden: { overflow: 'hidden' },
             scroll: { overflow: 'scroll' },
+            clip: {overflow: 'clip'},
             auto: { overflow: 'auto' },
         },
 
