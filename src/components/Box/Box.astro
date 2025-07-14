@@ -7,20 +7,32 @@ import {
     gapVariants,
     widthVariants,
     heightVariants,
-    zIndexVariants
+    zIndexVariants,
+    paddingVariants,
+    paddingXVariants,
+    paddingYVariants,
+    paddingTopVariants,
+    paddingBottomVariants,
+    paddingStartVariants,
+    paddingEndVariants,
+    marginVariants,
+    marginXVariants,
+    marginYVariants,
+    marginTopVariants,
+    marginBottomVariants, marginStartVariants, marginEndVariants
 } from './styles.css.ts';
 import type {Shadow} from "../../tokens/Shadows/types";
 import type {Align, Direction, Display, Justify, Overflow, Position, Wrap} from "../../utils/types";
 import type {Radius} from "../../tokens/Radius/types";
 import type {Color} from "../../tokens/Colors/types";
 import {theme} from "../../styles/theme.css";
-import {colors} from "../../tokens/Colors";
+import type {Spacings} from "../../utils/types";
 
 type SizeVariant = 'full' | 'auto' | 'fit' | 'min' | 'max';
 type HeightVariant = SizeVariant | 'screen';
 type ZIndexVariant = 'auto' | '0' | '10' | '20' | '30' | '40' | '50';
 
-interface Props {
+interface Props extends Spacings {
     bgColor?: Color;
     shadow?: Shadow;
     position?: Position;
@@ -58,6 +70,20 @@ const {
     overflow = 'visible',
     display = 'flex',
     class: className = '',
+    p,
+    pb,
+    ps,
+    pe,
+    pt,
+    px,
+    py,
+    m,
+    mx,
+    my,
+    mt,
+    mb,
+    ms,
+    me
 } = Astro.props;
 
 const baseClass = boxRecipe({
@@ -78,6 +104,20 @@ const gapClass = gap && gap in gapVariants ? gapVariants[gap] : '';
 const widthClass = width ? widthVariants[width] : '';
 const heightClass = height ? heightVariants[height] : '';
 const zIndexClass = zIndex ? zIndexVariants[zIndex] : '';
+const paddingClass = p ? paddingVariants[p] : '';
+const paddingXClass = px ? paddingXVariants[px] : '';
+const paddingYClass = py ? paddingYVariants[py] : '';
+const paddingTopClass = pt ? paddingTopVariants[pt] : '';
+const paddingBottomClass = pb ? paddingBottomVariants[pb] : '';
+const paddingStartClass = ps ? paddingStartVariants[ps] : '';
+const paddingEndClass = pe ? paddingEndVariants[pe] : '';
+const marginClass = m ? marginVariants[m] : '';
+const marginXClass = mx ? marginXVariants[mx] : '';
+const marginYClass = my ? marginYVariants[my] : '';
+const marginTopClass = mt ? marginTopVariants[mt] : '';
+const marginBottomClass = mb ? marginBottomVariants[mb] : '';
+const marginStartClass = ms ? marginStartVariants[ms] : '';
+const marginEndClass = me ? marginEndVariants[me] : '';
 
 const allClasses = [
     baseClass,
@@ -88,7 +128,21 @@ const allClasses = [
     widthClass,
     heightClass,
     zIndexClass,
-    className
+    className,
+    paddingClass,
+    paddingXClass,
+    paddingYClass,
+    paddingTopClass,
+    paddingBottomClass,
+    paddingStartClass,
+    paddingEndClass,
+    marginClass,
+    marginXClass,
+    marginYClass,
+    marginTopClass,
+    marginBottomClass,
+    marginStartClass,
+    marginEndClass,
 ].filter(Boolean).join(' ');
 ---
 
@@ -97,5 +151,5 @@ const allClasses = [
         role={Astro.props.role}
         data-testid={Astro.props['data-testid']}
 >
-    <slot />
+    <slot/>
 </div>
