@@ -1,6 +1,7 @@
 import {styleVariants} from '@vanilla-extract/css';
 import {recipe} from '@vanilla-extract/recipes';
 import {theme} from "../../styles/theme.css";
+import {createSpacingVariants, spacingProperties} from "./helpers.ts";
 
 export const boxRecipe = recipe({
     base: {
@@ -74,7 +75,7 @@ export const boxRecipe = recipe({
         },
 
         isWithBorder: {
-            true: {border: `1px solid ${theme.colors.border || '#e5e7eb'}`},
+            true: {border: `1px solid ${theme.colors || '#e5e7eb'}`},
             false: {},
         },
     },
@@ -111,61 +112,25 @@ export const gapVariants = styleVariants(theme.spacing, (spacing) => ({
     gap: spacing,
 }));
 
-export const paddingVariants = styleVariants(theme.spacing, (p) => ({
-    padding: p,
-}));
+const spacingVariants = createSpacingVariants(spacingProperties);
 
-export const paddingXVariants = styleVariants(theme.spacing, (px) => ({
-    paddingInline: px,
-}));
-
-export const paddingYVariants = styleVariants(theme.spacing, (py) => ({
-    paddingBlock: py,
-}));
-
-export const paddingTopVariants = styleVariants(theme.spacing, (pt) => ({
-    paddingBlockStart: pt,
-}));
-
-export const paddingBottomVariants = styleVariants(theme.spacing, (pb) => ({
-    paddingBlockEnd: pb,
-}));
-
-export const paddingStartVariants = styleVariants(theme.spacing, (ps) => ({
-    paddingInlineStart: ps,
-}));
-
-export const paddingEndVariants = styleVariants(theme.spacing, (pe) => ({
-    paddingInlineEnd: pe,
-}));
-
-export const marginVariants = styleVariants(theme.spacing, (m) => ({
-    margin: m,
-}));
-
-export const marginXVariants = styleVariants(theme.spacing, (mx) => ({
-    marginInline: mx,
-}));
-
-export const marginYVariants = styleVariants(theme.spacing, (my) => ({
-    marginBlock: my,
-}));
-
-export const marginTopVariants = styleVariants(theme.spacing, (mt) => ({
-    marginBlockStart: mt,
-}));
-
-export const marginBottomVariants = styleVariants(theme.spacing, (mb) => ({
-    marginBlockEnd: mb,
-}));
-
-export const marginStartVariants = styleVariants(theme.spacing, (ms) => ({
-    marginInlineStart: ms,
-}));
-
-export const marginEndVariants = styleVariants(theme.spacing, (me) => ({
-    marginInlineEnd: me,
-}));
+// Spacing variants
+export const {
+    paddingVariants,
+    paddingXVariants,
+    paddingYVariants,
+    paddingTopVariants,
+    paddingBottomVariants,
+    paddingStartVariants,
+    paddingEndVariants,
+    marginVariants,
+    marginXVariants,
+    marginYVariants,
+    marginTopVariants,
+    marginBottomVariants,
+    marginStartVariants,
+    marginEndVariants,
+} = spacingVariants;
 
 
 // Width variants for common sizes
