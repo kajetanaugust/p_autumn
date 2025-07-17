@@ -1,0 +1,77 @@
+---
+import {buttonRecipe} from './styles.css.ts';
+import type {ButtonSize, ButtonTarget, ButtonType, ButtonVariant} from "./types";
+
+interface Props {
+    href?: string;
+    target?: ButtonTarget;
+    rel?: string;
+    type?: ButtonType;
+    disabled?: boolean;
+    variant?: ButtonVariant;
+    size?: ButtonSize;
+    'aria-label'?: string;
+    'aria-pressed'?: boolean;
+    'aria-expanded'?: boolean;
+    'data-testid'?: string;
+    class?: string;
+    [key: string]: any;
+}
+
+const {
+    href,
+    target,
+    rel,
+    type = 'button',
+    disabled = false,
+    variant = 'primary',
+    size = 'large',
+    'aria-label': ariaLabel,
+    'aria-pressed': ariaPressed,
+    'aria-expanded': ariaExpanded,
+    'data-testid': dataTestId,
+    class: className = '',
+    ...rest
+} = Astro.props;
+
+const isLink = !!href;
+const Tag = isLink ? 'a' : 'button';
+
+const linkAttrs = isLink ? {
+    href,
+    target,
+    rel: target === '_blank' ? 'noopener noreferrer' : rel,
+} : {};
+
+const buttonAttrs = !isLink ? {
+    type,
+    disabled,
+    'aria-pressed': ariaPressed,
+    'aria-expanded': ariaExpanded,
+} : {};
+
+const buttonClass = buttonRecipe({
+    variant,
+    size,
+});
+
+const allClasses = [buttonClass, className].filter(Boolean).join(' ');
+
+const commonAttrs = {
+    class: allClasses,
+    'aria-label': ariaLabel,
+    'data-testid': dataTestId,
+    ...rest,
+};
+
+const allAttrs = {
+    ...commonAttrs,
+    ...linkAttrs,
+    ...buttonAttrs,
+    ...disabled && {disabled},
+};
+---
+
+<Tag {...allAttrs}>
+    <slot/>
+</Tag>

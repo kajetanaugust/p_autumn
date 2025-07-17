@@ -6,7 +6,6 @@ import eslintPrettier from 'eslint-plugin-prettier'
 import eslintConfigPrettier from 'eslint-config-prettier'
 
 export default [
-    // Basic recommended rules
     {
         ignores: ['node_modules/**'],
     },

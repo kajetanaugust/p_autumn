@@ -2,6 +2,7 @@
 import astroLogo from '../assets/astro.svg';
 import background from '../assets/background.svg';
 import Box from "./Box/Box.astro";
+import Button from "./Button/Button.astro";
 ---
 
 <div id="container">
@@ -10,6 +11,9 @@ import Box from "./Box/Box.astro";
              py={24}>
             test
         </Box>
+        <Button variant="primary" size="large" href="https://astro.build/blog/astro-5/">test</Button>
+        <Button variant="ghost" size="large" href="https://astro.build/blog/astro-5/">test</Button>
+        <Button variant="outline" size="large" href="https://astro.build/blog/astro-5/">test</Button>
     </main>
 
     <a href="https://astro.build/blog/astro-5/" id="news" class="box">
