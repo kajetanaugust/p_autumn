@@ -1,0 +1,43 @@
+---
+import {textColorVariants, textRecipe} from './styles.css.ts';
+import type { FontWeight, FontStyle, TextTag, TextVariant} from './types';
+import {getDefaultTag} from "./helpers";
+import type {Color} from "../../tokens/Colors/types";
+
+interface Props {
+    variant?: TextVariant;
+    weight?: FontWeight;
+    style?: FontStyle;
+    color?: Color;
+    tag?: TextTag;
+    class?: string;
+    [key: string]: any;
+}
+
+const {
+    variant = 'text-medium',
+    weight,
+    style,
+    color = 'neutral_darkest',
+    tag,
+    class: className = '',
+    ...rest
+} = Astro.props;
+
+const Tag = tag || getDefaultTag(variant);
+
+const textClass = textRecipe({
+    variant,
+    weight,
+    style,
+});
+
+const colorClass = textColorVariants[color];
+
+const allClasses = [textClass, colorClass, className].filter(Boolean).join(' ');
+
+---
+
+<Tag class={allClasses} {...rest}>
+    <slot />
+</Tag>

@@ -1,6 +1,7 @@
 ---
 import {buttonRecipe} from './styles.css.ts';
 import type {ButtonSize, ButtonTarget, ButtonType, ButtonVariant} from "./types";
+import Text from "../Text/Text.astro";
 
 interface Props {
     href?: string;
@@ -70,8 +71,12 @@ const allAttrs = {
     ...buttonAttrs,
     ...disabled && {disabled},
 };
+
+const textColor = variant === 'primary' ? 'neutral_white' : 'neutral_darkest';
 ---
 
 <Tag {...allAttrs}>
-    <slot/>
+    <Text variant="text-regular" weight={500} color={textColor}>
+        <slot/>
+    </Text>
 </Tag>
