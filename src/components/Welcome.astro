@@ -4,6 +4,7 @@ import background from '../assets/background.svg';
 import Box from "./Box/Box.astro";
 import Button from "./Button/Button.astro";
 import Text from "./Text/Text.astro";
+import {Wifi} from 'lucide-astro'
 ---
 
 <div id="container">
@@ -15,6 +16,13 @@ import Text from "./Text/Text.astro";
         <Button variant="primary" size="large" href="https://astro.build/blog/astro-5/">test</Button>
         <Button variant="ghost" size="large" href="https://astro.build/blog/astro-5/">test</Button>
         <Button variant="outline" size="large" href="https://astro.build/blog/astro-5/">test</Button>
+        <Button variant="iconGhost" size="large" href="https://astro.build/blog/astro-5/"><Wifi /></Button>
+        <Button variant="iconPrimary" size="large" href="https://astro.build/blog/astro-5/"><Wifi /></Button>
+        <Button variant="iconOutline" size="large" href="https://astro.build/blog/astro-5/"><Wifi /></Button>
+        <Button variant="iconGhost" size="small" href="https://astro.build/blog/astro-5/"><Wifi /></Button>
+        <Button variant="iconPrimary" size="small" href="https://astro.build/blog/astro-5/"><Wifi /></Button>
+        <Button variant="iconOutline" size="small" href="https://astro.build/blog/astro-5/"><Wifi /></Button>
+
         <Box direction="column">
             <!-- Test all text variants -->
             <Box direction="column" gap={8}>

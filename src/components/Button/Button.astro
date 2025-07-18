@@ -16,6 +16,7 @@ interface Props {
     'aria-expanded'?: boolean;
     'data-testid'?: string;
     class?: string;
+
     [key: string]: any;
 }
 
@@ -76,7 +77,10 @@ const textColor = variant === 'primary' ? 'neutral_white' : 'neutral_darkest';
 ---
 
 <Tag {...allAttrs}>
-    <Text variant="text-regular" weight={500} color={textColor}>
-        <slot/>
-    </Text>
+    {variant.includes('icon') ?
+            <slot/> : (
+                    <Text variant="text-regular" weight={500} color={textColor}>
+                        <slot/>
+                    </Text>)}
+
 </Tag>
