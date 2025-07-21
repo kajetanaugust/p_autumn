@@ -1,0 +1,102 @@
+---
+import {Image as AstroImage} from 'astro:assets'
+import type {ImageMetadata} from 'astro'
+import Box from "../Box/Box.astro";
+import type {Shadow} from "../../tokens/Shadows/types";
+import type {Radius} from "../../tokens/Radius/types";
+import type {Position, Spacings} from "../../utils/types";
+import type {Display} from "../../utils/types";
+import type {AspectRatio, ObjectFit, ResponsiveType} from "./types";
+import {
+    aspectRatioVariants,
+    imageBase,
+    imageContainer,
+    objectFitVariants,
+    responsiveVariants
+} from "./styles.css";
+
+interface Props extends Spacings {
+    // Image specific props
+    src: ImageMetadata | string;
+    loading?: 'lazy' | 'eager';
+    className?: string;
+    alt: string;
+    width: number;
+    height: number;
+    objectFit?: ObjectFit;
+    aspectRatio?: AspectRatio;
+    responsive?: ResponsiveType;
+    // Box wrapper props
+    shadow?: Shadow;
+    borderRadius?: Radius;
+    position?: Position;
+    display?: Display;
+}
+
+const {
+    src,
+    loading = 'lazy',
+    alt,
+    width,
+    height,
+    className,
+    shadow,
+    borderRadius,
+    display,
+    position,
+    p,
+    px,
+    py,
+    pt,
+    pb,
+    ps,
+    pe,
+    m,
+    mx,
+    my,
+    mt,
+    mb,
+    ms,
+    me,
+    aspectRatio,
+    objectFit = 'cover',
+    responsive = 'fixed', // Default to fixed for explicit dimensions
+} = Astro.props
+
+const containerClass = imageContainer({
+    hasAspectRatio: !!aspectRatio
+})
+
+const shouldUseContainerObjectFit = aspectRatio || responsive === 'fluid' || responsive === 'fullWidth' || responsive === 'fullHeight'
+
+const imageClasses = [
+    imageBase,
+    shouldUseContainerObjectFit ? objectFitContainerVariants[objectFit] : objectFitVariants[objectFit],
+    responsiveVariants[responsive],
+    className
+].filter(Boolean).join(' ')
+
+const containerClasses = [
+    containerClass,
+    aspectRatio ? aspectRatioVariants[aspectRatio] : '',
+].filter(Boolean).join(' ')
+---
+
+<Box
+        shadow={shadow}
+        borderRadius={borderRadius}
+        position={position}
+        display={display}
+        class={containerClasses}
+        p={p} px={px} py={py} pt={pt} pb={pb} ps={ps} pe={pe}
+        m={m} mx={mx} my={my} mt={mt} mb={mb} ms={ms} me={me}
+>
+    <AstroImage
+            src={src}
+            alt={alt}
+            width={width}
+            height={height}
+            loading={loading}
+            class={imageClasses}
+    />
+</Box>

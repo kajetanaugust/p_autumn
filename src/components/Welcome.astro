@@ -5,6 +5,8 @@ import Box from "./Box/Box.astro";
 import Button from "./Button/Button.astro";
 import Text from "./Text/Text.astro";
 import {Wifi} from 'lucide-astro'
+import Image from "./Image/Image.astro";
+import placeholder from '../assets/placeholder.jpg'
 ---
 
 <div id="container">
@@ -99,6 +101,10 @@ import {Wifi} from 'lucide-astro'
                 <Text variant="text-small" color="luxor_gold_dark">Gold accent on light background</Text>
             </Box>
 
+
+            <Box width='auto' height="auto">
+                <Image src={placeholder} alt="Astro logo" width={128} height={128} />
+            </Box>
         </Box>
     </main>
 
