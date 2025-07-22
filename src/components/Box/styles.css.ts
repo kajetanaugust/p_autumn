@@ -1,4 +1,4 @@
-import {styleVariants} from '@vanilla-extract/css';
+import {createVar, style, styleVariants} from '@vanilla-extract/css';
 import {recipe} from '@vanilla-extract/recipes';
 import {theme} from "../../styles/theme.css";
 import {createSpacingVariants, spacingProperties} from "./helpers.ts";
@@ -132,26 +132,6 @@ export const {
     marginEndVariants,
 } = spacingVariants;
 
-
-// Width variants for common sizes
-export const widthVariants = styleVariants({
-    full: {width: '100%'},
-    auto: {width: 'auto'},
-    fit: {width: 'fit-content'},
-    min: {width: 'min-content'},
-    max: {width: 'max-content'},
-});
-
-// Height variants for common sizes
-export const heightVariants = styleVariants({
-    full: {height: '100%'},
-    auto: {height: 'auto'},
-    fit: {height: 'fit-content'},
-    min: {height: 'min-content'},
-    max: {height: 'max-content'},
-    screen: {height: '100vh'},
-});
-
 export const zIndexVariants = styleVariants({
     auto: {zIndex: 'auto'},
     0: {zIndex: 0},
@@ -160,4 +140,23 @@ export const zIndexVariants = styleVariants({
     30: {zIndex: 30},
     40: {zIndex: 40},
     50: {zIndex: 50},
+});
+
+export const widthVar = createVar();
+
+export const dynamicWidthStyle = style({
+    width: widthVar,
+});
+
+export const heightVar = createVar();
+
+export const dynamicHeightStyle = style({
+    height: heightVar,
+});
+
+export const dimensionVariants = styleVariants({
+    full: {width: '100%'},
+    auto: {width: 'auto'},
+    'fit-content': {width: 'fit-content'},
+    screen: {width: '100vw'},
 });

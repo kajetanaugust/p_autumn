@@ -5,8 +5,6 @@ import {
     shadowVariants,
     radiusVariants,
     gapVariants,
-    widthVariants,
-    heightVariants,
     zIndexVariants,
     paddingVariants,
     paddingXVariants,
@@ -27,10 +25,10 @@ import type {Radius} from "../../tokens/Radius/types";
 import type {Color} from "../../tokens/Colors/types";
 import {theme} from "../../styles/theme.css";
 import type {Spacings} from "../../utils/types";
+import type {DimensionVariants, ZIndexVariant} from "./types";
+import {getDimensionClass, getDimensionVars} from "./helpers";
 
-type SizeVariant = 'full' | 'auto' | 'fit' | 'min' | 'max';
-type HeightVariant = SizeVariant | 'screen';
-type ZIndexVariant = 'auto' | '0' | '10' | '20' | '30' | '40' | '50';
+
 
 interface Props extends Spacings {
     bgColor?: Color;
@@ -42,8 +40,8 @@ interface Props extends Spacings {
     justify?: Justify;
     align?: Align;
     gap?: keyof typeof theme.spacing;
-    width?: SizeVariant;
-    height?: HeightVariant;
+    width?: DimensionVariants;
+    height?: DimensionVariants;
     zIndex?: ZIndexVariant;
     wrap?: Wrap;
     overflow?: Overflow;
@@ -63,8 +61,8 @@ const {
     justify = 'flex-start',
     align = 'flex-start',
     gap,
-    width,
-    height,
+    width = '100%',
+    height = 'fit-content',
     zIndex,
     wrap = 'nowrap',
     overflow = 'visible',
@@ -101,8 +99,6 @@ const bgColorClass = bgColor ? bgColorVariants[bgColor] : '';
 const shadowClass = shadow && shadow in shadowVariants ? shadowVariants[shadow] : '';
 const radiusClass = borderRadius && typeof borderRadius === 'string' ? radiusVariants[borderRadius] : '';
 const gapClass = gap && gap in gapVariants ? gapVariants[gap] : '';
-const widthClass = width ? widthVariants[width] : '';
-const heightClass = height ? heightVariants[height] : '';
 const zIndexClass = zIndex ? zIndexVariants[zIndex] : '';
 const paddingClass = p ? paddingVariants[p] : '';
 const paddingXClass = px ? paddingXVariants[px] : '';
@@ -118,6 +114,11 @@ const marginTopClass = mt ? marginTopVariants[mt] : '';
 const marginBottomClass = mb ? marginBottomVariants[mb] : '';
 const marginStartClass = ms ? marginStartVariants[ms] : '';
 const marginEndClass = me ? marginEndVariants[me] : '';
+const widthClass = getDimensionClass(width, 'width');
+const widthVars = getDimensionVars(width, 'width');
+const heightClass = getDimensionClass(height, 'height');
+const heightVars = getDimensionVars(height, 'height');
+
 
 const allClasses = [
     baseClass,
@@ -149,6 +150,7 @@ const allClasses = [
 <div
         class={allClasses}
         role={Astro.props.role}
+        style={{...widthVars, ...heightVars}}
         data-testid={Astro.props['data-testid']}
 >
     <slot/>
