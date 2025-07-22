@@ -143,20 +143,30 @@ export const zIndexVariants = styleVariants({
 });
 
 export const widthVar = createVar();
+export const heightVar = createVar();
+export const maxWidthVar = createVar();
+export const maxHeightVar = createVar();
 
 export const dynamicWidthStyle = style({
     width: widthVar,
 });
 
-export const heightVar = createVar();
-
 export const dynamicHeightStyle = style({
     height: heightVar,
 });
 
+export const dynamicMaxWidthStyle = style({
+    maxWidth: maxWidthVar,
+});
+
+export const dynamicMaxHeightStyle = style({
+    maxHeight: maxHeightVar,
+});
+
 export const dimensionVariants = styleVariants({
-    full: {width: '100%'},
-    auto: {width: 'auto'},
+    'full': {width: '100%'},
+    'auto': {width: 'auto'},
     'fit-content': {width: 'fit-content'},
-    screen: {width: '100vw'},
+    'screen': {width: '100vw'},
+    '100%': {width: '100%'},
 });

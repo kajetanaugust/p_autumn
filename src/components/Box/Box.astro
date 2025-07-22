@@ -28,8 +28,6 @@ import type {Spacings} from "../../utils/types";
 import type {DimensionVariants, ZIndexVariant} from "./types";
 import {getDimensionClass, getDimensionVars} from "./helpers";
 
-
-
 interface Props extends Spacings {
     bgColor?: Color;
     shadow?: Shadow;
@@ -42,6 +40,8 @@ interface Props extends Spacings {
     gap?: keyof typeof theme.spacing;
     width?: DimensionVariants;
     height?: DimensionVariants;
+    maxWidth?: DimensionVariants;
+    maxHeight?: DimensionVariants;
     zIndex?: ZIndexVariant;
     wrap?: Wrap;
     overflow?: Overflow;
@@ -63,6 +63,8 @@ const {
     gap,
     width = '100%',
     height = 'fit-content',
+    maxWidth,
+    maxHeight,
     zIndex,
     wrap = 'nowrap',
     overflow = 'visible',
@@ -118,7 +120,10 @@ const widthClass = getDimensionClass(width, 'width');
 const widthVars = getDimensionVars(width, 'width');
 const heightClass = getDimensionClass(height, 'height');
 const heightVars = getDimensionVars(height, 'height');
-
+const maxWidthClass = maxWidth ? getDimensionClass(maxWidth, 'maxWidth') : '';
+const maxWidthVars = maxWidth ? getDimensionVars(maxWidth, 'maxWidth') : '';
+const maxHeightClass = maxHeight ? getDimensionClass(maxHeight, 'maxHeight') : '';
+const maxHeightVars = maxHeight ? getDimensionVars(maxHeight, 'maxHeight') : '';
 
 const allClasses = [
     baseClass,
@@ -128,6 +133,8 @@ const allClasses = [
     gapClass,
     widthClass,
     heightClass,
+    maxWidthClass,
+    maxHeightClass,
     zIndexClass,
     className,
     paddingClass,
@@ -150,7 +157,7 @@ const allClasses = [
 <div
         class={allClasses}
         role={Astro.props.role}
-        style={{...widthVars, ...heightVars}}
+        style={{...widthVars, ...heightVars, ...maxWidthVars, ...maxHeightVars}}
         data-testid={Astro.props['data-testid']}
 >
     <slot/>
