@@ -6,12 +6,13 @@ import type {Shadow} from "../../tokens/Shadows/types";
 import type {Radius} from "../../tokens/Radius/types";
 import type {Position, Spacings} from "../../utils/types";
 import type {Display} from "../../utils/types";
-import type {AspectRatio, ObjectFit, ResponsiveType} from "./types";
+import type {AspectRatio, ObjectFit, ObjectPosition, ResponsiveType} from "./types";
 import {
     aspectRatioVariants,
     imageBase,
     imageContainer,
     objectFitVariants,
+    objectPositionVariants,
     responsiveVariants
 } from "./styles.css";
 
@@ -24,8 +25,11 @@ interface Props extends Spacings {
     width: number;
     height: number;
     objectFit?: ObjectFit;
+    objectPosition?: ObjectPosition;
     aspectRatio?: AspectRatio;
     responsive?: ResponsiveType;
+    maxWidth?: string | number;
+    maxHeight?: string | number;
     // Box wrapper props
     shadow?: Shadow;
     borderRadius?: Radius;
@@ -60,18 +64,20 @@ const {
     me,
     aspectRatio,
     objectFit = 'cover',
-    responsive = 'fixed', // Default to fixed for explicit dimensions
+    objectPosition = 'center',
+    responsive = 'fixed',
+    maxWidth,
+    maxHeight,
 } = Astro.props
 
 const containerClass = imageContainer({
     hasAspectRatio: !!aspectRatio
 })
 
-const shouldUseContainerObjectFit = aspectRatio || responsive === 'fluid' || responsive === 'fullWidth' || responsive === 'fullHeight'
-
 const imageClasses = [
     imageBase,
-    shouldUseContainerObjectFit ? objectFitContainerVariants[objectFit] : objectFitVariants[objectFit],
+    objectFitVariants[objectFit],
+    objectPositionVariants[objectPosition],
     responsiveVariants[responsive],
     className
 ].filter(Boolean).join(' ')
@@ -80,6 +86,20 @@ const containerClasses = [
     containerClass,
     aspectRatio ? aspectRatioVariants[aspectRatio] : '',
 ].filter(Boolean).join(' ')
+
+// Build inline styles for max dimensions
+const imageStyles: Record<string, string> = {};
+if (maxWidth) {
+    imageStyles.maxWidth = typeof maxWidth === 'number' ? `${maxWidth}px` : maxWidth;
+}
+if (maxHeight) {
+    imageStyles.maxHeight = typeof maxHeight === 'number' ? `${maxHeight}px` : maxHeight;
+}
+
+if (responsive === 'fullWidth' && maxHeight) {
+    imageStyles.width = '100%';
+    imageStyles.height = 'auto';
+}
 ---
 
 <Box
@@ -98,5 +118,6 @@ const containerClasses = [
             height={height}
             loading={loading}
             class={imageClasses}
+            style={imageStyles}
     />
 </Box>

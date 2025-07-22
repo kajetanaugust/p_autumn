@@ -3,8 +3,6 @@ import {recipe} from "@vanilla-extract/recipes";
 
 export const imageBase = style({
     display: 'block',
-    maxWidth: '100%',
-    height: 'auto',
     border: 'none',
 })
 
@@ -34,6 +32,14 @@ export const objectFitVariants = styleVariants({
         width: '100%',
         height: '100%',
     },
+})
+
+export const objectPositionVariants = styleVariants({
+    top: {objectPosition: 'top'},
+    left: {objectPosition: 'left'},
+    right: {objectPosition: 'right'},
+    bottom: {objectPosition: 'bottom'},
+    center: {objectPosition: 'center'},
 })
 
 export const aspectRatioVariants = styleVariants({
@@ -73,6 +79,8 @@ export const responsiveVariants = styleVariants({
     },
     fixed: {
         flexShrink: 0,
+        maxWidth: '100%',
+        height: 'auto',
     },
     fullWidth: {
         width: '100%',
@@ -84,6 +92,4 @@ export const responsiveVariants = styleVariants({
     }
 })
 
-
-
-
+// Remove the problematic maxDimensionStyle - we'll handle this with inline styles
