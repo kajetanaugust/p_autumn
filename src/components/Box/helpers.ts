@@ -2,10 +2,13 @@ import {styleVariants} from "@vanilla-extract/css";
 import {theme} from "../../styles/theme.css.ts";
 import {
     dimensionVariants,
+    dynamicFlexDirectionResponsiveStyle,
     dynamicHeightStyle,
     dynamicMaxHeightStyle,
     dynamicMaxWidthStyle,
     dynamicWidthStyle,
+    flexDirectionDesktopVar,
+    flexDirectionMobileVar,
     heightVar,
     maxHeightVar,
     maxWidthVar,
@@ -13,6 +16,7 @@ import {
 } from "./styles.css.ts";
 import {assignInlineVars} from "@vanilla-extract/dynamic";
 import type {DimensionVariants} from "./types.ts";
+import type {Direction} from "../../utils/types.ts";
 
 export const createSpacingVariants = (properties: Record<string, string>) => {
     const variants: Record<string, any> = {};
@@ -88,3 +92,28 @@ export const getDimensionVars = (dimension: DimensionVariants, type: 'width' | '
 
     return {};
 };
+
+export const getDirectionClass = (direction: Direction | [Direction, Direction]) => {
+    if (!Array.isArray(direction)) {
+        return ''; // Use recipe variant for single direction
+    }
+
+    // Use dynamic class for responsive directions
+    return dynamicFlexDirectionResponsiveStyle;
+};
+
+
+export const getDirectionVars = (direction: Direction | [Direction, Direction]) => {
+    if (!Array.isArray(direction)) {
+        return {};
+    }
+
+    const [mobile, desktop] = direction;
+
+    return assignInlineVars({
+        [flexDirectionMobileVar]: mobile,
+        [flexDirectionDesktopVar]: desktop,
+    });
+};
+
+

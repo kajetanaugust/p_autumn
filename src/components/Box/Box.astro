@@ -26,7 +26,7 @@ import type {Color} from "../../tokens/Colors/types";
 import {theme} from "../../styles/theme.css";
 import type {Spacings} from "../../utils/types";
 import type {DimensionVariants, ZIndexVariant} from "./types";
-import {getDimensionClass, getDimensionVars} from "./helpers";
+import {getDimensionClass, getDimensionVars, getDirectionClass, getDirectionVars} from "./helpers";
 
 interface Props extends Spacings {
     bgColor?: Color;
@@ -34,7 +34,7 @@ interface Props extends Spacings {
     position?: Position;
     borderRadius?: Radius;
     isWithBorder?: boolean;
-    direction?: Direction;
+    direction?: Direction | [Direction, Direction];
     justify?: Justify;
     align?: Align;
     gap?: keyof typeof theme.spacing;
@@ -86,10 +86,15 @@ const {
     me
 } = Astro.props;
 
+const recipeDirection = typeof direction === 'string' ? direction : null;
+const directionClass = getDirectionClass(direction);
+const directionVars = getDirectionVars(direction);
+
+
 const baseClass = boxRecipe({
     display,
     position,
-    direction,
+    direction: recipeDirection,
     justify,
     align,
     wrap,
@@ -131,6 +136,7 @@ const allClasses = [
     shadowClass,
     radiusClass,
     gapClass,
+    directionClass,
     widthClass,
     heightClass,
     maxWidthClass,
@@ -157,7 +163,7 @@ const allClasses = [
 <div
         class={allClasses}
         role={Astro.props.role}
-        style={{...widthVars, ...heightVars, ...maxWidthVars, ...maxHeightVars}}
+        style={{...widthVars, ...heightVars, ...maxWidthVars, ...maxHeightVars, ...directionVars}}
         data-testid={Astro.props['data-testid']}
 >
     <slot/>

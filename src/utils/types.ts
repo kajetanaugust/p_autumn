@@ -7,7 +7,6 @@ export type Display = 'block' | 'inline-block' | 'inline' | 'flex' | 'inline-fle
 export type Position = 'static' | 'relative' | 'absolute' | 'fixed' | 'sticky';
 export type Overflow = 'visible' | 'hidden' | 'clip' | 'scroll' | 'auto';
 export type Wrap = 'nowrap' | 'wrap' | 'wrap-reverse';
-export type Width = 'full' | 'auto' | number | string;
 
 export interface Spacings {
     p?: keyof typeof theme.spacing;

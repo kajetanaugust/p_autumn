@@ -13,7 +13,7 @@ import heroImage from '../assets/widokowe_crop.jpg'
                maxHeight="50vh" loading="eager"
         />
     </Box>
-    <Box direction="row" justify="space-between" align="start" px={80} gap={80}>
+    <Box direction={["column", "row"]} justify="space-between" align="start" px={80} gap={80}>
         <Text variant="heading-1">
             Opieka, komfort i wspólnota dla seniorów
         </Text>
@@ -22,7 +22,7 @@ import heroImage from '../assets/widokowe_crop.jpg'
                 Zapewniamy najwyższej jakości opiekę dla osób starszych, skupiając się na ich komforcie i
                 bezpieczeństwie. Nasza społeczność jest miejscem, gdzie każdy czuje się jak w domu.
             </Text>
-            <Box direction="row" justify="start" gap={16}>
+            <Box direction={["column","row"]} justify="start" gap={16} width="100%">
                 <Button variant="primary">Umów się</Button>
                 <Button variant="outline">Dowiedz się</Button>
             </Box>

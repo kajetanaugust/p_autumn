@@ -170,3 +170,21 @@ export const dimensionVariants = styleVariants({
     'screen': {width: '100vw'},
     '100%': {width: '100%'},
 });
+
+export const flexDirectionVar = createVar();
+export const flexDirectionMobileVar = createVar();
+export const flexDirectionDesktopVar = createVar();
+
+export const dynamicFlexDirectionStyle = style({
+    flexDirection: flexDirectionVar,
+});
+
+export const dynamicFlexDirectionResponsiveStyle = style({
+    flexDirection: flexDirectionMobileVar,
+    '@media': {
+        'screen and (min-width: 768px)': {
+            flexDirection: flexDirectionDesktopVar,
+        }
+    }
+});
+
