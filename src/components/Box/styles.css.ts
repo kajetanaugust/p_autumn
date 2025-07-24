@@ -1,7 +1,6 @@
 import {createVar, style, styleVariants} from '@vanilla-extract/css';
 import {recipe} from '@vanilla-extract/recipes';
 import {theme} from "../../styles/theme.css";
-import {createSpacingVariants, spacingProperties} from "./helpers.ts";
 
 export const boxRecipe = recipe({
     base: {
@@ -107,31 +106,6 @@ export const radiusVariants = styleVariants(theme.radius, (radius) => ({
     borderRadius: radius,
 }));
 
-// Gap variants
-export const gapVariants = styleVariants(theme.spacing, (spacing) => ({
-    gap: spacing,
-}));
-
-const spacingVariants = createSpacingVariants(spacingProperties);
-
-// Spacing variants
-export const {
-    paddingVariants,
-    paddingXVariants,
-    paddingYVariants,
-    paddingTopVariants,
-    paddingBottomVariants,
-    paddingStartVariants,
-    paddingEndVariants,
-    marginVariants,
-    marginXVariants,
-    marginYVariants,
-    marginTopVariants,
-    marginBottomVariants,
-    marginStartVariants,
-    marginEndVariants,
-} = spacingVariants;
-
 export const zIndexVariants = styleVariants({
     auto: {zIndex: 'auto'},
     0: {zIndex: 0},
@@ -142,6 +116,7 @@ export const zIndexVariants = styleVariants({
     50: {zIndex: 50},
 });
 
+// Dimension variables
 export const widthVar = createVar();
 export const heightVar = createVar();
 export const maxWidthVar = createVar();
@@ -198,4 +173,92 @@ export const responsiveGapStyle = style({
             gap: gapVars.desktop,
         }
     }
+});
+
+// Spacing variables and styles
+export const paddingVars = {mobile: createVar(), desktop: createVar()};
+export const paddingXVars = {mobile: createVar(), desktop: createVar()};
+export const paddingYVars = {mobile: createVar(), desktop: createVar()};
+export const paddingTopVars = {mobile: createVar(), desktop: createVar()};
+export const paddingBottomVars = {mobile: createVar(), desktop: createVar()};
+export const paddingStartVars = {mobile: createVar(), desktop: createVar()};
+export const paddingEndVars = {mobile: createVar(), desktop: createVar()};
+
+export const marginVars = {mobile: createVar(), desktop: createVar()};
+export const marginXVars = {mobile: createVar(), desktop: createVar()};
+export const marginYVars = {mobile: createVar(), desktop: createVar()};
+export const marginTopVars = {mobile: createVar(), desktop: createVar()};
+export const marginBottomVars = {mobile: createVar(), desktop: createVar()};
+export const marginStartVars = {mobile: createVar(), desktop: createVar()};
+export const marginEndVars = {mobile: createVar(), desktop: createVar()};
+
+// Responsive spacing styles
+export const responsivePaddingStyle = style({
+    padding: paddingVars.mobile,
+    '@media': {'screen and (min-width: 768px)': {padding: paddingVars.desktop}}
+});
+
+export const responsivePaddingXStyle = style({
+    paddingInline: paddingXVars.mobile,
+    '@media': {'screen and (min-width: 768px)': {paddingInline: paddingXVars.desktop}}
+});
+
+export const responsivePaddingYStyle = style({
+    paddingBlock: paddingYVars.mobile,
+    '@media': {'screen and (min-width: 768px)': {paddingBlock: paddingYVars.desktop}}
+});
+
+export const responsivePaddingTopStyle = style({
+    paddingBlockStart: paddingTopVars.mobile,
+    '@media': {'screen and (min-width: 768px)': {paddingBlockStart: paddingTopVars.desktop}}
+});
+
+export const responsivePaddingBottomStyle = style({
+    paddingBlockEnd: paddingBottomVars.mobile,
+    '@media': {'screen and (min-width: 768px)': {paddingBlockEnd: paddingBottomVars.desktop}}
+});
+
+export const responsivePaddingStartStyle = style({
+    paddingInlineStart: paddingStartVars.mobile,
+    '@media': {'screen and (min-width: 768px)': {paddingInlineStart: paddingStartVars.desktop}}
+});
+
+export const responsivePaddingEndStyle = style({
+    paddingInlineEnd: paddingEndVars.mobile,
+    '@media': {'screen and (min-width: 768px)': {paddingInlineEnd: paddingEndVars.desktop}}
+});
+
+export const responsiveMarginStyle = style({
+    margin: marginVars.mobile,
+    '@media': {'screen and (min-width: 768px)': {margin: marginVars.desktop}}
+});
+
+export const responsiveMarginXStyle = style({
+    marginInline: marginXVars.mobile,
+    '@media': {'screen and (min-width: 768px)': {marginInline: marginXVars.desktop}}
+});
+
+export const responsiveMarginYStyle = style({
+    marginBlock: marginYVars.mobile,
+    '@media': {'screen and (min-width: 768px)': {marginBlock: marginYVars.desktop}}
+});
+
+export const responsiveMarginTopStyle = style({
+    marginBlockStart: marginTopVars.mobile,
+    '@media': {'screen and (min-width: 768px)': {marginBlockStart: marginTopVars.desktop}}
+});
+
+export const responsiveMarginBottomStyle = style({
+    marginBlockEnd: marginBottomVars.mobile,
+    '@media': {'screen and (min-width: 768px)': {marginBlockEnd: marginBottomVars.desktop}}
+});
+
+export const responsiveMarginStartStyle = style({
+    marginInlineStart: marginStartVars.mobile,
+    '@media': {'screen and (min-width: 768px)': {marginInlineStart: marginStartVars.desktop}}
+});
+
+export const responsiveMarginEndStyle = style({
+    marginInlineEnd: marginEndVars.mobile,
+    '@media': {'screen and (min-width: 768px)': {marginInlineEnd: marginEndVars.desktop}}
 });

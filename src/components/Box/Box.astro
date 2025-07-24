@@ -4,27 +4,13 @@ import {
     bgColorVariants,
     shadowVariants,
     radiusVariants,
-    gapVariants,
     responsiveGapStyle,
-    zIndexVariants,
-    paddingVariants,
-    paddingXVariants,
-    paddingYVariants,
-    paddingTopVariants,
-    paddingBottomVariants,
-    paddingStartVariants,
-    paddingEndVariants,
-    marginVariants,
-    marginXVariants,
-    marginYVariants,
-    marginTopVariants,
-    marginBottomVariants, marginStartVariants, marginEndVariants
+    zIndexVariants
 } from './styles.css.ts';
 import type {Shadow} from "../../tokens/Shadows/types";
 import type {Align, Direction, Display, Justify, Overflow, Position, Wrap} from "../../utils/types";
 import type {Radius} from "../../tokens/Radius/types";
 import type {Color} from "../../tokens/Colors/types";
-import {theme} from "../../styles/theme.css";
 import type {Spacings} from "../../utils/types";
 import type {DimensionVariants, ZIndexVariant} from "./types";
 import {
@@ -32,7 +18,21 @@ import {
     getDimensionVars,
     getDirectionClass,
     getDirectionVars,
-    getGapVars
+    getGapVars,
+    getPaddingVars, getPaddingClass,
+    getPaddingXVars, getPaddingXClass,
+    getPaddingYVars, getPaddingYClass,
+    getPaddingTopVars, getPaddingTopClass,
+    getPaddingBottomVars, getPaddingBottomClass,
+    getPaddingStartVars, getPaddingStartClass,
+    getPaddingEndVars, getPaddingEndClass,
+    getMarginVars, getMarginClass,
+    getMarginXVars, getMarginXClass,
+    getMarginYVars, getMarginYClass,
+    getMarginTopVars, getMarginTopClass,
+    getMarginBottomVars, getMarginBottomClass,
+    getMarginStartVars, getMarginStartClass,
+    getMarginEndVars, getMarginEndClass
 } from "./helpers";
 
 interface Props extends Spacings {
@@ -77,27 +77,14 @@ const {
     overflow = 'visible',
     display = 'flex',
     class: className = '',
-    p,
-    pb,
-    ps,
-    pe,
-    pt,
-    px,
-    py,
-    m,
-    mx,
-    my,
-    mt,
-    mb,
-    ms,
-    me
+    p, pb, ps, pe, pt, px, py,
+    m, mx, my, mt, mb, ms, me
 } = Astro.props;
 
 const recipeDirection = typeof direction === 'string' ? direction : null;
 const directionClass = getDirectionClass(direction);
 const directionVars = getDirectionVars(direction);
 
-// Apply responsive gap class when gap is provided (both single number and array)
 const responsiveGapClass = gap ? responsiveGapStyle : '';
 const gapVars = getGapVars(gap);
 
@@ -116,20 +103,8 @@ const bgColorClass = bgColor ? bgColorVariants[bgColor] : '';
 const shadowClass = shadow && shadow in shadowVariants ? shadowVariants[shadow] : '';
 const radiusClass = borderRadius && typeof borderRadius === 'string' ? radiusVariants[borderRadius] : '';
 const zIndexClass = zIndex ? zIndexVariants[zIndex] : '';
-const paddingClass = p ? paddingVariants[p] : '';
-const paddingXClass = px ? paddingXVariants[px] : '';
-const paddingYClass = py ? paddingYVariants[py] : '';
-const paddingTopClass = pt ? paddingTopVariants[pt] : '';
-const paddingBottomClass = pb ? paddingBottomVariants[pb] : '';
-const paddingStartClass = ps ? paddingStartVariants[ps] : '';
-const paddingEndClass = pe ? paddingEndVariants[pe] : '';
-const marginClass = m ? marginVariants[m] : '';
-const marginXClass = mx ? marginXVariants[mx] : '';
-const marginYClass = my ? marginYVariants[my] : '';
-const marginTopClass = mt ? marginTopVariants[mt] : '';
-const marginBottomClass = mb ? marginBottomVariants[mb] : '';
-const marginStartClass = ms ? marginStartVariants[ms] : '';
-const marginEndClass = me ? marginEndVariants[me] : '';
+
+// Dimension classes and vars
 const widthClass = getDimensionClass(width, 'width');
 const widthVars = getDimensionVars(width, 'width');
 const heightClass = getDimensionClass(height, 'height');
@@ -138,6 +113,37 @@ const maxWidthClass = maxWidth ? getDimensionClass(maxWidth, 'maxWidth') : '';
 const maxWidthVars = maxWidth ? getDimensionVars(maxWidth, 'maxWidth') : '';
 const maxHeightClass = maxHeight ? getDimensionClass(maxHeight, 'maxHeight') : '';
 const maxHeightVars = maxHeight ? getDimensionVars(maxHeight, 'maxHeight') : {};
+
+// Responsive spacing classes and vars
+const paddingClass = getPaddingClass(p);
+const paddingVars = getPaddingVars(p);
+const paddingXClass = getPaddingXClass(px);
+const paddingXVars = getPaddingXVars(px);
+const paddingYClass = getPaddingYClass(py);
+const paddingYVars = getPaddingYVars(py);
+const paddingTopClass = getPaddingTopClass(pt);
+const paddingTopVars = getPaddingTopVars(pt);
+const paddingBottomClass = getPaddingBottomClass(pb);
+const paddingBottomVars = getPaddingBottomVars(pb);
+const paddingStartClass = getPaddingStartClass(ps);
+const paddingStartVars = getPaddingStartVars(ps);
+const paddingEndClass = getPaddingEndClass(pe);
+const paddingEndVars = getPaddingEndVars(pe);
+
+const marginClass = getMarginClass(m);
+const marginVars = getMarginVars(m);
+const marginXClass = getMarginXClass(mx);
+const marginXVars = getMarginXVars(mx);
+const marginYClass = getMarginYClass(my);
+const marginYVars = getMarginYVars(my);
+const marginTopClass = getMarginTopClass(mt);
+const marginTopVars = getMarginTopVars(mt);
+const marginBottomClass = getMarginBottomClass(mb);
+const marginBottomVars = getMarginBottomVars(mb);
+const marginStartClass = getMarginStartClass(ms);
+const marginStartVars = getMarginStartVars(ms);
+const marginEndClass = getMarginEndClass(me);
+const marginEndVars = getMarginEndVars(me);
 
 const allClasses = [
     baseClass,
@@ -167,12 +173,35 @@ const allClasses = [
     marginStartClass,
     marginEndClass,
 ].filter(Boolean).join(' ');
+
+const allVars = {
+    ...widthVars,
+    ...heightVars,
+    ...maxWidthVars,
+    ...maxHeightVars,
+    ...directionVars,
+    ...gapVars,
+    ...paddingVars,
+    ...paddingXVars,
+    ...paddingYVars,
+    ...paddingTopVars,
+    ...paddingBottomVars,
+    ...paddingStartVars,
+    ...paddingEndVars,
+    ...marginVars,
+    ...marginXVars,
+    ...marginYVars,
+    ...marginTopVars,
+    ...marginBottomVars,
+    ...marginStartVars,
+    ...marginEndVars,
+};
 ---
 
 <div
         class={allClasses}
         role={Astro.props.role}
-        style={{...widthVars, ...heightVars, ...maxWidthVars, ...maxHeightVars, ...directionVars, ...gapVars}}
+        style={allVars}
         data-testid={Astro.props['data-testid']}
 >
     <slot/>
