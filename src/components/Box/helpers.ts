@@ -1,16 +1,20 @@
-import {styleVariants} from "@vanilla-extract/css";
-import {theme} from "../../styles/theme.css.ts";
 import {
+    bottomVar,
     dimensionVariants,
+    dynamicBottomStyle,
     dynamicFlexDirectionStyle,
     dynamicHeightStyle,
+    dynamicLeftStyle,
     dynamicMaxHeightStyle,
     dynamicMaxWidthStyle,
+    dynamicRightStyle,
+    dynamicTopStyle,
     dynamicWidthStyle,
     flexDirectionDesktopVar,
     flexDirectionMobileVar,
     gapVars,
     heightVar,
+    leftVar,
     marginBottomVars,
     marginEndVars,
     marginStartVars,
@@ -41,23 +45,13 @@ import {
     responsivePaddingTopStyle,
     responsivePaddingXStyle,
     responsivePaddingYStyle,
+    rightVar,
+    topVar,
     widthVar
 } from "./styles.css.ts";
 import {assignInlineVars} from "@vanilla-extract/dynamic";
 import type {DimensionVariants} from "./types.ts";
 import type {Direction} from "../../utils/types.ts";
-
-export const createSpacingVariants = (properties: Record<string, string>) => {
-    const variants: Record<string, any> = {};
-
-    Object.entries(properties).forEach(([key, property]) => {
-        variants[key] = styleVariants(theme.spacing, (value) => ({
-            [property]: value,
-        }));
-    });
-
-    return variants;
-};
 
 export const getDimensionClass = (dimension: DimensionVariants, type: 'width' | 'height' | 'maxWidth' | 'maxHeight') => {
     if (!dimension) return '';
@@ -207,3 +201,37 @@ export const getMarginTopClass = (value?: number | [number, number]) => value ? 
 export const getMarginBottomClass = (value?: number | [number, number]) => value ? responsiveMarginBottomStyle : '';
 export const getMarginStartClass = (value?: number | [number, number]) => value ? responsiveMarginStartStyle : '';
 export const getMarginEndClass = (value?: number | [number, number]) => value ? responsiveMarginEndStyle : '';
+
+
+export const getTopClass = (value?: number) => value !== undefined ? dynamicTopStyle : '';
+export const getRightClass = (value?: number) => value !== undefined ? dynamicRightStyle : '';
+export const getBottomClass = (value?: number) => value !== undefined ? dynamicBottomStyle : '';
+export const getLeftClass = (value?: number) => value !== undefined ? dynamicLeftStyle : '';
+
+export const getTopVars = (value?: number) => {
+    if (value === undefined) return {};
+    return assignInlineVars({
+        [topVar]: `${value}px`
+    });
+};
+
+export const getRightVars = (value?: number) => {
+    if (value === undefined) return {};
+    return assignInlineVars({
+        [rightVar]: `${value}px`
+    });
+};
+
+export const getBottomVars = (value?: number) => {
+    if (value === undefined) return {};
+    return assignInlineVars({
+        [bottomVar]: `${value}px`
+    });
+};
+
+export const getLeftVars = (value?: number) => {
+    if (value === undefined) return {};
+    return assignInlineVars({
+        [leftVar]: `${value}px`
+    });
+};

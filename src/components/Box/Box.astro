@@ -5,7 +5,7 @@ import {
     shadowVariants,
     radiusVariants,
     responsiveGapStyle,
-    zIndexVariants
+    zIndexVariants,
 } from './styles.css.ts';
 import type {Shadow} from "../../tokens/Shadows/types";
 import type {Align, Direction, Display, Justify, Overflow, Position, Wrap} from "../../utils/types";
@@ -32,7 +32,15 @@ import {
     getMarginTopVars, getMarginTopClass,
     getMarginBottomVars, getMarginBottomClass,
     getMarginStartVars, getMarginStartClass,
-    getMarginEndVars, getMarginEndClass
+    getMarginEndVars, getMarginEndClass,
+    getTopClass,
+    getRightClass,
+    getBottomClass,
+    getLeftClass,
+    getTopVars,
+    getRightVars,
+    getBottomVars,
+    getLeftVars
 } from "./helpers";
 
 interface Props extends Spacings {
@@ -50,6 +58,10 @@ interface Props extends Spacings {
     maxWidth?: DimensionVariants;
     maxHeight?: DimensionVariants;
     zIndex?: ZIndexVariant;
+    top?: number;
+    right?: number;
+    bottom?: number;
+    left?: number;
     wrap?: Wrap;
     overflow?: Overflow;
     display?: Display;
@@ -73,6 +85,7 @@ const {
     maxWidth,
     maxHeight,
     zIndex,
+    top, right, bottom, left,
     wrap = 'nowrap',
     overflow = 'visible',
     display = 'flex',
@@ -103,6 +116,15 @@ const bgColorClass = bgColor ? bgColorVariants[bgColor] : '';
 const shadowClass = shadow && shadow in shadowVariants ? shadowVariants[shadow] : '';
 const radiusClass = borderRadius && typeof borderRadius === 'string' ? radiusVariants[borderRadius] : '';
 const zIndexClass = zIndex ? zIndexVariants[zIndex] : '';
+const topClass = getTopClass(top);
+const topVars = getTopVars(top);
+const rightClass = getRightClass(right);
+const rightVars = getRightVars(right);
+const bottomClass = getBottomClass(bottom);
+const bottomVars = getBottomVars(bottom);
+const leftClass = getLeftClass(left);
+const leftVars = getLeftVars(left);
+
 
 // Dimension classes and vars
 const widthClass = getDimensionClass(width, 'width');
@@ -157,6 +179,10 @@ const allClasses = [
     maxWidthClass,
     maxHeightClass,
     zIndexClass,
+    topClass,
+    rightClass,
+    bottomClass,
+    leftClass,
     className,
     paddingClass,
     paddingXClass,
@@ -195,6 +221,10 @@ const allVars = {
     ...marginBottomVars,
     ...marginStartVars,
     ...marginEndVars,
+    ...topVars,
+    ...rightVars,
+    ...bottomVars,
+    ...leftVars,
 };
 ---
 

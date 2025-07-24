@@ -116,6 +116,28 @@ export const zIndexVariants = styleVariants({
     50: {zIndex: 50},
 });
 
+export const topVar = createVar();
+export const rightVar = createVar();
+export const bottomVar = createVar();
+export const leftVar = createVar();
+
+export const dynamicTopStyle = style({
+    top: topVar,
+});
+
+export const dynamicRightStyle = style({
+    right: rightVar,
+});
+
+export const dynamicBottomStyle = style({
+    bottom: bottomVar,
+});
+
+export const dynamicLeftStyle = style({
+    left: leftVar,
+});
+
+
 // Dimension variables
 export const widthVar = createVar();
 export const heightVar = createVar();
@@ -147,7 +169,6 @@ export const dimensionVariants = styleVariants({
 });
 
 // Direction variables
-export const flexDirectionVar = createVar();
 export const flexDirectionMobileVar = createVar();
 export const flexDirectionDesktopVar = createVar();
 
