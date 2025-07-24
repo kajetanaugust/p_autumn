@@ -1,0 +1,18 @@
+---
+import Box from "../Box/Box.astro";
+import Text from "../Text/Text.astro";
+import {offerCard} from "./styles.css";
+interface Props {
+    title: string;
+    description: string;
+}
+
+const {title, description} = Astro.props;
+---
+
+<Box gap={[20, 24]} direction="column" justify="space-between" align="center" class={offerCard} maxWidth='390px'
+     height="100%">
+    <slot/>
+    <Text variant="heading-4">{title}</Text>
+    <Text variant="text-regular">{description}</Text>
+</Box>

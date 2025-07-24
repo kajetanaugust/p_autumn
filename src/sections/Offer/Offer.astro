@@ -1,0 +1,45 @@
+---
+import Box from "../../components/Box/Box.astro";
+import Text from "../../components/Text/Text.astro";
+import {Hospital, HeartHandshake, House, Apple, HandHeart, Cross} from "lucide-astro";
+import OfferCard from "../../components/OfferCard/OfferCard.astro";
+---
+
+<Box direction="column" px={80} gap={[48, 80]}>
+    <Box direction="column" gap={[16, 20]} align="center">
+        <Text variant="tagline">Opieka</Text>
+        <Text variant="heading-2">
+            Nasze usługi w zakresie opieki zdrowotnej
+        </Text>
+        <Text variant="text-medium">
+            Oferujemy kompleksową opiekę pielęgniarską, która zapewnia wsparcie w codziennych potrzebach. Nasz zespół
+            specjalistów dba o zdrowie i komfort naszych mieszkańców.
+        </Text>
+    </Box>
+    <Box direction={["column", "row"]} wrap="wrap" gap={48}>
+        <OfferCard title="Komfortowe pokoje"
+                   description="Pokojach jedno- i dwuosobowych z łazienkami, których umeblowanie i wystrój stwarza domową atmosferę">
+            <House/>
+        </OfferCard>
+        <OfferCard title="Opieka opiekunek i kontrole pielęgniarek"
+                   description="Całodobowo dostępne opiekunki, które starają się sprostać indywidualnym oczekiwaniom oraz dbają o spokój i odpoczynek naszych pensjonariuszy.">
+            <HandHeart/>
+        </OfferCard>
+        <OfferCard title="Wyżywienie"
+                   description="Pełne domowe wyżywienie, również dietetyczne, zgodnie z zaleceniami lekarza. Posiłki spożywamy wspólnie, co integruje naszą społeczność.">
+            <Apple/>
+        </OfferCard>
+        <OfferCard title="Opieka lekarska"
+                   description="Wszyscy pensjonariusze są rejestrowanie w przychodni i mają zapewnioną opiekę lekarza rodzinnego.">
+            <Hospital/>
+        </OfferCard>
+        <OfferCard title="Opieka duszpasterska"
+                   description="Ksiądz z pobliskiej parafii regularnie odwiedza naszych pensjonariuszy, zabawia, dotrzymuje towarzystwa i wspiera duchowo.">
+            <HeartHandshake/>
+        </OfferCard>
+        <OfferCard title="Zabiegi rehabilitacyjne"
+                   description="Dla osób z orzeczeniem o znacznym stopniu niepełnosprawności zapewniamy 80 bezpłatnych zabiegów rehabilitacyjnych.">
+            <Cross/>
+        </OfferCard>
+    </Box>
+</Box>
