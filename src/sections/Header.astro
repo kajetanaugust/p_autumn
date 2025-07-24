@@ -1,0 +1,20 @@
+---
+import Box from "../components/Box/Box.astro";
+import Button from "../components/Button/Button.astro";
+---
+
+<Box position="sticky" top={0} left={0} zIndex="50" bgColor="neutral_white" shadow="md" px={80} py={20} width="100%"
+     height={72}>
+    <Box direction="row" justify="space-between" align="center" gap={[20, 80]}>
+        <Box>
+            <Button variant="ghost" href="/">O nas</Button>
+            <Button variant="ghost" href="/">Opieka</Button>
+            <Button variant="ghost" href="/">Zajęcia</Button>
+            <Button variant="ghost" href="/">Cennik</Button>
+            <Button variant="ghost" href="/">Kontakt</Button>
+        </Box>
+        <Box wrap="nowrap" width="fit-content">
+            <Button variant="primary">Dowiedz się więcej</Button>
+        </Box>
+    </Box>
+</Box>
