@@ -2,13 +2,14 @@ import {styleVariants} from "@vanilla-extract/css";
 import {theme} from "../../styles/theme.css.ts";
 import {
     dimensionVariants,
-    dynamicFlexDirectionResponsiveStyle,
+    dynamicFlexDirectionStyle,
     dynamicHeightStyle,
     dynamicMaxHeightStyle,
     dynamicMaxWidthStyle,
     dynamicWidthStyle,
     flexDirectionDesktopVar,
     flexDirectionMobileVar,
+    gapVars,
     heightVar,
     maxHeightVar,
     maxWidthVar,
@@ -99,9 +100,8 @@ export const getDirectionClass = (direction: Direction | [Direction, Direction])
     }
 
     // Use dynamic class for responsive directions
-    return dynamicFlexDirectionResponsiveStyle;
+    return dynamicFlexDirectionStyle;
 };
-
 
 export const getDirectionVars = (direction: Direction | [Direction, Direction]) => {
     if (!Array.isArray(direction)) {
@@ -116,4 +116,24 @@ export const getDirectionVars = (direction: Direction | [Direction, Direction]) 
     });
 };
 
+export function getGapVars(gap?: number | [number, number]): Record<string, string> {
+    if (!gap) return {};
 
+    if (typeof gap === 'number') {
+        return assignInlineVars(gapVars, {
+            mobile: `${gap}px`,
+            desktop: `${gap}px`,
+        });
+    }
+
+    if (Array.isArray(gap) && gap.length === 2) {
+        const [mobileGap, desktopGap] = gap;
+
+        return assignInlineVars(gapVars, {
+            mobile: `${mobileGap}px`,
+            desktop: `${desktopGap}px`,
+        });
+    }
+
+    return {};
+}

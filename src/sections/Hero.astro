@@ -6,23 +6,24 @@ import Button from "../components/Button/Button.astro";
 import heroImage from '../assets/widokowe_crop.jpg'
 ---
 
-<Box direction="column" justify="center" align="start" gap={80} width="100%" maxWidth="100%" overflow="hidden">
+<Box direction="column" justify="center" align="start" gap={[48, 80]} width="100%" maxWidth="100%" overflow="hidden"
+     pb={80}>
     <Box width="100%">
         <Image alt="Birds eye view of the facility" height={663} width={1440} src={heroImage} responsive="fullWidth"
                objectFit="cover"
                maxHeight="50vh" loading="eager"
         />
     </Box>
-    <Box direction={["column", "row"]} justify="space-between" align="start" px={80} gap={80}>
+    <Box direction={["column", "row"]} justify="space-between" align="start" px={80} gap={[20, 80]}>
         <Text variant="heading-1">
             Opieka, komfort i wspólnota dla seniorów
         </Text>
-        <Box direction="column" justify="start" align="start" gap={32}>
+        <Box direction="column" justify="start" align="start" gap={[24, 32]}>
             <Text variant="text-medium">
                 Zapewniamy najwyższej jakości opiekę dla osób starszych, skupiając się na ich komforcie i
                 bezpieczeństwie. Nasza społeczność jest miejscem, gdzie każdy czuje się jak w domu.
             </Text>
-            <Box direction={["column","row"]} justify="start" gap={16} width="100%">
+            <Box direction='row' justify="start" gap={16} width="100%">
                 <Button variant="primary">Umów się</Button>
                 <Button variant="outline">Dowiedz się</Button>
             </Box>

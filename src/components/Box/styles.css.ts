@@ -171,15 +171,12 @@ export const dimensionVariants = styleVariants({
     '100%': {width: '100%'},
 });
 
+// Direction variables
 export const flexDirectionVar = createVar();
 export const flexDirectionMobileVar = createVar();
 export const flexDirectionDesktopVar = createVar();
 
 export const dynamicFlexDirectionStyle = style({
-    flexDirection: flexDirectionVar,
-});
-
-export const dynamicFlexDirectionResponsiveStyle = style({
     flexDirection: flexDirectionMobileVar,
     '@media': {
         'screen and (min-width: 768px)': {
@@ -188,3 +185,17 @@ export const dynamicFlexDirectionResponsiveStyle = style({
     }
 });
 
+// Gap variables
+export const gapVars = {
+    mobile: createVar(),
+    desktop: createVar(),
+};
+
+export const responsiveGapStyle = style({
+    gap: gapVars.mobile,
+    '@media': {
+        'screen and (min-width: 768px)': {
+            gap: gapVars.desktop,
+        }
+    }
+});

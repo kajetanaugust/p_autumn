@@ -5,6 +5,7 @@ import {
     shadowVariants,
     radiusVariants,
     gapVariants,
+    responsiveGapStyle,
     zIndexVariants,
     paddingVariants,
     paddingXVariants,
@@ -26,7 +27,13 @@ import type {Color} from "../../tokens/Colors/types";
 import {theme} from "../../styles/theme.css";
 import type {Spacings} from "../../utils/types";
 import type {DimensionVariants, ZIndexVariant} from "./types";
-import {getDimensionClass, getDimensionVars, getDirectionClass, getDirectionVars} from "./helpers";
+import {
+    getDimensionClass,
+    getDimensionVars,
+    getDirectionClass,
+    getDirectionVars,
+    getGapVars
+} from "./helpers";
 
 interface Props extends Spacings {
     bgColor?: Color;
@@ -37,7 +44,7 @@ interface Props extends Spacings {
     direction?: Direction | [Direction, Direction];
     justify?: Justify;
     align?: Align;
-    gap?: keyof typeof theme.spacing;
+    gap?: number | [number, number];
     width?: DimensionVariants;
     height?: DimensionVariants;
     maxWidth?: DimensionVariants;
@@ -90,6 +97,9 @@ const recipeDirection = typeof direction === 'string' ? direction : null;
 const directionClass = getDirectionClass(direction);
 const directionVars = getDirectionVars(direction);
 
+// Apply responsive gap class when gap is provided (both single number and array)
+const responsiveGapClass = gap ? responsiveGapStyle : '';
+const gapVars = getGapVars(gap);
 
 const baseClass = boxRecipe({
     display,
@@ -105,7 +115,6 @@ const baseClass = boxRecipe({
 const bgColorClass = bgColor ? bgColorVariants[bgColor] : '';
 const shadowClass = shadow && shadow in shadowVariants ? shadowVariants[shadow] : '';
 const radiusClass = borderRadius && typeof borderRadius === 'string' ? radiusVariants[borderRadius] : '';
-const gapClass = gap && gap in gapVariants ? gapVariants[gap] : '';
 const zIndexClass = zIndex ? zIndexVariants[zIndex] : '';
 const paddingClass = p ? paddingVariants[p] : '';
 const paddingXClass = px ? paddingXVariants[px] : '';
@@ -128,14 +137,14 @@ const heightVars = getDimensionVars(height, 'height');
 const maxWidthClass = maxWidth ? getDimensionClass(maxWidth, 'maxWidth') : '';
 const maxWidthVars = maxWidth ? getDimensionVars(maxWidth, 'maxWidth') : '';
 const maxHeightClass = maxHeight ? getDimensionClass(maxHeight, 'maxHeight') : '';
-const maxHeightVars = maxHeight ? getDimensionVars(maxHeight, 'maxHeight') : '';
+const maxHeightVars = maxHeight ? getDimensionVars(maxHeight, 'maxHeight') : {};
 
 const allClasses = [
     baseClass,
     bgColorClass,
     shadowClass,
     radiusClass,
-    gapClass,
+    responsiveGapClass,
     directionClass,
     widthClass,
     heightClass,
@@ -163,7 +172,7 @@ const allClasses = [
 <div
         class={allClasses}
         role={Astro.props.role}
-        style={{...widthVars, ...heightVars, ...maxWidthVars, ...maxHeightVars, ...directionVars}}
+        style={{...widthVars, ...heightVars, ...maxWidthVars, ...maxHeightVars, ...directionVars, ...gapVars}}
         data-testid={Astro.props['data-testid']}
 >
     <slot/>
