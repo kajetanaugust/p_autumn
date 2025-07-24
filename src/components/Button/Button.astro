@@ -79,7 +79,7 @@ const textColor = variant === 'primary' ? 'neutral_white' : 'neutral_darkest';
 <Tag {...allAttrs}>
     {variant.includes('icon') ?
             <slot/> : (
-                    <Text variant="text-regular" weight={500} color={textColor}>
+                    <Text variant="text-regular" weight={500} color={textColor} textWrap="nowrap">
                         <slot/>
                     </Text>)}
 

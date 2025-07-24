@@ -117,19 +117,23 @@ export const textRecipe = recipe({
             },
         },
         weight: {
-            200: { fontWeight: 200 },
-            300: { fontWeight: 300 },
-            400: { fontWeight: 400 },
-            500: { fontWeight: 500 },
-            600: { fontWeight: 600 },
-            700: { fontWeight: 700 },
-            800: { fontWeight: 800 },
-            900: { fontWeight: 900 },
+            200: {fontWeight: 200},
+            300: {fontWeight: 300},
+            400: {fontWeight: 400},
+            500: {fontWeight: 500},
+            600: {fontWeight: 600},
+            700: {fontWeight: 700},
+            800: {fontWeight: 800},
+            900: {fontWeight: 900},
         },
         style: {
-            normal: { fontStyle: 'normal' },
-            italic: { fontStyle: 'italic' },
+            normal: {fontStyle: 'normal'},
+            italic: {fontStyle: 'italic'},
         },
+        wrap: {
+            wrap: {textWrap: "wrap"},
+            nowrap: {textWrap: "nowrap"},
+        }
     },
     defaultVariants: {
         variant: 'text-medium',
@@ -139,6 +143,6 @@ export const textRecipe = recipe({
 });
 
 export const textColorVariants = styleVariants(theme.colors, (color) => ({
-    color:`${color} !important`
+    color: `${color} !important`
     ,
 }));

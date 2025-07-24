@@ -1,6 +1,6 @@
 ---
 import {textColorVariants, textRecipe} from './styles.css.ts';
-import type { FontWeight, FontStyle, TextTag, TextVariant} from './types';
+import type {FontWeight, FontStyle, TextTag, TextVariant} from './types';
 import {getDefaultTag} from "./helpers";
 import type {Color} from "../../tokens/Colors/types";
 
@@ -11,11 +11,14 @@ interface Props {
     color?: Color;
     tag?: TextTag;
     class?: string;
+    textWrap?: 'wrap' | 'nowrap';
+
     [key: string]: any;
 }
 
 const {
     variant = 'text-medium',
+    textWrap = 'wrap',
     weight,
     style,
     color = 'neutral_darkest',
@@ -30,14 +33,14 @@ const textClass = textRecipe({
     variant,
     weight,
     style,
+    wrap: textWrap
 });
 
 const colorClass = textColorVariants[color];
 
 const allClasses = [textClass, colorClass, className].filter(Boolean).join(' ');
-
 ---
 
 <Tag class={allClasses} {...rest}>
-    <slot />
+    <slot/>
 </Tag>
