@@ -74,6 +74,7 @@ interface Props extends Spacings {
     role?: astroHTML.JSX.HTMLAttributes['role'];
     'data-testid'?: string;
     class?: string;
+    id?: string;
 }
 
 const {
@@ -247,13 +248,16 @@ const allVars = {
     ...bottomVars,
     ...leftVars,
 };
+
+const {id, role, 'data-testid': dataTestId} = Astro.props;
 ---
 
 <div
         class={allClasses}
-        role={Astro.props.role}
+        id={id}
+        role={role}
         style={allVars}
-        data-testid={Astro.props['data-testid']}
+        data-testid={dataTestId}
 >
     <slot/>
 </div>
