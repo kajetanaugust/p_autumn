@@ -1,0 +1,67 @@
+---
+import Box from "../../components/Box/Box.astro";
+import Text from "../../components/Text/Text.astro";
+import PriceTile from "./subcomponents/PriceTile.astro";
+import PriceFeature from "./subcomponents/PriceFeature.astro";
+---
+
+<Box direction="column" px={[20, 80]} gap={[48, 80]} pt={[64, 112]} pb={[64, 80]} align="center" isWithBorder
+     id="cennik">
+    <Box direction="column" gap={[20, 24]} align="center">
+        <Text variant="tagline">Cennik</Text>
+        <Text variant="heading-2" textAlign="center">
+            Koszt pobytu w naszym Domu
+        </Text>
+        <Text variant="text-medium" textAlign="center">
+            Przejrzysty cennik dla krótkoterminowych i długoterminowych pobytów
+        </Text>
+    </Box>
+    <Box direction={['column', 'row']} gap={48}>
+        <Box direction="column" gap={[20, 24]} align="center">
+            <Text variant="heading-4" textAlign="center">
+                Pobyt krótkoterminowy
+            </Text>
+            <Box direction="column" justify="space-between" gap={[20, 24]}>
+                <PriceTile price="260zł / dobę" title="Pokój jednoosobowy">
+                    <Box direction="column" align="start" justify="center" width="fit-content" gap={16}>
+                        <PriceFeature text="Całodobowa opieka opiekunek"/>
+                        <PriceFeature text="Długość pobytu do miesiąca"/>
+                        <PriceFeature text="Pełne wyżywienie"/>
+                        <PriceFeature text="Opieka pielęgniarek i lekarza"/>
+                    </Box>
+                </PriceTile>
+                <PriceTile price="230zł / dobę" title="Pokój dwuosobowy">
+                    <Box direction="column" align="start" justify="center" width="fit-content" gap={16}>
+                        <PriceFeature text="Całodobowa opieka opiekunek"/>
+                        <PriceFeature text="Długość pobytu do miesiąca"/>
+                        <PriceFeature text="Pełne wyżywienie"/>
+                        <PriceFeature text="Opieka pielęgniarek i lekarza"/>
+                    </Box>
+                </PriceTile>
+            </Box>
+        </Box>
+        <Box direction="column" gap={[20, 24]} align="center">
+            <Text variant="heading-4" textAlign="center">
+                Pobyt długoterminowy
+            </Text>
+            <Box direction="column" justify="space-between" gap={[20, 24]}>
+                <PriceTile price="od 5700zł / miesiąc" title="Pokój jednoosobowy">
+                    <Box direction="column" align="start" justify="center" width="fit-content" gap={16}>
+                        <PriceFeature text="Całodobowa opieka opiekunek"/>
+                        <PriceFeature text="Zniżka za pobyt długoterminowy"/>
+                        <PriceFeature text="Pełne wyżywienie"/>
+                        <PriceFeature text="Opieka pielęgniarek i lekarza"/>
+                    </Box>
+                </PriceTile>
+                <PriceTile price="od 5200zł / miesiąc" title="Pokój dwuosobowy">
+                    <Box direction="column" align="start" justify="center" width="fit-content" gap={16}>
+                        <PriceFeature text="Całodobowa opieka opiekunek"/>
+                        <PriceFeature text="Zniżka za pobyt długoterminowy"/>
+                        <PriceFeature text="Pełne wyżywienie"/>
+                        <PriceFeature text="Opieka pielęgniarek i lekarza"/>
+                    </Box>
+                </PriceTile>
+            </Box>
+        </Box>
+    </Box>
+</Box>
