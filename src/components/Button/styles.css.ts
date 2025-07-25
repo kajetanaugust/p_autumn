@@ -3,8 +3,6 @@ import {theme} from '../../styles/theme.css';
 import {iconVariants, sizeStyles} from "./consts.ts";
 
 
-
-
 export const buttonRecipe = recipe({
     base: {
         borderRadius: '100px',
@@ -39,7 +37,7 @@ export const buttonRecipe = recipe({
     variants: {
         variant: {
             primary: {
-                backgroundColor: theme.colors.luxor_gold,
+                backgroundColor: theme.colors.luxor_gold_dark,
                 color: theme.colors.neutral_white,
 
                 '&:hover:not(:disabled)': {
@@ -125,8 +123,8 @@ export const buttonRecipe = recipe({
     },
     compoundVariants: iconVariants.flatMap(variant =>
         Object.entries(sizeStyles).map(([size, padding]) => ({
-            variants: { variant, size: size as keyof typeof sizeStyles },
-            style: { padding }
+            variants: {variant, size: size as keyof typeof sizeStyles},
+            style: {padding}
         }))
     )
 });
