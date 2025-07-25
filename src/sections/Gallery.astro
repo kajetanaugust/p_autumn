@@ -1,0 +1,41 @@
+---
+import {Splide, SplideSlide} from "astro-splide";
+import Box from "../components/Box/Box.astro";
+import '@splidejs/splide/css';
+import Text from "../components/Text/Text.astro";
+---
+
+<Box direction="column" width="100%" px={[20, 80]} pt={[64, 112]} pb={[64, 80]}>
+    <Text variant="heading-2">Galeria Zdjęć</Text>
+    <Box maxHeight="700px">
+        <Splide
+                options={{
+                    type: 'fade',
+                    autoplay: true,
+                    interval: 4000,
+                    pauseOnHover: false,
+                    height: '700px',
+                    perPage: 2,
+                    easing: 'linear',
+                    lazyLoad: 'nearby',
+                    gap: '32px',
+                }}>
+            <SplideSlide>
+                <img src="https://picsum.photos/1200/800?random=1" alt="Gallery image 1" loading="lazy" width="100%"
+                     height="100%"/>
+            </SplideSlide>
+            <SplideSlide>
+                <img src="https://picsum.photos/1200/800?random=2" alt="Gallery image 1" loading="lazy" width="100%"
+                     height="100%"/>
+            </SplideSlide>
+            <SplideSlide>
+                <img src="https://picsum.photos/1200/800?random=3" alt="Gallery image 1" loading="lazy" width="100%"
+                     height="100%"/>
+            </SplideSlide>
+            <SplideSlide>
+                <img src="https://picsum.photos/1200/800?random=4" alt="Gallery image 1" loading="lazy" width="100%"
+                     height="100%"/>
+            </SplideSlide>
+        </Splide>
+    </Box>
+</Box>

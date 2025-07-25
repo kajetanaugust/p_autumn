@@ -1,0 +1,25 @@
+---
+import Box from "../components/Box/Box.astro";
+import Text from "../components/Text/Text.astro";
+import Image from "../components/Image/Image.astro";
+import careImage from '../assets/care.jpg'
+---
+
+<Box direction="column" px={[20, 80]} pt={[64, 112]} pb={[64, 80]} gap={[48, 80]}>
+    <Box direction={["column", "row"]} gap={[20, 80]}>
+        <Box direction="column" justify="start" gap={[12, 16]}>
+            <Text variant="tagline">Historia</Text>
+            <Text variant="heading-2">Nasze doświadczenie w opiece nad seniorami</Text>
+        </Box>
+        <Box direction="column" justify="start" gap={[24, 32]}>
+            <Text variant="text-medium">Nasz pensjonat powstał w sierpniu 2006 r. z myślą o zapewnieniu Państwa bliskim
+                pogodnej jesieni życia. W związku z dynamicznym rozwojem placówki w kwietniu 2013 oddaliśmy do użytku
+                dodatkowy pawilon ze zwiększoną ilością pokoi jednoosobowych i apartamentów dla małżeństw. Obydwa
+                nowoczesne budynki wybudowane są zgodnie ze standardami Unii Europejskiej, bez barier
+                architektonicznych-dostosowane do potrzeb osób starszych i niepełnosprawnych.
+            </Text>
+        </Box>
+    </Box>
+    <Image src={careImage} alt="Our Halloween party" loading="lazy" width={1280} height={738} borderRadius="lg"/>
+</Box>
+

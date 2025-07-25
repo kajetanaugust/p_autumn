@@ -19,6 +19,7 @@
     "@vanilla-extract/dynamic": "^2.1.5",
     "@vanilla-extract/recipes": "^0.5.7",
     "astro": "^5.12.2",
+    "astro-splide": "^2.0.0",
     "lucide-astro": "^0.525.0"
   },
   "devDependencies": {
