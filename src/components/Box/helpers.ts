@@ -1,19 +1,28 @@
 import {
+    alignDesktopVar,
+    alignMobileVar,
     bottomVar,
+    dynamicAlignStyle,
     dynamicBottomStyle,
     dynamicFlexDirectionStyle,
     dynamicHeightStyle,
+    dynamicJustifyStyle,
     dynamicLeftStyle,
     dynamicMaxHeightStyle,
     dynamicMaxWidthStyle,
+    dynamicPositionStyle,
     dynamicRightStyle,
     dynamicTopStyle,
     dynamicWidthStyle,
     flexDirectionDesktopVar,
     flexDirectionMobileVar,
     gapVars,
+    heightDesktopVar,
+    heightMobileVar,
     heightVar,
     heightVariants,
+    justifyDesktopVar,
+    justifyMobileVar,
     leftVar,
     marginBottomVars,
     marginEndVars,
@@ -22,7 +31,11 @@ import {
     marginVars,
     marginXVars,
     marginYVars,
+    maxHeightDesktopVar,
+    maxHeightMobileVar,
     maxHeightVar,
+    maxWidthDesktopVar,
+    maxWidthMobileVar,
     maxWidthVar,
     paddingBottomVars,
     paddingEndVars,
@@ -31,6 +44,9 @@ import {
     paddingVars,
     paddingXVars,
     paddingYVars,
+    positionDesktopVar,
+    positionMobileVar,
+    responsiveHeightStyle,
     responsiveMarginBottomStyle,
     responsiveMarginEndStyle,
     responsiveMarginStartStyle,
@@ -38,6 +54,8 @@ import {
     responsiveMarginTopStyle,
     responsiveMarginXStyle,
     responsiveMarginYStyle,
+    responsiveMaxHeightStyle,
+    responsiveMaxWidthStyle,
     responsivePaddingBottomStyle,
     responsivePaddingEndStyle,
     responsivePaddingStartStyle,
@@ -45,17 +63,36 @@ import {
     responsivePaddingTopStyle,
     responsivePaddingXStyle,
     responsivePaddingYStyle,
+    responsiveWidthStyle,
     rightVar,
     topVar,
+    widthDesktopVar,
+    widthMobileVar,
     widthVar,
     widthVariants
 } from "./styles.css.ts";
 import {assignInlineVars} from "@vanilla-extract/dynamic";
 import type {DimensionVariants} from "./types.ts";
-import type {Direction} from "../../utils/types.ts";
+import type {Align, Direction, Justify, Position} from "../../utils/types.ts";
 
-export const getDimensionClass = (dimension: DimensionVariants, type: 'width' | 'height' | 'maxWidth' | 'maxHeight') => {
+export const getDimensionClass = (dimension: DimensionVariants | [DimensionVariants, DimensionVariants], type: 'width' | 'height' | 'maxWidth' | 'maxHeight') => {
     if (!dimension) return '';
+
+    // If it's an array (responsive), use responsive styles
+    if (Array.isArray(dimension)) {
+        switch (type) {
+            case 'width':
+                return responsiveWidthStyle;
+            case 'height':
+                return responsiveHeightStyle;
+            case 'maxWidth':
+                return responsiveMaxWidthStyle;
+            case 'maxHeight':
+                return responsiveMaxHeightStyle;
+            default:
+                return '';
+        }
+    }
 
     if (typeof dimension === 'string') {
         switch (type) {
@@ -92,19 +129,51 @@ export const getDimensionClass = (dimension: DimensionVariants, type: 'width' | 
     }
 };
 
-export const getDimensionVars = (dimension: DimensionVariants, type: 'width' | 'height' | 'maxWidth' | 'maxHeight') => {
+export const getDimensionVars = (dimension: DimensionVariants | [DimensionVariants, DimensionVariants], type: 'width' | 'height' | 'maxWidth' | 'maxHeight') => {
     if (!dimension) return {};
 
-    const varMap = {
-        width: widthVar,
-        height: heightVar,
-        maxWidth: maxWidthVar,
-        maxHeight: maxHeightVar,
+    const varMaps = {
+        width: {
+            single: widthVar,
+            mobile: widthMobileVar,
+            desktop: widthDesktopVar,
+        },
+        height: {
+            single: heightVar,
+            mobile: heightMobileVar,
+            desktop: heightDesktopVar,
+        },
+        maxWidth: {
+            single: maxWidthVar,
+            mobile: maxWidthMobileVar,
+            desktop: maxWidthDesktopVar,
+        },
+        maxHeight: {
+            single: maxHeightVar,
+            mobile: maxHeightMobileVar,
+            desktop: maxHeightDesktopVar,
+        },
     };
 
+    const vars = varMaps[type];
+
+    // Handle responsive values (array)
+    if (Array.isArray(dimension)) {
+        const [mobile, desktop] = dimension;
+
+        const mobileValue = typeof mobile === 'number' ? `${mobile}px` : mobile;
+        const desktopValue = typeof desktop === 'number' ? `${desktop}px` : desktop;
+
+        return assignInlineVars({
+            [vars.mobile]: mobileValue,
+            [vars.desktop]: desktopValue,
+        });
+    }
+
+    // Handle single values
     if (typeof dimension === 'number') {
         return assignInlineVars({
-            [varMap[type]]: `${dimension}px`
+            [vars.single]: `${dimension}px`
         });
     }
 
@@ -114,14 +183,13 @@ export const getDimensionVars = (dimension: DimensionVariants, type: 'width' | '
 
         if (!isWidthVariant && !isHeightVariant) {
             return assignInlineVars({
-                [varMap[type]]: dimension,
+                [vars.single]: dimension,
             });
         }
     }
 
     return {};
 };
-
 
 export const getDirectionClass = (direction: Direction | [Direction, Direction]) => {
     if (!Array.isArray(direction)) {
@@ -142,6 +210,69 @@ export const getDirectionVars = (direction: Direction | [Direction, Direction]) 
     return assignInlineVars({
         [flexDirectionMobileVar]: mobile,
         [flexDirectionDesktopVar]: desktop,
+    });
+};
+
+export const getPositionClass = (position: Position | [Position, Position]) => {
+    if (!Array.isArray(position)) {
+        return ''; // Use recipe variant for single position
+    }
+
+    return dynamicPositionStyle;
+};
+
+export const getPositionVars = (position: Position | [Position, Position]) => {
+    if (!Array.isArray(position)) {
+        return {};
+    }
+
+    const [mobile, desktop] = position;
+
+    return assignInlineVars({
+        [positionMobileVar]: mobile,
+        [positionDesktopVar]: desktop,
+    });
+};
+
+export const getJustifyClass = (justify: Justify | [Justify, Justify]) => {
+    if (!Array.isArray(justify)) {
+        return ''; // Use recipe variant for single justify
+    }
+
+    return dynamicJustifyStyle;
+};
+
+export const getJustifyVars = (justify: Justify | [Justify, Justify]) => {
+    if (!Array.isArray(justify)) {
+        return {};
+    }
+
+    const [mobile, desktop] = justify;
+
+    return assignInlineVars({
+        [justifyMobileVar]: mobile,
+        [justifyDesktopVar]: desktop,
+    });
+};
+
+export const getAlignClass = (align: Align | [Align, Align]) => {
+    if (!Array.isArray(align)) {
+        return ''; // Use recipe variant for single align
+    }
+
+    return dynamicAlignStyle;
+};
+
+export const getAlignVars = (align: Align | [Align, Align]) => {
+    if (!Array.isArray(align)) {
+        return {};
+    }
+
+    const [mobile, desktop] = align;
+
+    return assignInlineVars({
+        [alignMobileVar]: mobile,
+        [alignDesktopVar]: desktop,
     });
 };
 
@@ -225,7 +356,6 @@ export const getMarginTopClass = (value?: number | [number, number]) => value ? 
 export const getMarginBottomClass = (value?: number | [number, number]) => value ? responsiveMarginBottomStyle : '';
 export const getMarginStartClass = (value?: number | [number, number]) => value ? responsiveMarginStartStyle : '';
 export const getMarginEndClass = (value?: number | [number, number]) => value ? responsiveMarginEndStyle : '';
-
 
 export const getTopClass = (value?: number) => value !== undefined ? dynamicTopStyle : '';
 export const getRightClass = (value?: number) => value !== undefined ? dynamicRightStyle : '';

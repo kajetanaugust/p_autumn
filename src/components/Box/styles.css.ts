@@ -135,12 +135,21 @@ export const dynamicLeftStyle = style({
     left: leftVar,
 });
 
-
 // Dimension variables
 export const widthVar = createVar();
 export const heightVar = createVar();
 export const maxWidthVar = createVar();
 export const maxHeightVar = createVar();
+
+// Responsive dimension variables
+export const widthMobileVar = createVar();
+export const widthDesktopVar = createVar();
+export const heightMobileVar = createVar();
+export const heightDesktopVar = createVar();
+export const maxWidthMobileVar = createVar();
+export const maxWidthDesktopVar = createVar();
+export const maxHeightMobileVar = createVar();
+export const maxHeightDesktopVar = createVar();
 
 export const dynamicWidthStyle = style({
     width: widthVar,
@@ -156,6 +165,43 @@ export const dynamicMaxWidthStyle = style({
 
 export const dynamicMaxHeightStyle = style({
     maxHeight: maxHeightVar,
+});
+
+// Responsive dimension styles
+export const responsiveWidthStyle = style({
+    width: widthMobileVar,
+    '@media': {
+        'screen and (min-width: 768px)': {
+            width: widthDesktopVar,
+        }
+    }
+});
+
+export const responsiveHeightStyle = style({
+    height: heightMobileVar,
+    '@media': {
+        'screen and (min-width: 768px)': {
+            height: heightDesktopVar,
+        }
+    }
+});
+
+export const responsiveMaxWidthStyle = style({
+    maxWidth: maxWidthMobileVar,
+    '@media': {
+        'screen and (min-width: 768px)': {
+            maxWidth: maxWidthDesktopVar,
+        }
+    }
+});
+
+export const responsiveMaxHeightStyle = style({
+    maxHeight: maxHeightMobileVar,
+    '@media': {
+        'screen and (min-width: 768px)': {
+            maxHeight: maxHeightDesktopVar,
+        }
+    }
 });
 
 export const widthVariants = styleVariants({
@@ -174,7 +220,6 @@ export const heightVariants = styleVariants({
     '100%': {height: '100%'},
 });
 
-
 // Direction variables
 export const flexDirectionMobileVar = createVar();
 export const flexDirectionDesktopVar = createVar();
@@ -184,6 +229,45 @@ export const dynamicFlexDirectionStyle = style({
     '@media': {
         'screen and (min-width: 768px)': {
             flexDirection: flexDirectionDesktopVar,
+        }
+    }
+});
+
+// Position variables
+export const positionMobileVar = createVar();
+export const positionDesktopVar = createVar();
+
+export const dynamicPositionStyle = style({
+    position: positionMobileVar,
+    '@media': {
+        'screen and (min-width: 768px)': {
+            position: positionDesktopVar,
+        }
+    }
+});
+
+// Justify variables
+export const justifyMobileVar = createVar();
+export const justifyDesktopVar = createVar();
+
+export const dynamicJustifyStyle = style({
+    justifyContent: justifyMobileVar,
+    '@media': {
+        'screen and (min-width: 768px)': {
+            justifyContent: justifyDesktopVar,
+        }
+    }
+});
+
+// Align variables
+export const alignMobileVar = createVar();
+export const alignDesktopVar = createVar();
+
+export const dynamicAlignStyle = style({
+    alignItems: alignMobileVar,
+    '@media': {
+        'screen and (min-width: 768px)': {
+            alignItems: alignDesktopVar,
         }
     }
 });

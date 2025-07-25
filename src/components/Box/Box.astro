@@ -40,23 +40,29 @@ import {
     getTopVars,
     getRightVars,
     getBottomVars,
-    getLeftVars
+    getLeftVars,
+    getPositionClass,
+    getPositionVars,
+    getJustifyClass,
+    getJustifyVars,
+    getAlignClass,
+    getAlignVars
 } from "./helpers";
 
 interface Props extends Spacings {
     bgColor?: Color;
     shadow?: Shadow;
-    position?: Position;
+    position?: Position | [Position, Position];
     borderRadius?: Radius;
     isWithBorder?: boolean;
     direction?: Direction | [Direction, Direction];
-    justify?: Justify;
-    align?: Align;
+    justify?: Justify | [Justify, Justify];
+    align?: Align | [Align, Align];
     gap?: number | [number, number];
-    width?: DimensionVariants;
-    height?: DimensionVariants;
-    maxWidth?: DimensionVariants;
-    maxHeight?: DimensionVariants;
+    width?: DimensionVariants | [DimensionVariants, DimensionVariants];
+    height?: DimensionVariants | [DimensionVariants, DimensionVariants];
+    maxWidth?: DimensionVariants | [DimensionVariants, DimensionVariants];
+    maxHeight?: DimensionVariants | [DimensionVariants, DimensionVariants];
     zIndex?: ZIndexVariant;
     top?: number;
     right?: number;
@@ -95,18 +101,28 @@ const {
 } = Astro.props;
 
 const recipeDirection = typeof direction === 'string' ? direction : null;
+const recipePosition = typeof position === 'string' ? position : null;
+const recipeJustify = typeof justify === 'string' ? justify : null;
+const recipeAlign = typeof align === 'string' ? align : null;
+
 const directionClass = getDirectionClass(direction);
 const directionVars = getDirectionVars(direction);
+const positionClass = getPositionClass(position);
+const positionVars = getPositionVars(position);
+const justifyClass = getJustifyClass(justify);
+const justifyVars = getJustifyVars(justify);
+const alignClass = getAlignClass(align);
+const alignVars = getAlignVars(align);
 
 const responsiveGapClass = gap ? responsiveGapStyle : '';
 const gapVars = getGapVars(gap);
 
 const baseClass = boxRecipe({
     display,
-    position,
+    position: recipePosition,
     direction: recipeDirection,
-    justify,
-    align,
+    justify: recipeJustify,
+    align: recipeAlign,
     wrap,
     overflow,
     isWithBorder,
@@ -124,7 +140,6 @@ const bottomClass = getBottomClass(bottom);
 const bottomVars = getBottomVars(bottom);
 const leftClass = getLeftClass(left);
 const leftVars = getLeftVars(left);
-
 
 // Dimension classes and vars
 const widthClass = getDimensionClass(width, 'width');
@@ -174,6 +189,9 @@ const allClasses = [
     radiusClass,
     responsiveGapClass,
     directionClass,
+    positionClass,
+    justifyClass,
+    alignClass,
     widthClass,
     heightClass,
     maxWidthClass,
@@ -206,6 +224,9 @@ const allVars = {
     ...maxWidthVars,
     ...maxHeightVars,
     ...directionVars,
+    ...positionVars,
+    ...justifyVars,
+    ...alignVars,
     ...gapVars,
     ...paddingVars,
     ...paddingXVars,
