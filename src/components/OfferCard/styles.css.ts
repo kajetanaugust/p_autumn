@@ -1,8 +1,17 @@
 import {style} from "@vanilla-extract/css";
 
 export const offerCard = style({
-    textAlign: 'center',
-    flex: 1,
+    flex: '1 1 auto',
     width: '100%',
-    minWidth: '335px'
+    minWidth: '335px',
+
+})
+
+export const offerCardTitle = style({
+    flexGrow: 2,
+})
+
+export const offerCardIcon = style({
+    width: '48px',
+    height: '48px',
 })
