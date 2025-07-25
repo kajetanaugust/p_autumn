@@ -1,6 +1,5 @@
 import {
     bottomVar,
-    dimensionVariants,
     dynamicBottomStyle,
     dynamicFlexDirectionStyle,
     dynamicHeightStyle,
@@ -14,6 +13,7 @@ import {
     flexDirectionMobileVar,
     gapVars,
     heightVar,
+    heightVariants,
     leftVar,
     marginBottomVars,
     marginEndVars,
@@ -47,7 +47,8 @@ import {
     responsivePaddingYStyle,
     rightVar,
     topVar,
-    widthVar
+    widthVar,
+    widthVariants
 } from "./styles.css.ts";
 import {assignInlineVars} from "@vanilla-extract/dynamic";
 import type {DimensionVariants} from "./types.ts";
@@ -56,8 +57,25 @@ import type {Direction} from "../../utils/types.ts";
 export const getDimensionClass = (dimension: DimensionVariants, type: 'width' | 'height' | 'maxWidth' | 'maxHeight') => {
     if (!dimension) return '';
 
-    if (typeof dimension === 'string' && dimension in dimensionVariants) {
-        return dimensionVariants[dimension as keyof typeof dimensionVariants];
+    if (typeof dimension === 'string') {
+        switch (type) {
+            case 'width':
+                if (widthVariants && dimension in widthVariants) {
+                    return widthVariants[dimension as keyof typeof widthVariants];
+                }
+                return dynamicWidthStyle;
+            case 'height':
+                if (heightVariants && dimension in heightVariants) {
+                    return heightVariants[dimension as keyof typeof heightVariants];
+                }
+                return dynamicHeightStyle;
+            case 'maxWidth':
+                return dynamicMaxWidthStyle;
+            case 'maxHeight':
+                return dynamicMaxHeightStyle;
+            default:
+                return '';
+        }
     }
 
     switch (type) {
@@ -90,14 +108,20 @@ export const getDimensionVars = (dimension: DimensionVariants, type: 'width' | '
         });
     }
 
-    if (typeof dimension === 'string' && !(dimension in dimensionVariants)) {
-        return assignInlineVars({
-            [varMap[type]]: dimension,
-        });
+    if (typeof dimension === 'string') {
+        const isWidthVariant = type === 'width' && widthVariants && dimension in widthVariants;
+        const isHeightVariant = type === 'height' && heightVariants && dimension in heightVariants;
+
+        if (!isWidthVariant && !isHeightVariant) {
+            return assignInlineVars({
+                [varMap[type]]: dimension,
+            });
+        }
     }
 
     return {};
 };
+
 
 export const getDirectionClass = (direction: Direction | [Direction, Direction]) => {
     if (!Array.isArray(direction)) {

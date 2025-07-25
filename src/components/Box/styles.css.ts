@@ -5,8 +5,6 @@ import {theme} from "../../styles/theme.css";
 export const boxRecipe = recipe({
     base: {
         boxSizing: 'border-box',
-        height: "fit-content",
-        width: '100%'
     },
 
     variants: {
@@ -160,13 +158,22 @@ export const dynamicMaxHeightStyle = style({
     maxHeight: maxHeightVar,
 });
 
-export const dimensionVariants = styleVariants({
+export const widthVariants = styleVariants({
     'full': {width: '100%'},
     'auto': {width: 'auto'},
     'fit-content': {width: 'fit-content'},
     'screen': {width: '100vw'},
     '100%': {width: '100%'},
 });
+
+export const heightVariants = styleVariants({
+    'full': {height: '100%'},
+    'auto': {height: 'auto'},
+    'fit-content': {height: 'fit-content'},
+    'screen': {height: '100vh'},
+    '100%': {height: '100%'},
+});
+
 
 // Direction variables
 export const flexDirectionMobileVar = createVar();
