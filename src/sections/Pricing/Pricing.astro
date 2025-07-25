@@ -22,7 +22,7 @@ import PriceFeature from "./subcomponents/PriceFeature.astro";
                 Pobyt krótkoterminowy
             </Text>
             <Box direction="column" justify="space-between" gap={[20, 24]}>
-                <PriceTile price="260zł / dobę" title="Pokój jednoosobowy">
+                <PriceTile price="260zł" title="Pokój jednoosobowy" period="za dobę">
                     <Box direction="column" align="start" justify="center" width="fit-content" gap={16}>
                         <PriceFeature text="Całodobowa opieka opiekunek"/>
                         <PriceFeature text="Długość pobytu do miesiąca"/>
@@ -30,7 +30,7 @@ import PriceFeature from "./subcomponents/PriceFeature.astro";
                         <PriceFeature text="Opieka pielęgniarek i lekarza"/>
                     </Box>
                 </PriceTile>
-                <PriceTile price="230zł / dobę" title="Pokój dwuosobowy">
+                <PriceTile price="230zł" title="Pokój dwuosobowy" period="za dobę">
                     <Box direction="column" align="start" justify="center" width="fit-content" gap={16}>
                         <PriceFeature text="Całodobowa opieka opiekunek"/>
                         <PriceFeature text="Długość pobytu do miesiąca"/>
@@ -45,7 +45,7 @@ import PriceFeature from "./subcomponents/PriceFeature.astro";
                 Pobyt długoterminowy
             </Text>
             <Box direction="column" justify="space-between" gap={[20, 24]}>
-                <PriceTile price="od 5700zł / miesiąc" title="Pokój jednoosobowy">
+                <PriceTile price="od 5700zł" title="Pokój jednoosobowy" period="za miesiąc">
                     <Box direction="column" align="start" justify="center" width="fit-content" gap={16}>
                         <PriceFeature text="Całodobowa opieka opiekunek"/>
                         <PriceFeature text="Zniżka za pobyt długoterminowy"/>
@@ -53,7 +53,7 @@ import PriceFeature from "./subcomponents/PriceFeature.astro";
                         <PriceFeature text="Opieka pielęgniarek i lekarza"/>
                     </Box>
                 </PriceTile>
-                <PriceTile price="od 5200zł / miesiąc" title="Pokój dwuosobowy">
+                <PriceTile price="od 5200zł" title="Pokój dwuosobowy" period="za miesiąc">
                     <Box direction="column" align="start" justify="center" width="fit-content" gap={16}>
                         <PriceFeature text="Całodobowa opieka opiekunek"/>
                         <PriceFeature text="Zniżka za pobyt długoterminowy"/>
