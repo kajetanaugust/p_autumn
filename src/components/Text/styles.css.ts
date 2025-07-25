@@ -133,6 +133,11 @@ export const textRecipe = recipe({
         wrap: {
             wrap: {textWrap: "wrap"},
             nowrap: {textWrap: "nowrap"},
+        },
+        textAlign: {
+            left: {textAlign: "left"},
+            center: {textAlign: "center"},
+            right: {textAlign: "right"}
         }
     },
     defaultVariants: {

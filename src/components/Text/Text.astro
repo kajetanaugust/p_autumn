@@ -12,6 +12,7 @@ interface Props {
     tag?: TextTag;
     class?: string;
     textWrap?: 'wrap' | 'nowrap';
+    textAlign?: 'left' | 'center' | 'right';
 
     [key: string]: any;
 }
@@ -19,6 +20,7 @@ interface Props {
 const {
     variant = 'text-medium',
     textWrap = 'wrap',
+    textAlign = "left",
     weight,
     style,
     color = 'neutral_darkest',
@@ -33,7 +35,8 @@ const textClass = textRecipe({
     variant,
     weight,
     style,
-    wrap: textWrap
+    wrap: textWrap,
+    textAlign
 });
 
 const colorClass = textColorVariants[color];
