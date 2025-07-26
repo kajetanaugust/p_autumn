@@ -8,6 +8,8 @@ const body = document.querySelector('body');
 hamburger?.addEventListener('click', () => {
     mobileMenu?.classList.toggle(mobileMenuVisible);
     const isMenuVisible = mobileMenu?.classList.contains(mobileMenuVisible);
+    
+    hamburger?.toggleAttribute('aria-expanded', isMenuVisible);
 
     if (!html || !body) return;
 
