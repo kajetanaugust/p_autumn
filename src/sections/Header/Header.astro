@@ -1,0 +1,40 @@
+---
+import Box from "../../components/Box/Box.astro";
+import Button from "../../components/Button/Button.astro";
+import logoDesktop from '../../assets/logo.svg'
+import logoMobile from '../../assets/logo-image.svg'
+import {desktopMenu, headerLogoDesktop, headerLogoMobile, mobileMenu, mobileMenuHamburger} from "./styles.css";
+import {Menu} from "lucide-astro";
+---
+
+<Box position="sticky" top={0} left={0} zIndex="50" bgColor="neutral_white" shadow="md" px={[16, 64]} py={20}
+     width="100%"
+     height={84} justify="space-between" align="center">
+    <Box height="52px" width="fit-content" class={headerLogoDesktop} maxWidth="285px">
+        <img src={logoDesktop.src} alt="Logo" loading="eager" width="100%" height="100%"/>
+    </Box>
+    <Box height="52px" width="fit-content" class={headerLogoMobile} maxWidth="60px">
+        <img src={logoMobile.src} alt="Logo" loading="eager" width="100%" height="100%"/>
+    </Box>
+    <Box width="fit-content" class={desktopMenu}>
+        <Button variant="ghost" href="/">Opieka</Button>
+        <Button variant="ghost" href="/">Oferta</Button>
+        <Button variant="ghost" href="/">Cennik</Button>
+        <Button variant="ghost" href="/">Kontakt</Button>
+        <Button variant="primary">Dowiedz się więcej</Button>
+    </Box>
+    <Button variant="iconGhost" class={mobileMenuHamburger} id="mobile-menu-hamburger">
+        <Menu/>
+    </Button>
+    <Box direction="column" justify="center" align="start" gap={16} class={mobileMenu} position="absolute" zIndex="50"
+         top={84} left={0} width="100%" height="100vh" bgColor="neutral_white" shadow="md" px={20} py={16}
+         id="mobile-menu">
+        <Button variant="ghost" href="/">Opieka</Button>
+        <Button variant="ghost" href="/">Oferta</Button>
+        <Button variant="ghost" href="/">Cennik</Button>
+        <Button variant="ghost" href="/">Kontakt</Button>
+        <Button variant="primary">Dowiedz się więcej</Button>
+    </Box>
+</Box>
+
+<script src="../../scripts/menuHamburger.ts"/>
