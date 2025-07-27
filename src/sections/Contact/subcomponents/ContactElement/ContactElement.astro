@@ -15,7 +15,7 @@ const {elementName} = Astro.props;
         <slot name="icon"/>
     </Box>
     <Box direction="column" width="fit-content" gap={8}>
-        <Text variant="heading-6">{elementName}</Text>
+        <Text variant="heading-6" tag="p">{elementName}</Text>
         <slot/>
     </Box>
 </Box>

@@ -20,7 +20,7 @@ const {title, description} = Astro.props;
 >
     <Box direction="column" justify="center" align="center" gap={[20, 24]} class={offerCardTitle}>
         <slot/>
-        <Text variant="heading-4" textAlign="center">{title}</Text>
+        <Text variant="heading-4" textAlign="center" tag="p">{title}</Text>
     </Box>
     <Text variant="text-regular" textAlign="center">{description}</Text>
 </Box>
