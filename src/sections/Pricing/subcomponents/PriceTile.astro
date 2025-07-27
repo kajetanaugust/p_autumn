@@ -15,9 +15,9 @@ const {title, price, period} = Astro.props;
 <Box direction="column" justify="center" align="center" gap={[24, 32]} borderRadius="lg" bgColor="neutral_lightest"
      px={[24, 32]} py={32}>
     <Box direction="column" justify="center" align="center" gap={8}>
-        <Text variant="heading-6">{title}</Text>
+        <Text variant="heading-6" tag="p">{title}</Text>
         <Box direction="column" width="100%" align="center">
-            <Text variant="heading-2">{price}</Text>
+            <Text variant="heading-2" tag="p">{price}</Text>
             <Text variant="text-regular">{period}</Text>
         </Box>
     </Box>
