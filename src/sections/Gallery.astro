@@ -3,10 +3,22 @@ import {Splide, SplideSlide} from "astro-splide";
 import Box from "../components/Box/Box.astro";
 import '@splidejs/splide/css';
 import Text from "../components/Text/Text.astro";
+
+import photo1 from '../assets/pictures/gallery/POKOJ1.jpg'
+import photo2 from '../assets/pictures/gallery/POKOJ2.jpg'
+import photo3 from '../assets/pictures/gallery/KORYTARZ.jpg'
+import photo4 from '../assets/pictures/gallery/SWIETLICA.jpg'
+import photo5 from '../assets/pictures/gallery/IMPREZA2.jpg'
+import photo6 from '../assets/pictures/gallery/IMPREZA4.jpg'
+
+const photos = [photo1, photo2, photo3, photo4, photo5, photo6]
 ---
 
-<Box direction="column" width="100%" px={[20, 80]} pt={[64, 112]} pb={[64, 80]}>
-    <Text variant="heading-2">Galeria Zdjęć</Text>
+<Box direction="column" width="100%" px={[20, 80]} pt={[64, 112]} pb={[64, 80]} gap={[48, 80]} id="galeria">
+    <Box direction="column" gap={[20, 24]}>
+        <Text variant="heading-2">Galeria Zdjęć</Text>
+        <Text variant="text-regular">Zobacz nasze przestrzenie i radosne chwile mieszkańców.</Text>
+    </Box>
     <Box maxHeight="700px">
         <Splide
                 options={{
@@ -15,27 +27,16 @@ import Text from "../components/Text/Text.astro";
                     interval: 4000,
                     pauseOnHover: false,
                     height: '700px',
-                    perPage: 2,
                     easing: 'linear',
                     lazyLoad: 'nearby',
                     gap: '32px',
                 }}>
-            <SplideSlide>
-                <img src="https://picsum.photos/1200/800?random=1" alt="Gallery image 1" loading="lazy" width="100%"
-                     height="100%"/>
-            </SplideSlide>
-            <SplideSlide>
-                <img src="https://picsum.photos/1200/800?random=2" alt="Gallery image 1" loading="lazy" width="100%"
-                     height="100%"/>
-            </SplideSlide>
-            <SplideSlide>
-                <img src="https://picsum.photos/1200/800?random=3" alt="Gallery image 1" loading="lazy" width="100%"
-                     height="100%"/>
-            </SplideSlide>
-            <SplideSlide>
-                <img src="https://picsum.photos/1200/800?random=4" alt="Gallery image 1" loading="lazy" width="100%"
-                     height="100%"/>
-            </SplideSlide>
+            {photos.map(photo => (
+                    <SplideSlide>
+                        <img src={photo.src} alt="Gallery image 1" loading="lazy" width="100%" height="100%"
+                             style="object-fit: cover;"/>
+                    </SplideSlide>
+            ))}
         </Splide>
     </Box>
 </Box>

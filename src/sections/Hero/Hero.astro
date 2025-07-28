@@ -5,15 +5,19 @@ import Text from "../../components/Text/Text.astro";
 import Button from "../../components/Button/Button.astro";
 import heroImage from '../../assets/widokowe_crop.jpg'
 import {heroCopyElement} from "./styles.css";
+import Picture from "astro/components/Picture.astro";
 ---
 
 <Box direction="column" justify="center" align="start" gap={[48, 80]} width="100%" maxWidth="100%" overflow="hidden"
      pb={[48, 80]} mt={84}>
     <Box width="100%">
-        <Image alt="Birds eye view of the facility" height={663} width={1440} src={heroImage} responsive="fullWidth"
+        <Image alt="Birds eye view of the facility" height={663} width={2160} src={heroImage} responsive="fullWidth"
                objectFit="cover"
                maxHeight="50vh" loading="eager"
         />
+        <!--<Picture alt="Birds eye view of the facility" height={663} width={2160} src={heroImage}>-->
+        <!--    <source media="(min-width: 1024px)" srcset={heroImage}/>-->
+        <!--</Picture>-->
     </Box>
     <Box direction={["column", "row"]} justify="space-between" align="start" px={[20, 80]} gap={[20, 80]}>
         <Text variant="heading-1" class={heroCopyElement}>
