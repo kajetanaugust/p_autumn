@@ -1,0 +1,20 @@
+---
+import Box from "../../components/Box/Box.astro";
+import {Facebook} from "lucide-astro";
+import Button from "../../components/Button/Button.astro";
+import {footerWrapper} from "./styles.css";
+import Text from "../../components/Text/Text.astro";
+
+const currentYear = new Date().getFullYear()
+---
+
+<Box width="100%" direction="row" px={64} py={20} align="center" justify="space-between" class={footerWrapper}>
+    <Text variant="text-small">©{currentYear} Pogodna Jesień Sp.z o o.</Text>
+    <Text variant="text-small">Zezwolenie Wojewody Śląskiego na prowadzenie całodobowej opieki nad osobami
+        niepełnosprawnymi i starszymi nr:
+        PS.II.9041/2/10
+    </Text>
+    <Button variant="iconGhost" href="https://www.facebook.com/pensjonatpogodnajesien" aria-label="facebook link">
+        <Facebook/>
+    </Button>
+</Box>
