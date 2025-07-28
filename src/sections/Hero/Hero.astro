@@ -13,7 +13,7 @@ import Picture from "astro/components/Picture.astro";
     <Box width="100%">
         <Image alt="Birds eye view of the facility" height={663} width={2160} src={heroImage} responsive="fullWidth"
                objectFit="cover"
-               maxHeight="50vh" loading="eager"
+               maxHeight="50vh" loading="eager" fetchPriority="high"
         />
         <!--<Picture alt="Birds eye view of the facility" height={663} width={2160} src={heroImage}>-->
         <!--    <source media="(min-width: 1024px)" srcset={heroImage}/>-->

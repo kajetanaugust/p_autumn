@@ -20,6 +20,7 @@ interface Props extends Spacings {
     // Image specific props
     src: ImageMetadata | string;
     loading?: 'lazy' | 'eager';
+    fetchPriority?: 'auto' | 'high' | 'low';
     className?: string;
     alt: string;
     width: number;
@@ -68,6 +69,7 @@ const {
     responsive = 'fixed',
     maxWidth,
     maxHeight,
+    fetchPriority = 'auto',
 } = Astro.props
 
 const containerClass = imageContainer({
@@ -119,5 +121,6 @@ if (responsive === 'fullWidth' && maxHeight) {
             loading={loading}
             class={imageClasses}
             style={imageStyles}
+            fetchpriority={fetchPriority}
     />
 </Box>
