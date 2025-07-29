@@ -4,8 +4,9 @@
     font-style: normal;
     font-weight: 300 900;
     font-display: swap;
-    src: url('/src/assets/fonts/Merriweather/Merriweather-VariableFont_opsz,wdth,wght.ttf') format('truetype-variations'),
-    url('/src/assets/fonts/Merriweather/Merriweather-VariableFont_opsz,wdth,wght.ttf') format('truetype');
+    src: url('/src/assets/fonts/Merriweather/Merriweather-Variable.woff2') format('woff2-variations'),
+    url('/src/assets/fonts/Merriweather/Merriweather-Variable.ttf') format('truetype-variations');
+
 }
 
 @font-face {
@@ -13,25 +14,29 @@
     font-style: italic;
     font-weight: 300 900;
     font-display: swap;
-    src: url('/src/assets/fonts/Merriweather/Merriweather-Italic-VariableFont_opsz,wdth,wght.ttf') format('truetype-variations'),
-    url('/src/assets/fonts/Merriweather/Merriweather-Italic-VariableFont_opsz,wdth,wght.ttf') format('truetype');
+    src: url('/src/assets/fonts/Merriweather/Merriweather-Italic-Variable.ttf') format('truetype-variations'),
+    url('/src/assets/fonts/Merriweather/Merriweather-Italic-Variable.ttf') format('truetype');
 }
 
 /* Karla Variable Font */
 @font-face {
     font-family: 'Karla';
     font-style: normal;
-    font-weight: 200 800;
+    font-weight: 200 800; /* This range includes 200, 300, 400, 500, 600, 700, 800 */
     font-display: swap;
-    src: url('/src/assets/fonts/Karla/Karla-VariableFont_wght.ttf') format('truetype-variations'),
-    url('/src/assets/fonts/Karla/Karla-VariableFont_wght.ttf') format('truetype');
+    src: url('/src/assets/fonts/Karla/Karla-Variable.woff2') format('woff2-variations'),
+    url('/src/assets/fonts/Karla/Karla-Variable.woff') format('woff-variations'),
+    url('/src/assets/fonts/Karla/Karla-Variable.ttf') format('truetype-variations');
 }
+
 
 @font-face {
     font-family: 'Karla';
     font-style: italic;
     font-weight: 200 800;
     font-display: swap;
-    src: url('/src/assets/fonts/Karla/Karla-Italic-VariableFont_wght.ttf') format('truetype-variations'),
-    url('/src/assets/fonts/Karla/Karla-Italic-VariableFont_wght.ttf') format('truetype');
+    src: url('/src/assets/fonts/Karla/Karla-Italic-Variable.woff2') format('woff2-variations'),
+    url('/src/assets/fonts/Karla/Karla-Italic-Variable.woff') format('woff-variations'),
+    url('/src/assets/fonts/Karla/Karla-Italic-Variable.ttf') format('truetype-variations'),
+    url('/src/assets/fonts/Karla/Karla-Italic-Variable.ttf') format('truetype');
 }
