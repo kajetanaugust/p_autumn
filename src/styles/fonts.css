@@ -5,6 +5,7 @@
     font-weight: 300 900;
     font-display: swap;
     src: url('/src/assets/fonts/Merriweather/Merriweather-Variable.woff2') format('woff2-variations'),
+    url('/src/assets/fonts/Merriweather/Merriweather-Variable.woff') format('woff-variations'),
     url('/src/assets/fonts/Merriweather/Merriweather-Variable.ttf') format('truetype-variations');
 
 }
@@ -14,29 +15,29 @@
     font-style: italic;
     font-weight: 300 900;
     font-display: swap;
-    src: url('/src/assets/fonts/Merriweather/Merriweather-Italic-Variable.ttf') format('truetype-variations'),
+    src: url('/src/assets/fonts/Merriweather/Merriweather-Italic-Variable.woff2') format('woff2-variations'),
+    url('/src/assets/fonts/Merriweather/Merriweather-Italic-Variable.ttf') format('truetype-variations'),
     url('/src/assets/fonts/Merriweather/Merriweather-Italic-Variable.ttf') format('truetype');
 }
 
-/* Karla Variable Font */
+/* Public Sans Variable Font */
 @font-face {
-    font-family: 'Karla';
+    font-family: 'Public Sans';
     font-style: normal;
-    font-weight: 200 800; /* This range includes 200, 300, 400, 500, 600, 700, 800 */
+    font-weight: 100 900;
     font-display: swap;
-    src: url('/src/assets/fonts/Karla/Karla-Variable.woff2') format('woff2-variations'),
-    url('/src/assets/fonts/Karla/Karla-Variable.woff') format('woff-variations'),
-    url('/src/assets/fonts/Karla/Karla-Variable.ttf') format('truetype-variations');
+    src: url('/src/assets/fonts/PublicSans/PublicSans-Variable.woff2') format('woff2-variations'),
+    url('/src/assets/fonts/PublicSans/PublicSans-Variable.ttf') format('truetype-variations'),
+    url('/src/assets/fonts/PublicSans/PublicSans-Variable.ttf') format('truetype');
 }
 
 
 @font-face {
-    font-family: 'Karla';
+    font-family: 'Public Sans';
     font-style: italic;
-    font-weight: 200 800;
+    font-weight: 100 900;
     font-display: swap;
-    src: url('/src/assets/fonts/Karla/Karla-Italic-Variable.woff2') format('woff2-variations'),
-    url('/src/assets/fonts/Karla/Karla-Italic-Variable.woff') format('woff-variations'),
-    url('/src/assets/fonts/Karla/Karla-Italic-Variable.ttf') format('truetype-variations'),
-    url('/src/assets/fonts/Karla/Karla-Italic-Variable.ttf') format('truetype');
+    src: url('/src/assets/fonts/PublicSans/PublicSans-Italic-Variable.woff2') format('woff2-variations'),
+    url('/src/assets/fonts/PublicSans/PublicSans-Italic-Variable.ttf') format('truetype-variations'),
+    url('/src/assets/fonts/PublicSans/PublicSans-Italic-Variable.ttf') format('truetype');
 }
