@@ -82,31 +82,31 @@ export const textRecipe = recipe({
             'text-large': {
                 fontFamily: fonts.secondary,
                 fontSize: '1.25rem',
-                fontWeight: 400,
+                fontWeight: 300,
                 lineHeight: 1.5,
             },
             'text-medium': {
                 fontFamily: fonts.secondary,
                 fontSize: '1.125rem',
-                fontWeight: 400,
+                fontWeight: 300,
                 lineHeight: 1.5,
             },
             'text-regular': {
                 fontFamily: fonts.secondary,
                 fontSize: '1rem',
-                fontWeight: 400,
+                fontWeight: 300,
                 lineHeight: 1.5,
             },
             'text-small': {
                 fontFamily: fonts.secondary,
                 fontSize: '0.875rem',
-                fontWeight: 400,
+                fontWeight: 300,
                 lineHeight: 1.5,
             },
             'text-tiny': {
                 fontFamily: fonts.secondary,
                 fontSize: '0.75rem',
-                fontWeight: 400,
+                fontWeight: 300,
                 lineHeight: 1.5,
             },
             'tagline': {
@@ -142,7 +142,6 @@ export const textRecipe = recipe({
     },
     defaultVariants: {
         variant: 'text-medium',
-        weight: 400,
         style: 'normal',
     },
 });
