@@ -3,6 +3,9 @@ import Box from "../../components/Box/Box.astro";
 import Text from "../../components/Text/Text.astro";
 import PriceTile from "./subcomponents/PriceTile.astro";
 import PriceFeature from "./subcomponents/PriceFeature.astro";
+import Button from "../../components/Button/Button.astro";
+import {Download} from "lucide-astro";
+import {pricingInfoItem} from "./styles.css";
 ---
 
 <Box direction="column" px={[20, 80]} gap={[48, 80]} pt={[64, 112]} pb={[64, 80]} align="center" isWithBorder
@@ -61,6 +64,30 @@ import PriceFeature from "./subcomponents/PriceFeature.astro";
                         <PriceFeature text="Opieka pielęgniarek i lekarza"/>
                     </Box>
                 </PriceTile>
+            </Box>
+        </Box>
+    </Box>
+    <Box direction="column" gap={[20, 24]}>
+        <Text variant="heading-4" textAlign="center" tag="p">Dodatkowe Informacje</Text>
+        <Box direction={['column', 'row']} gap={[64, 80]} justify="space-between">
+            <Text variant="text-medium" class={pricingInfoItem}>
+                Dla osób z chorobą Alzheimera, zaawansowaną demencją lub wymagających szczególnej opieki obowiązuje
+                dopłata
+                w wysokości 600 zł miesięcznie.
+            </Text>
+            <Box direction="column" gap={16} class={pricingInfoItem}>
+                <Text variant="text-medium">
+                    Przed przyjęciem prosimy o dostarczenie wypisu ze szpitala z ostatniego miesiąca lub zaświadczenia
+                    lekarskiego o stanie zdrowia, do pobrania poniżej:
+                </Text>
+                <a href="/zaswiadczenie.pdf" download="szablon-zaswiadczenia.pdf">
+                    <Button variant="outline" size="small">
+                        <Box direction="row" align="center" gap={10}>
+                            <Download/>
+                            <Text variant="text-regular" weight={500}>Pobierz szablon zaświadczenia</Text>
+                        </Box>
+                    </Button>
+                </a>
             </Box>
         </Box>
     </Box>
