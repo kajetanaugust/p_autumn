@@ -10,6 +10,10 @@ export const textRecipe = recipe({
         lineHeight: 1.4,
     },
     variants: {
+        defaultVariants: {
+            variant: 'text-medium',
+            style: 'normal',
+        },
         variant: {
             'heading-1': {
                 fontFamily: fonts.primary,
@@ -139,10 +143,6 @@ export const textRecipe = recipe({
             center: {textAlign: "center"},
             right: {textAlign: "right"}
         }
-    },
-    defaultVariants: {
-        variant: 'text-medium',
-        style: 'normal',
     },
 });
 

@@ -1,9 +1,9 @@
 ---
-import Box from "../components/Box/Box.astro";
-import Text from "../components/Text/Text.astro";
-import careImage from '../assets/care.jpg'
+import Box from "../../components/Box/Box.astro";
+import Text from "../../components/Text/Text.astro";
+import careImage from '../../assets/care.jpg'
 import {Image} from "astro:assets";
-import {heroImageStyles} from "./Hero/styles.css";
+import {AboutImageStyles} from "./styles.css";
 ---
 
 <Box direction="column" px={[20, 80]} pt={[64, 112]} pb={[64, 80]} gap={[48, 80]} id="historia">
@@ -21,6 +21,9 @@ import {heroImageStyles} from "./Hero/styles.css";
             </Text>
         </Box>
     </Box>
-    <Image src={careImage} alt="Our Halloween party" loading="lazy" width={1280} height={738} borderRadius="lg"/>
+    <Box borderRadius="lg" overflow="hidden">
+        <Image src={careImage} alt="Our Halloween party" loading="lazy" layout="constrained" quality={75}
+               class={AboutImageStyles}/>
+    </Box>
 </Box>
 
