@@ -18,13 +18,9 @@ interface Props extends Spacings {
     fetchPriority?: FetchPriority;
     className?: string;
     alt: string;
-    width: number;
-    height: number;
     objectFit?: ObjectFit;
     objectPosition?: ObjectPosition;
     responsive?: ResponsiveType;
-    maxWidth?: string | number;
-    maxHeight?: string | number;
     quality?: number;
     layout?: Layout;
     // Box wrapper props
@@ -32,6 +28,8 @@ interface Props extends Spacings {
     borderRadius?: Radius;
     position?: Position;
     display?: Display;
+    maxWidth?: string | number;
+    maxHeight?: string | number;
 }
 
 const {
@@ -59,10 +57,10 @@ const {
     me,
     objectFit = 'cover',
     objectPosition = 'center',
-    responsive = 'fixed',
     maxHeight,
     fetchPriority = 'auto',
     quality = 75,
+    layout = 'constrained'
 } = Astro.props
 
 const imageClasses = [
@@ -71,11 +69,6 @@ const imageClasses = [
 ].filter(Boolean).join(' ')
 
 const imageStyles: Record<string, string> = {};
-
-if (responsive === 'fullWidth' && maxHeight) {
-    imageStyles.width = '100%';
-    imageStyles.height = 'auto';
-}
 ---
 
 <Box
@@ -83,6 +76,8 @@ if (responsive === 'fullWidth' && maxHeight) {
         borderRadius={borderRadius}
         position={position}
         display={display}
+        maxHeight={maxHeight}
+        overflow="hidden"
         p={p} px={px} py={py} pt={pt} pb={pb} ps={ps} pe={pe}
         m={m} mx={mx} my={my} mt={mt} mb={mb} ms={ms} me={me}
 >
@@ -96,5 +91,6 @@ if (responsive === 'fullWidth' && maxHeight) {
             quality={quality}
             fit={objectFit}
             position={objectPosition}
+            layout={layout}
     />
 </Box>
