@@ -1,4 +1,5 @@
 import {style} from "@vanilla-extract/css";
+import {theme} from "../../styles/theme.css.ts";
 
 export const mobileCarousel = style({
     display: 'block',
@@ -16,5 +17,15 @@ export const desktopCarousel = style({
             display: 'block',
         },
     }
+})
+
+export const galleryImageStyles = style({
+    width: '100%',
+    height: 'auto',
+    display: 'block',
+    maxWidth: '100%',
+    maxHeight: '100%',
+    objectFit: 'cover',
+    borderRadius: theme.radius.lg
 })
 
