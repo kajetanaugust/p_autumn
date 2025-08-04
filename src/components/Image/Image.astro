@@ -6,31 +6,27 @@ import type {Shadow} from "../../tokens/Shadows/types";
 import type {Radius} from "../../tokens/Radius/types";
 import type {Position, Spacings} from "../../utils/types";
 import type {Display} from "../../utils/types";
-import type {AspectRatio, ObjectFit, ObjectPosition, ResponsiveType} from "./types";
+import type {FetchPriority, Layout, Loading, ObjectFit, ObjectPosition, ResponsiveType} from "./types";
 import {
-    aspectRatioVariants,
     imageBase,
-    imageContainer,
-    objectFitVariants,
-    objectPositionVariants,
-    responsiveVariants
 } from "./styles.css";
 
 interface Props extends Spacings {
     // Image specific props
-    src: ImageMetadata | string;
-    loading?: 'lazy' | 'eager';
-    fetchPriority?: 'auto' | 'high' | 'low';
+    src: ImageMetadata;
+    loading?: Loading;
+    fetchPriority?: FetchPriority;
     className?: string;
     alt: string;
     width: number;
     height: number;
     objectFit?: ObjectFit;
     objectPosition?: ObjectPosition;
-    aspectRatio?: AspectRatio;
     responsive?: ResponsiveType;
     maxWidth?: string | number;
     maxHeight?: string | number;
+    quality?: number;
+    layout?: Layout;
     // Box wrapper props
     shadow?: Shadow;
     borderRadius?: Radius;
@@ -42,8 +38,6 @@ const {
     src,
     loading = 'lazy',
     alt,
-    width,
-    height,
     className,
     shadow,
     borderRadius,
@@ -63,40 +57,20 @@ const {
     mb,
     ms,
     me,
-    aspectRatio,
     objectFit = 'cover',
     objectPosition = 'center',
     responsive = 'fixed',
-    maxWidth,
     maxHeight,
     fetchPriority = 'auto',
+    quality = 75,
 } = Astro.props
-
-const containerClass = imageContainer({
-    hasAspectRatio: !!aspectRatio
-})
 
 const imageClasses = [
     imageBase,
-    objectFitVariants[objectFit],
-    objectPositionVariants[objectPosition],
-    responsiveVariants[responsive],
     className
 ].filter(Boolean).join(' ')
 
-const containerClasses = [
-    containerClass,
-    aspectRatio ? aspectRatioVariants[aspectRatio] : '',
-].filter(Boolean).join(' ')
-
-// Build inline styles for max dimensions
 const imageStyles: Record<string, string> = {};
-if (maxWidth) {
-    imageStyles.maxWidth = typeof maxWidth === 'number' ? `${maxWidth}px` : maxWidth;
-}
-if (maxHeight) {
-    imageStyles.maxHeight = typeof maxHeight === 'number' ? `${maxHeight}px` : maxHeight;
-}
 
 if (responsive === 'fullWidth' && maxHeight) {
     imageStyles.width = '100%';
@@ -109,18 +83,18 @@ if (responsive === 'fullWidth' && maxHeight) {
         borderRadius={borderRadius}
         position={position}
         display={display}
-        class={containerClasses}
         p={p} px={px} py={py} pt={pt} pb={pb} ps={ps} pe={pe}
         m={m} mx={mx} my={my} mt={mt} mb={mb} ms={ms} me={me}
 >
     <AstroImage
             src={src}
             alt={alt}
-            width={width}
-            height={height}
             loading={loading}
             class={imageClasses}
             style={imageStyles}
             fetchpriority={fetchPriority}
+            quality={quality}
+            fit={objectFit}
+            position={objectPosition}
     />
 </Box>
