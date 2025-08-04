@@ -3,6 +3,7 @@ import Box from "../../components/Box/Box.astro";
 import Text from "../../components/Text/Text.astro";
 import ContactElement from "./subcomponents/ContactElement/ContactElement.astro";
 import {Mail, Phone, MapPin, Landmark, Banknote} from "lucide-astro";
+import Link from "../../components/Link/Link.astro";
 ---
 
 
@@ -22,7 +23,7 @@ import {Mail, Phone, MapPin, Landmark, Banknote} from "lucide-astro";
         <Box direction={["column", "row"]} gap={24}>
             <ContactElement elementName="E-mail">
                 <Mail slot="icon"/>
-                <a href="mailto:pogodna@jesien.com.pl">pogodna@jesien.com.pl</a>
+                <Link href="mailto:pogodna@jesien.com.pl">pogodna@jesien.com.pl</Link>
             </ContactElement>
             <ContactElement elementName="Telefon">
                 <Phone slot="icon"/>

@@ -138,6 +138,11 @@ export const textRecipe = recipe({
             wrap: {textWrap: "wrap"},
             nowrap: {textWrap: "nowrap"},
         },
+        decoration: {
+            underline: {textDecoration: "underline"},
+            lineThrough: {textDecoration: "line-through"},
+            none: {textDecoration: "none"},
+        },
         textAlign: {
             left: {textAlign: "left"},
             center: {textAlign: "center"},

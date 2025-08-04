@@ -8,6 +8,7 @@ interface Props {
     variant?: TextVariant;
     weight?: FontWeight;
     style?: FontStyle;
+    textDecoration?: 'none' | 'underline' | 'lineThrough';
     color?: Color;
     tag?: TextTag;
     class?: string;
@@ -23,6 +24,7 @@ const {
     textAlign = "left",
     weight,
     style,
+    textDecoration = 'none',
     color = 'neutral_darkest',
     tag,
     class: className = '',
