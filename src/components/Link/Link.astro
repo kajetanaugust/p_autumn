@@ -11,7 +11,7 @@ const {href, target} = Astro.props;
 ---
 
 <a class={styledLink} href={href} target={target}>
-    <Text variant="text-regular" textDecoration="underline">
+    <Text variant="text-regular" textDecoration="underline" class={styledLink}>
         <slot/>
     </Text>
 </a>
