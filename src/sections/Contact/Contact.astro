@@ -4,10 +4,11 @@ import Text from "../../components/Text/Text.astro";
 import ContactElement from "./subcomponents/ContactElement/ContactElement.astro";
 import {Mail, Phone, MapPin, Landmark, Banknote} from "lucide-astro";
 import Link from "../../components/Link/Link.astro";
+import SectionLayout from "../../layouts/SectionLayout.astro";
 ---
 
 
-<Box direction="column" px={[20, 80]} pt={[64, 112]} pb={[64, 80]} gap={[48, 64]} align="center" id="kontakt">
+<SectionLayout sectionId="kontakt" isCentered isFullWidth isWithSmallPb>
     <Box direction='column' gap={[48, 80]}>
         <Box direction="column" gap={24} align="stretch" height="100%">
             <Box direction="column" gap={16}>
@@ -60,4 +61,4 @@ import Link from "../../components/Link/Link.astro";
 
     </Box>
 
-</Box>
+</SectionLayout>

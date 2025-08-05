@@ -4,9 +4,10 @@ import Text from "../../components/Text/Text.astro";
 import {Hospital, HeartHandshake, House, Apple, HandHeart, Cross} from "lucide-astro";
 import OfferCard from "./subcomponents/OfferCard/OfferCard.astro";
 import {offerCardIcon} from "./subcomponents/OfferCard/styles.css";
+import SectionLayout from "../../layouts/SectionLayout.astro";
 ---
 
-<Box direction="column" px={[20, 80]} gap={[48, 80]} pt={[64, 112]} pb={[64, 80]} id="oferta" align="center">
+<SectionLayout sectionId="oferta" isCentered isFullWidth isWithSmallPb>
     <Box direction="column" gap={[16, 20]} align="center" maxWidth='768px'>
         <Text variant="tagline">Oferta</Text>
         <Text variant="heading-2" textAlign="center">
@@ -43,4 +44,4 @@ import {offerCardIcon} from "./subcomponents/OfferCard/styles.css";
             <Cross class={offerCardIcon}/>
         </OfferCard>
     </Box>
-</Box>
+</SectionLayout>

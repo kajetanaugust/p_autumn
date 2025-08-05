@@ -1,9 +1,10 @@
 ---
 import Box from "../components/Box/Box.astro";
 import Text from "../components/Text/Text.astro";
+import SectionLayout from "../layouts/SectionLayout.astro";
 ---
 
-<Box direction="column" px={[20, 80]} pb={[64, 80]} gap={[48, 80]} id="opieka">
+<SectionLayout sectionId="opieka" isWithSmallPb isWithSmallPt>
     <Box direction={["column", "row"]} gap={[20, 80]}>
         <Box direction="column" justify="start" gap={[12, 16]}>
             <Text variant="tagline">Opieka</Text>
@@ -17,5 +18,5 @@ import Text from "../components/Text/Text.astro";
             </Text>
         </Box>
     </Box>
-</Box>
+</SectionLayout>
 

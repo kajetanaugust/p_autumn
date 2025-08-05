@@ -2,11 +2,11 @@
 import Box from "../../components/Box/Box.astro";
 import Text from "../../components/Text/Text.astro";
 import careImage from '../../assets/care.jpg'
-import {AboutImageStyles} from "./styles.css";
 import Image from "../../components/Image/Image.astro";
+import SectionLayout from "../../layouts/SectionLayout.astro";
 ---
 
-<Box direction="column" px={[20, 80]} pt={[64, 112]} pb={[64, 80]} gap={[48, 80]} id="historia">
+<SectionLayout sectionId="historia" isFullWidth isWithSmallPb>
     <Box direction={["column", "row"]} gap={[20, 80]}>
         <Box direction="column" justify="start" gap={[12, 16]}>
             <Text variant="tagline">Historia</Text>
@@ -25,5 +25,5 @@ import Image from "../../components/Image/Image.astro";
         <Image src={careImage} alt="Our Halloween party" loading="lazy" layout="constrained" quality={75}
                maxHeight={738}/>
     </Box>
-</Box>
+</SectionLayout>
 
