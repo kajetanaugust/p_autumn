@@ -46,6 +46,6 @@ const colorClass = textColorVariants[color];
 const allClasses = [textClass, colorClass, className].filter(Boolean).join(' ');
 ---
 
-<Tag class={allClasses} {...rest}>
+<Tag class={allClasses} {...rest} x-apple-data-detectors="false">
     <slot/>
 </Tag>
