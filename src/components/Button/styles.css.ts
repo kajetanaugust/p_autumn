@@ -41,7 +41,7 @@ export const buttonRecipe = recipe({
                 color: theme.colors.neutral_white,
 
                 '&:hover:not(:disabled)': {
-                    backgroundColor: theme.colors.luxor_gold_dark,
+                    backgroundColor: theme.colors.luxor_gold,
                 },
 
                 '&:active:not(:disabled)': {
