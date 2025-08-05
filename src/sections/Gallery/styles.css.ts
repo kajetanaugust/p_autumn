@@ -26,6 +26,6 @@ export const galleryImageStyles = style({
     maxWidth: '100%',
     maxHeight: '100%',
     objectFit: 'cover',
-    borderRadius: theme.radius.lg
+    borderRadius: theme.radius.md
 })
 
