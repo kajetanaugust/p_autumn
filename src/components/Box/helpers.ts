@@ -16,6 +16,7 @@ import {
     dynamicWidthStyle,
     flexDirectionDesktopVar,
     flexDirectionMobileVar,
+    flexDirectionTabletVar,
     gapVars,
     heightDesktopVar,
     heightMobileVar,
@@ -191,26 +192,37 @@ export const getDimensionVars = (dimension: DimensionVariants | [DimensionVarian
     return {};
 };
 
-export const getDirectionClass = (direction: Direction | [Direction, Direction]) => {
+export const getDirectionClass = (direction: Direction | [Direction, Direction] | [Direction, Direction, Direction]) => {
     if (!Array.isArray(direction)) {
-        return ''; // Use recipe variant for single direction
+        return ''; // Use recipe variant for a single direction
     }
 
     // Use dynamic class for responsive directions
     return dynamicFlexDirectionStyle;
 };
 
-export const getDirectionVars = (direction: Direction | [Direction, Direction]) => {
+export const getDirectionVars = (direction: Direction | [Direction, Direction] | [Direction, Direction, Direction]) => {
     if (!Array.isArray(direction)) {
         return {};
     }
 
-    const [mobile, desktop] = direction;
+    if (direction.length === 2) {
+        const [mobile, desktop] = direction;
+        return assignInlineVars({
+            [flexDirectionMobileVar]: mobile,
+            [flexDirectionDesktopVar]: desktop,
+        });
+    }
 
-    return assignInlineVars({
-        [flexDirectionMobileVar]: mobile,
-        [flexDirectionDesktopVar]: desktop,
-    });
+    if (direction.length === 3) {
+        const [mobile, tablet, desktop] = direction;
+
+        return assignInlineVars({
+            [flexDirectionMobileVar]: mobile,
+            [flexDirectionTabletVar]: tablet,
+            [flexDirectionDesktopVar]: desktop,
+        });
+    }
 };
 
 export const getPositionClass = (position: Position | [Position, Position]) => {

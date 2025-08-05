@@ -222,16 +222,21 @@ export const heightVariants = styleVariants({
 
 // Direction variables
 export const flexDirectionMobileVar = createVar();
+export const flexDirectionTabletVar = createVar();
 export const flexDirectionDesktopVar = createVar();
 
 export const dynamicFlexDirectionStyle = style({
     flexDirection: flexDirectionMobileVar,
     '@media': {
         'screen and (min-width: 768px)': {
+            flexDirection: flexDirectionTabletVar,
+        },
+        'screen and (min-width: 992px)': {
             flexDirection: flexDirectionDesktopVar,
         }
     }
 });
+
 
 // Position variables
 export const positionMobileVar = createVar();
