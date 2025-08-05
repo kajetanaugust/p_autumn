@@ -8,6 +8,8 @@ export const textRecipe = recipe({
         margin: 0,
         padding: 0,
         lineHeight: 1.4,
+        textDecoration: 'none',
+        color: theme.colors.neutral_darker,
     },
     variants: {
         defaultVariants: {
