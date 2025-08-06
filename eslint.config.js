@@ -28,7 +28,8 @@ export default [
             },
         },
         rules: {
-            '@typescript-eslint/no-unused-vars': ['error'],
+            "@typescript-eslint/no-unused-vars": "error",
+            "@typescript-eslint/no-explicit-any": "warn",
             'jsx-a11y/alt-text': 'error',
             quotes: ['error', 'single'], // Ensures single quotes are used
             semi: ['error', 'never'], // Ensures semicolons are not used
