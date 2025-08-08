@@ -1,17 +1,19 @@
 ---
-import {
-  boxRecipe,
-  bgColorVariants,
-  shadowVariants,
-  radiusVariants,
-  responsiveGapStyle,
-  zIndexVariants,
-} from './styles.css.ts'
-import type { Shadow } from '@tokens/Shadows/types'
-import type { Radius } from '@tokens/Radius/types'
 import type { Color } from '@tokens/Colors/types'
+import type { Radius } from '@tokens/Radius/types'
+import type { Shadow } from '@tokens/Shadows/types'
+
+import {
+  Overflow,
+  Align,
+  Direction,
+  Display,
+  Justify,
+  Position,
+  Wrap,
+} from '@utils/types'
 import type { Spacings } from '@utils/types'
-import type { DimensionVariants, ZIndexVariant } from './types'
+
 import {
   getDimensionClass,
   getDimensionVars,
@@ -62,14 +64,16 @@ import {
   getAlignVars,
 } from './helpers'
 import {
-  Overflow,
-  Align,
-  Direction,
-  Display,
-  Justify,
-  Position,
-  Wrap,
-} from '@utils/types'
+  boxRecipe,
+  bgColorVariants,
+  shadowVariants,
+  radiusVariants,
+  responsiveGapStyle,
+  zIndexVariants,
+} from './styles.css.ts'
+
+import type { DimensionVariants, ZIndexVariant } from './types'
+
 
 interface Props extends Spacings {
   bgColor?: Color

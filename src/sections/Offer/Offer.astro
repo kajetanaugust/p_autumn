@@ -1,6 +1,4 @@
 ---
-import Box from '@components/Box/Box.astro'
-import Text from '@components/Text/Text.astro'
 import {
   Hospital,
   HeartHandshake,
@@ -9,9 +7,14 @@ import {
   HandHeart,
   Cross,
 } from 'lucide-astro'
+
+import Box from '@components/Box/Box.astro'
+import Text from '@components/Text/Text.astro'
+
+import SectionLayout from '@layouts/SectionLayout.astro'
+
 import OfferCard from './subcomponents/OfferCard/OfferCard.astro'
 import { offerCardIcon } from './subcomponents/OfferCard/styles.css'
-import SectionLayout from '@layouts/SectionLayout.astro'
 ---
 
 <SectionLayout sectionId="oferta" isCentered isFullWidth isWithSmallPb>
