@@ -38,8 +38,8 @@ import {
         carouselPhotos.map(photo => (
           <SplideSlide>
             <Image
-              src={photo}
-              alt="Gallery image 1"
+              src={photo.src}
+              alt={photo.alt}
               loading="lazy"
               quality={60}
               className={galleryImageStyles}
@@ -55,8 +55,8 @@ import {
         carouselPhotos.map(photo => (
           <SplideSlide>
             <Image
-              src={photo}
-              alt="Gallery image 1"
+              src={photo.src}
+              alt={photo.alt}
               loading="lazy"
               quality={60}
               className={galleryImageStyles}

@@ -23,4 +23,11 @@ export const carouselOptions = {
   },
 }
 
-export const carouselPhotos = [photo1, photo2, photo3, photo4, photo5, photo6]
+export const carouselPhotos = [
+  { src: photo1, alt: 'Single person room' },
+  { src: photo2, alt: 'Two-person room' },
+  { src: photo3, alt: 'Common spaces' },
+  { src: photo4, alt: 'Our common room' },
+  { src: photo5, alt: 'Party in our common room' },
+  { src: photo6, alt: 'School kids visit' },
+]

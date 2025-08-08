@@ -14,6 +14,7 @@ export default defineConfig({
         '@': '/src',
         '@components': '/src/components',
         '@sections': '/src/sections',
+        '@layouts': '/src/layouts',
         '@styles': '/src/styles',
         '@tokens': '/src/tokens',
         '@utils': '/src/utils',
