@@ -72,7 +72,7 @@ const photos = [photo1, photo2, photo3, photo4, photo5, photo6]
     <Splide
       options={{
         type: 'fade',
-        autoplay: true,
+        autoplay: false,
         autoHeight: true,
         interval: 4000,
         rewind: true,
@@ -80,6 +80,14 @@ const photos = [photo1, photo2, photo3, photo4, photo5, photo6]
         lazyLoad: 'nearby',
         arrows: false,
         pagination: false,
+        intersection: {
+          inView: {
+            autoplay: true,
+          },
+          outView: {
+            autoplay: false,
+          },
+        },
       }}
     >
       {
