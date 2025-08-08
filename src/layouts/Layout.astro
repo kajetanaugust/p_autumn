@@ -1,11 +1,11 @@
 ---
-import '../styles/fonts.css';
-import Header from "../sections/Header/Header.astro";
+import '../styles/fonts.css'
+import Header from '../sections/Header/Header.astro'
 ---
 
 <!doctype html>
 <html lang="pl">
-<head>
+  <head>
     <!-- Google Tag Manager -->
     <!--<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':-->
     <!--        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],-->
@@ -15,37 +15,39 @@ import Header from "../sections/Header/Header.astro";
     <!-- End Google Tag Manager -->
 
     <!--TODO: remove-->
-    <meta name="robots" content="noindex, nofollow">
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width"/>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
-    <meta name="generator" content={Astro.generator}/>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
     <title>Pensjonat Seniora Pogodna Jesień | Dom Opieki Tarnowskie Góry</title>
-    <meta name="description"
-          content="Dom opieki dla seniorów w Tarnowskich Górach. Profesjonalna opieka, pokoje bez barier architektonicznych, lokalizacja przy parku. Pensjonat Pogodna Jesień od 2006 roku."/>
-</head>
-<body>
-<!-- Google Tag Manager (noscript) -->
-<!--<noscript>-->
-<!--    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-54QJC2MJ"-->
-<!--            height="0" width="0" style="display:none;visibility:hidden"></iframe>-->
-<!--</noscript>-->
-<!-- End Google Tag Manager (noscript) -->
-<Header/>
-<slot/>
-</body>
+    <meta
+      name="description"
+      content="Dom opieki dla seniorów w Tarnowskich Górach. Profesjonalna opieka, pokoje bez barier architektonicznych, lokalizacja przy parku. Pensjonat Pogodna Jesień od 2006 roku."
+    />
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <!--<noscript>-->
+    <!--    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-54QJC2MJ"-->
+    <!--            height="0" width="0" style="display:none;visibility:hidden"></iframe>-->
+    <!--</noscript>-->
+    <!-- End Google Tag Manager (noscript) -->
+    <Header />
+    <slot />
+  </body>
 </html>
 
 <style>
-    html,
-    body {
-        margin: 0;
-        width: 100vw;
-        height: 100%;
-    }
+  html,
+  body {
+    margin: 0;
+    width: 100vw;
+    height: 100%;
+  }
 
-    a {
-        color: inherit;
-        text-decoration: none;
-    }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 </style>

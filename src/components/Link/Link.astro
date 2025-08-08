@@ -1,17 +1,17 @@
 ---
-import Text from "../Text/Text.astro";
-import {styledLink} from "./styles.css";
+import Text from '@components/Text/Text.astro'
+import { styledLink } from './styles.css'
 
 interface Props {
-    href: string;
-    target?: string;
+  href: string
+  target?: string
 }
 
-const {href, target} = Astro.props;
+const { href, target } = Astro.props
 ---
 
 <a class={styledLink} href={href} target={target}>
-    <Text variant="text-regular" textDecoration="underline" class={styledLink}>
-        <slot/>
-    </Text>
+  <Text variant="text-regular" textDecoration="underline" class={styledLink}>
+    <slot />
+  </Text>
 </a>

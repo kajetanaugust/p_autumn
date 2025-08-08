@@ -1,90 +1,106 @@
 ---
-import {buttonRecipe} from './styles.css.ts';
-import type {ButtonSize, ButtonTarget, ButtonType, ButtonVariant} from "./types";
-import Text from "../Text/Text.astro";
+import { buttonRecipe } from './styles.css.ts'
+import type {
+  ButtonSize,
+  ButtonTarget,
+  ButtonType,
+  ButtonVariant,
+} from './types'
+import Text from '@components/Text/Text.astro'
 
 interface Props {
-    href?: string;
-    target?: ButtonTarget;
-    rel?: string;
-    type?: ButtonType;
-    disabled?: boolean;
-    variant?: ButtonVariant;
-    size?: ButtonSize;
-    'aria-label'?: string;
-    'aria-pressed'?: boolean;
-    'aria-expanded'?: boolean;
-    'aria-controls'?: string;
-    'data-testid'?: string;
-    class?: string;
+  href?: string
+  target?: ButtonTarget
+  rel?: string
+  type?: ButtonType
+  disabled?: boolean
+  variant?: ButtonVariant
+  size?: ButtonSize
+  'aria-label'?: string
+  'aria-pressed'?: boolean
+  'aria-expanded'?: boolean
+  'aria-controls'?: string
+  'data-testid'?: string
+  class?: string
 
-    [key: string]: any;
+  [key: string]: any
 }
 
 const {
-    href,
-    target,
-    rel,
-    type = 'button',
-    disabled = false,
-    variant = 'primary',
-    size = 'large',
-    'aria-label': ariaLabel,
-    'aria-pressed': ariaPressed,
-    'aria-expanded': ariaExpanded,
-    'aria-controls': ariaControls,
-    'data-testid': dataTestId,
-    class: className = '',
-    ...rest
-} = Astro.props;
+  href,
+  target,
+  rel,
+  type = 'button',
+  disabled = false,
+  variant = 'primary',
+  size = 'large',
+  'aria-label': ariaLabel,
+  'aria-pressed': ariaPressed,
+  'aria-expanded': ariaExpanded,
+  'aria-controls': ariaControls,
+  'data-testid': dataTestId,
+  class: className = '',
+  ...rest
+} = Astro.props
 
-const isLink = !!href;
-const Tag = isLink ? 'a' : 'button';
+const isLink = !!href
+const Tag = isLink ? 'a' : 'button'
 
-const linkAttrs = isLink ? {
-    href,
-    target,
-    rel: target === '_blank' ? 'noopener noreferrer' : rel,
-} : {};
+const linkAttrs = isLink
+  ? {
+      href,
+      target,
+      rel: target === '_blank' ? 'noopener noreferrer' : rel,
+    }
+  : {}
 
-const buttonAttrs = !isLink ? {
-    type,
-    disabled,
-    'aria-pressed': ariaPressed,
-    'aria-expanded': ariaExpanded,
-    'aria-controls': ariaControls,
-
-} : {};
+const buttonAttrs = !isLink
+  ? {
+      type,
+      disabled,
+      'aria-pressed': ariaPressed,
+      'aria-expanded': ariaExpanded,
+      'aria-controls': ariaControls,
+    }
+  : {}
 
 const buttonClass = buttonRecipe({
-    variant,
-    size,
-});
+  variant,
+  size,
+})
 
-const allClasses = [buttonClass, className].filter(Boolean).join(' ');
+const allClasses = [buttonClass, className].filter(Boolean).join(' ')
 
 const commonAttrs = {
-    class: allClasses,
-    'aria-label': ariaLabel,
-    'data-testid': dataTestId,
-    ...rest,
-};
+  class: allClasses,
+  'aria-label': ariaLabel,
+  'data-testid': dataTestId,
+  ...rest,
+}
 
 const allAttrs = {
-    ...commonAttrs,
-    ...linkAttrs,
-    ...buttonAttrs,
-    ...disabled && {disabled},
-};
+  ...commonAttrs,
+  ...linkAttrs,
+  ...buttonAttrs,
+  ...(disabled && { disabled }),
+}
 
-const textColor = variant === 'primary' ? 'neutral_white' : 'neutral_darkest';
+const textColor = variant === 'primary' ? 'neutral_white' : 'neutral_darkest'
 ---
 
 <Tag {...allAttrs}>
-    {variant.includes('icon') ?
-            <slot/> : (
-                    <Text variant="text-regular" weight={500} color={textColor} textWrap="nowrap">
-                        <slot/>
-                    </Text>)}
-
+  {
+    variant.includes('icon') ? (
+      <slot />
+    ) : (
+      <Text
+        variant="text-regular"
+        weight={500}
+        color={textColor}
+        textWrap="nowrap"
+      >
+        <slot />
+      </Text>
+    )
+  }
 </Tag>

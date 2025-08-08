@@ -1,7 +1,7 @@
 import { globalStyle } from '@vanilla-extract/css'
 
 globalStyle(
-    `
+  `
   html,
   body,
   div,
@@ -84,19 +84,19 @@ globalStyle(
   audio,
   video
 `,
-    {
-        margin: 0,
-        padding: 0,
-        border: 0,
-        fontSize: '100%',
-        font: 'inherit',
-        verticalAlign: 'baseline',
-    }
+  {
+    margin: 0,
+    padding: 0,
+    border: 0,
+    fontSize: '100%',
+    font: 'inherit',
+    verticalAlign: 'baseline',
+  }
 )
 
 // HTML5 display-role reset for older browsers
 globalStyle(
-    `
+  `
   article,
   aside,
   details,
@@ -109,28 +109,28 @@ globalStyle(
   nav,
   section
 `,
-    {
-        display: 'block',
-    }
+  {
+    display: 'block',
+  }
 )
 
 globalStyle('body', {
-    lineHeight: 1,
+  lineHeight: 1,
 })
 
 globalStyle('ol, ul', {
-    listStyle: 'none',
+  listStyle: 'none',
 })
 
 globalStyle('blockquote, q', {
-    quotes: 'none',
+  quotes: 'none',
 })
 
 globalStyle('blockquote:before, blockquote:after, q:before, q:after', {
-    content: "''",
+  content: "''",
 })
 
 globalStyle('table', {
-    borderCollapse: 'collapse',
-    borderSpacing: 0,
+  borderCollapse: 'collapse',
+  borderSpacing: 0,
 })

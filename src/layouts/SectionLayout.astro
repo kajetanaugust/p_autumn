@@ -1,38 +1,39 @@
 ---
-import Box from "../components/Box/Box.astro";
-import {Color} from "../tokens/Colors/types";
+import Box from '@components/Box/Box.astro'
+import type { Color } from '@tokens/Colors/types'
 
 interface Props {
-    isCentered?: boolean;
-    isWithBorder?: boolean;
-    sectionId?: string;
-    isFullWidth?: boolean;
-    isWithSmallPt?: boolean;
-    isWithSmallPb?: boolean;
-    bgColor?: Color;
+  isCentered?: boolean
+  isWithBorder?: boolean
+  sectionId?: string
+  isFullWidth?: boolean
+  isWithSmallPt?: boolean
+  isWithSmallPb?: boolean
+  bgColor?: Color
 }
 
 const {
-    isCentered,
-    isWithBorder,
-    sectionId,
-    isFullWidth,
-    isWithSmallPb,
-    isWithSmallPt,
-    bgColor = 'neutral_white'
-} = Astro.props;
+  isCentered,
+  isWithBorder,
+  sectionId,
+  isFullWidth,
+  isWithSmallPb,
+  isWithSmallPt,
+  bgColor = 'neutral_white',
+} = Astro.props
 ---
 
-<Box px={[20, 80]}
-     pt={isWithSmallPt ? [48, 80] : [64, 112]}
-     pb={isWithSmallPb ? [48, 80] : [64, 112]}
-     gap={[48, 80]}
-     direction="column"
-     align={isCentered ? "center" : "start"}
-     isWithBorder={isWithBorder}
-     id={sectionId} width={isFullWidth ? "100%" : "fit-content"}
-     bgColor={bgColor}>
-    <slot/>
+<Box
+  px={[20, 80]}
+  pt={isWithSmallPt ? [48, 80] : [64, 112]}
+  pb={isWithSmallPb ? [48, 80] : [64, 112]}
+  gap={[48, 80]}
+  direction="column"
+  align={isCentered ? 'center' : 'start'}
+  isWithBorder={isWithBorder}
+  id={sectionId}
+  width={isFullWidth ? '100%' : 'fit-content'}
+  bgColor={bgColor}
+>
+  <slot />
 </Box>
-
-

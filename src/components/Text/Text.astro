@@ -1,51 +1,51 @@
 ---
-import {textColorVariants, textRecipe} from './styles.css.ts';
-import type {FontWeight, FontStyle, TextTag, TextVariant} from './types';
-import {getDefaultTag} from "./helpers";
-import type {Color} from "../../tokens/Colors/types";
+import { textColorVariants, textRecipe } from './styles.css.ts'
+import type { FontWeight, FontStyle, TextTag, TextVariant } from './types'
+import { getDefaultTag } from './helpers'
+import type { Color } from '@tokens/Colors/types'
 
 interface Props {
-    variant?: TextVariant;
-    weight?: FontWeight;
-    style?: FontStyle;
-    textDecoration?: 'none' | 'underline' | 'lineThrough';
-    color?: Color;
-    tag?: TextTag;
-    class?: string;
-    textWrap?: 'wrap' | 'nowrap';
-    textAlign?: 'left' | 'center' | 'right';
+  variant?: TextVariant
+  weight?: FontWeight
+  style?: FontStyle
+  textDecoration?: 'none' | 'underline' | 'lineThrough'
+  color?: Color
+  tag?: TextTag
+  class?: string
+  textWrap?: 'wrap' | 'nowrap'
+  textAlign?: 'left' | 'center' | 'right'
 
-    [key: string]: any;
+  [key: string]: any
 }
 
 const {
-    variant = 'text-medium',
-    textWrap = 'wrap',
-    textAlign = "left",
-    weight,
-    style,
-    textDecoration = 'none',
-    color = 'neutral_darkest',
-    tag,
-    class: className = '',
-    ...rest
-} = Astro.props;
+  variant = 'text-medium',
+  textWrap = 'wrap',
+  textAlign = 'left',
+  weight,
+  style,
+  textDecoration = 'none',
+  color = 'neutral_darkest',
+  tag,
+  class: className = '',
+  ...rest
+} = Astro.props
 
-const Tag = tag || getDefaultTag(variant);
+const Tag = tag || getDefaultTag(variant)
 
 const textClass = textRecipe({
-    variant,
-    weight,
-    style,
-    wrap: textWrap,
-    textAlign
-});
+  variant,
+  weight,
+  style,
+  wrap: textWrap,
+  textAlign,
+})
 
-const colorClass = textColorVariants[color];
+const colorClass = textColorVariants[color]
 
-const allClasses = [textClass, colorClass, className].filter(Boolean).join(' ');
+const allClasses = [textClass, colorClass, className].filter(Boolean).join(' ')
 ---
 
 <Tag class={allClasses} {...rest} x-apple-data-detectors="false">
-    <slot/>
+  <slot />
 </Tag>

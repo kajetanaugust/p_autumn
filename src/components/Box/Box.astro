@@ -1,263 +1,311 @@
 ---
 import {
-    boxRecipe,
-    bgColorVariants,
-    shadowVariants,
-    radiusVariants,
-    responsiveGapStyle,
-    zIndexVariants,
-} from './styles.css.ts';
-import type {Shadow} from "../../tokens/Shadows/types";
-import type {Align, Direction, Display, Justify, Overflow, Position, Wrap} from "../../utils/types";
-import type {Radius} from "../../tokens/Radius/types";
-import type {Color} from "../../tokens/Colors/types";
-import type {Spacings} from "../../utils/types";
-import type {DimensionVariants, ZIndexVariant} from "./types";
+  boxRecipe,
+  bgColorVariants,
+  shadowVariants,
+  radiusVariants,
+  responsiveGapStyle,
+  zIndexVariants,
+} from './styles.css.ts'
+import type { Shadow } from '@tokens/Shadows/types'
+import type { Radius } from '@tokens/Radius/types'
+import type { Color } from '@tokens/Colors/types'
+import type { Spacings } from '@utils/types'
+import type { DimensionVariants, ZIndexVariant } from './types'
 import {
-    getDimensionClass,
-    getDimensionVars,
-    getDirectionClass,
-    getDirectionVars,
-    getGapVars,
-    getPaddingVars, getPaddingClass,
-    getPaddingXVars, getPaddingXClass,
-    getPaddingYVars, getPaddingYClass,
-    getPaddingTopVars, getPaddingTopClass,
-    getPaddingBottomVars, getPaddingBottomClass,
-    getPaddingStartVars, getPaddingStartClass,
-    getPaddingEndVars, getPaddingEndClass,
-    getMarginVars, getMarginClass,
-    getMarginXVars, getMarginXClass,
-    getMarginYVars, getMarginYClass,
-    getMarginTopVars, getMarginTopClass,
-    getMarginBottomVars, getMarginBottomClass,
-    getMarginStartVars, getMarginStartClass,
-    getMarginEndVars, getMarginEndClass,
-    getTopClass,
-    getRightClass,
-    getBottomClass,
-    getLeftClass,
-    getTopVars,
-    getRightVars,
-    getBottomVars,
-    getLeftVars,
-    getPositionClass,
-    getPositionVars,
-    getJustifyClass,
-    getJustifyVars,
-    getAlignClass,
-    getAlignVars
-} from "./helpers";
+  getDimensionClass,
+  getDimensionVars,
+  getDirectionClass,
+  getDirectionVars,
+  getGapVars,
+  getPaddingVars,
+  getPaddingClass,
+  getPaddingXVars,
+  getPaddingXClass,
+  getPaddingYVars,
+  getPaddingYClass,
+  getPaddingTopVars,
+  getPaddingTopClass,
+  getPaddingBottomVars,
+  getPaddingBottomClass,
+  getPaddingStartVars,
+  getPaddingStartClass,
+  getPaddingEndVars,
+  getPaddingEndClass,
+  getMarginVars,
+  getMarginClass,
+  getMarginXVars,
+  getMarginXClass,
+  getMarginYVars,
+  getMarginYClass,
+  getMarginTopVars,
+  getMarginTopClass,
+  getMarginBottomVars,
+  getMarginBottomClass,
+  getMarginStartVars,
+  getMarginStartClass,
+  getMarginEndVars,
+  getMarginEndClass,
+  getTopClass,
+  getRightClass,
+  getBottomClass,
+  getLeftClass,
+  getTopVars,
+  getRightVars,
+  getBottomVars,
+  getLeftVars,
+  getPositionClass,
+  getPositionVars,
+  getJustifyClass,
+  getJustifyVars,
+  getAlignClass,
+  getAlignVars,
+} from './helpers'
+import {
+  Overflow,
+  Align,
+  Direction,
+  Display,
+  Justify,
+  Position,
+  Wrap,
+} from '@utils/types'
 
 interface Props extends Spacings {
-    bgColor?: Color;
-    shadow?: Shadow;
-    position?: Position | [Position, Position];
-    borderRadius?: Radius;
-    isWithBorder?: boolean;
-    direction?: Direction | [Direction, Direction] | [Direction, Direction, Direction];
-    justify?: Justify | [Justify, Justify];
-    align?: Align | [Align, Align];
-    gap?: number | [number, number];
-    width?: DimensionVariants | [DimensionVariants, DimensionVariants];
-    height?: DimensionVariants | [DimensionVariants, DimensionVariants];
-    maxWidth?: DimensionVariants | [DimensionVariants, DimensionVariants];
-    maxHeight?: DimensionVariants | [DimensionVariants, DimensionVariants];
-    zIndex?: ZIndexVariant;
-    top?: number;
-    right?: number;
-    bottom?: number;
-    left?: number;
-    wrap?: Wrap;
-    overflow?: Overflow;
-    display?: Display;
-    role?: astroHTML.JSX.HTMLAttributes['role'];
-    'data-testid'?: string;
-    class?: string;
-    id?: string;
+  bgColor?: Color
+  shadow?: Shadow
+  position?: Position | [Position, Position]
+  borderRadius?: Radius
+  isWithBorder?: boolean
+  direction?:
+    | Direction
+    | [Direction, Direction]
+    | [Direction, Direction, Direction]
+  justify?: Justify | [Justify, Justify]
+  align?: Align | [Align, Align]
+  gap?: number | [number, number]
+  width?: DimensionVariants | [DimensionVariants, DimensionVariants]
+  height?: DimensionVariants | [DimensionVariants, DimensionVariants]
+  maxWidth?: DimensionVariants | [DimensionVariants, DimensionVariants]
+  maxHeight?: DimensionVariants | [DimensionVariants, DimensionVariants]
+  zIndex?: ZIndexVariant
+  top?: number
+  right?: number
+  bottom?: number
+  left?: number
+  wrap?: Wrap
+  overflow?: Overflow
+  display?: Display
+  role?: astroHTML.JSX.HTMLAttributes['role']
+  'data-testid'?: string
+  class?: string
+  id?: string
 }
 
 const {
-    bgColor,
-    shadow,
-    position = 'static',
-    borderRadius,
-    isWithBorder = false,
-    direction = 'row',
-    justify = 'flex-start',
-    align = 'flex-start',
-    gap,
-    width = '100%',
-    height = 'fit-content',
-    maxWidth,
-    maxHeight,
-    zIndex,
-    top, right, bottom, left,
-    wrap = 'nowrap',
-    overflow = 'visible',
-    display = 'flex',
-    class: className = '',
-    p, pb, ps, pe, pt, px, py,
-    m, mx, my, mt, mb, ms, me
-} = Astro.props;
+  bgColor,
+  shadow,
+  position = 'static',
+  borderRadius,
+  isWithBorder = false,
+  direction = 'row',
+  justify = 'flex-start',
+  align = 'flex-start',
+  gap,
+  width = '100%',
+  height = 'fit-content',
+  maxWidth,
+  maxHeight,
+  zIndex,
+  top,
+  right,
+  bottom,
+  left,
+  wrap = 'nowrap',
+  overflow = 'visible',
+  display = 'flex',
+  class: className = '',
+  p,
+  pb,
+  ps,
+  pe,
+  pt,
+  px,
+  py,
+  m,
+  mx,
+  my,
+  mt,
+  mb,
+  ms,
+  me,
+} = Astro.props
 
-const recipeDirection = typeof direction === 'string' ? direction : null;
-const recipePosition = typeof position === 'string' ? position : null;
-const recipeJustify = typeof justify === 'string' ? justify : null;
-const recipeAlign = typeof align === 'string' ? align : null;
+const recipeDirection = typeof direction === 'string' ? direction : null
+const recipePosition = typeof position === 'string' ? position : null
+const recipeJustify = typeof justify === 'string' ? justify : null
+const recipeAlign = typeof align === 'string' ? align : null
 
-const directionClass = getDirectionClass(direction);
-const directionVars = getDirectionVars(direction);
-const positionClass = getPositionClass(position);
-const positionVars = getPositionVars(position);
-const justifyClass = getJustifyClass(justify);
-const justifyVars = getJustifyVars(justify);
-const alignClass = getAlignClass(align);
-const alignVars = getAlignVars(align);
+const directionClass = getDirectionClass(direction)
+const directionVars = getDirectionVars(direction)
+const positionClass = getPositionClass(position)
+const positionVars = getPositionVars(position)
+const justifyClass = getJustifyClass(justify)
+const justifyVars = getJustifyVars(justify)
+const alignClass = getAlignClass(align)
+const alignVars = getAlignVars(align)
 
-const responsiveGapClass = gap ? responsiveGapStyle : '';
-const gapVars = getGapVars(gap);
+const responsiveGapClass = gap ? responsiveGapStyle : ''
+const gapVars = getGapVars(gap)
 
 const baseClass = boxRecipe({
-    display,
-    position: recipePosition,
-    direction: recipeDirection,
-    justify: recipeJustify,
-    align: recipeAlign,
-    wrap,
-    overflow,
-    isWithBorder,
-});
+  display,
+  position: recipePosition,
+  direction: recipeDirection,
+  justify: recipeJustify,
+  align: recipeAlign,
+  wrap,
+  overflow,
+  isWithBorder,
+})
 
-const bgColorClass = bgColor ? bgColorVariants[bgColor] : '';
-const shadowClass = shadow && shadow in shadowVariants ? shadowVariants[shadow] : '';
-const radiusClass = borderRadius && typeof borderRadius === 'string' ? radiusVariants[borderRadius] : '';
-const zIndexClass = zIndex ? zIndexVariants[zIndex] : '';
-const topClass = getTopClass(top);
-const topVars = getTopVars(top);
-const rightClass = getRightClass(right);
-const rightVars = getRightVars(right);
-const bottomClass = getBottomClass(bottom);
-const bottomVars = getBottomVars(bottom);
-const leftClass = getLeftClass(left);
-const leftVars = getLeftVars(left);
+const bgColorClass = bgColor ? bgColorVariants[bgColor] : ''
+const shadowClass =
+  shadow && shadow in shadowVariants ? shadowVariants[shadow] : ''
+const radiusClass =
+  borderRadius && typeof borderRadius === 'string'
+    ? radiusVariants[borderRadius]
+    : ''
+const zIndexClass = zIndex ? zIndexVariants[zIndex] : ''
+const topClass = getTopClass(top)
+const topVars = getTopVars(top)
+const rightClass = getRightClass(right)
+const rightVars = getRightVars(right)
+const bottomClass = getBottomClass(bottom)
+const bottomVars = getBottomVars(bottom)
+const leftClass = getLeftClass(left)
+const leftVars = getLeftVars(left)
 
 // Dimension classes and vars
-const widthClass = getDimensionClass(width, 'width');
-const widthVars = getDimensionVars(width, 'width');
-const heightClass = getDimensionClass(height, 'height');
-const heightVars = getDimensionVars(height, 'height');
-const maxWidthClass = maxWidth ? getDimensionClass(maxWidth, 'maxWidth') : '';
-const maxWidthVars = maxWidth ? getDimensionVars(maxWidth, 'maxWidth') : '';
-const maxHeightClass = maxHeight ? getDimensionClass(maxHeight, 'maxHeight') : '';
-const maxHeightVars = maxHeight ? getDimensionVars(maxHeight, 'maxHeight') : {};
+const widthClass = getDimensionClass(width, 'width')
+const widthVars = getDimensionVars(width, 'width')
+const heightClass = getDimensionClass(height, 'height')
+const heightVars = getDimensionVars(height, 'height')
+const maxWidthClass = maxWidth ? getDimensionClass(maxWidth, 'maxWidth') : ''
+const maxWidthVars = maxWidth ? getDimensionVars(maxWidth, 'maxWidth') : ''
+const maxHeightClass = maxHeight
+  ? getDimensionClass(maxHeight, 'maxHeight')
+  : ''
+const maxHeightVars = maxHeight ? getDimensionVars(maxHeight, 'maxHeight') : {}
 
 // Responsive spacing classes and vars
-const paddingClass = getPaddingClass(p);
-const paddingVars = getPaddingVars(p);
-const paddingXClass = getPaddingXClass(px);
-const paddingXVars = getPaddingXVars(px);
-const paddingYClass = getPaddingYClass(py);
-const paddingYVars = getPaddingYVars(py);
-const paddingTopClass = getPaddingTopClass(pt);
-const paddingTopVars = getPaddingTopVars(pt);
-const paddingBottomClass = getPaddingBottomClass(pb);
-const paddingBottomVars = getPaddingBottomVars(pb);
-const paddingStartClass = getPaddingStartClass(ps);
-const paddingStartVars = getPaddingStartVars(ps);
-const paddingEndClass = getPaddingEndClass(pe);
-const paddingEndVars = getPaddingEndVars(pe);
+const paddingClass = getPaddingClass(p)
+const paddingVars = getPaddingVars(p)
+const paddingXClass = getPaddingXClass(px)
+const paddingXVars = getPaddingXVars(px)
+const paddingYClass = getPaddingYClass(py)
+const paddingYVars = getPaddingYVars(py)
+const paddingTopClass = getPaddingTopClass(pt)
+const paddingTopVars = getPaddingTopVars(pt)
+const paddingBottomClass = getPaddingBottomClass(pb)
+const paddingBottomVars = getPaddingBottomVars(pb)
+const paddingStartClass = getPaddingStartClass(ps)
+const paddingStartVars = getPaddingStartVars(ps)
+const paddingEndClass = getPaddingEndClass(pe)
+const paddingEndVars = getPaddingEndVars(pe)
 
-const marginClass = getMarginClass(m);
-const marginVars = getMarginVars(m);
-const marginXClass = getMarginXClass(mx);
-const marginXVars = getMarginXVars(mx);
-const marginYClass = getMarginYClass(my);
-const marginYVars = getMarginYVars(my);
-const marginTopClass = getMarginTopClass(mt);
-const marginTopVars = getMarginTopVars(mt);
-const marginBottomClass = getMarginBottomClass(mb);
-const marginBottomVars = getMarginBottomVars(mb);
-const marginStartClass = getMarginStartClass(ms);
-const marginStartVars = getMarginStartVars(ms);
-const marginEndClass = getMarginEndClass(me);
-const marginEndVars = getMarginEndVars(me);
+const marginClass = getMarginClass(m)
+const marginVars = getMarginVars(m)
+const marginXClass = getMarginXClass(mx)
+const marginXVars = getMarginXVars(mx)
+const marginYClass = getMarginYClass(my)
+const marginYVars = getMarginYVars(my)
+const marginTopClass = getMarginTopClass(mt)
+const marginTopVars = getMarginTopVars(mt)
+const marginBottomClass = getMarginBottomClass(mb)
+const marginBottomVars = getMarginBottomVars(mb)
+const marginStartClass = getMarginStartClass(ms)
+const marginStartVars = getMarginStartVars(ms)
+const marginEndClass = getMarginEndClass(me)
+const marginEndVars = getMarginEndVars(me)
 
 const allClasses = [
-    baseClass,
-    bgColorClass,
-    shadowClass,
-    radiusClass,
-    responsiveGapClass,
-    directionClass,
-    positionClass,
-    justifyClass,
-    alignClass,
-    widthClass,
-    heightClass,
-    maxWidthClass,
-    maxHeightClass,
-    zIndexClass,
-    topClass,
-    rightClass,
-    bottomClass,
-    leftClass,
-    className,
-    paddingClass,
-    paddingXClass,
-    paddingYClass,
-    paddingTopClass,
-    paddingBottomClass,
-    paddingStartClass,
-    paddingEndClass,
-    marginClass,
-    marginXClass,
-    marginYClass,
-    marginTopClass,
-    marginBottomClass,
-    marginStartClass,
-    marginEndClass,
-].filter(Boolean).join(' ');
+  baseClass,
+  bgColorClass,
+  shadowClass,
+  radiusClass,
+  responsiveGapClass,
+  directionClass,
+  positionClass,
+  justifyClass,
+  alignClass,
+  widthClass,
+  heightClass,
+  maxWidthClass,
+  maxHeightClass,
+  zIndexClass,
+  topClass,
+  rightClass,
+  bottomClass,
+  leftClass,
+  className,
+  paddingClass,
+  paddingXClass,
+  paddingYClass,
+  paddingTopClass,
+  paddingBottomClass,
+  paddingStartClass,
+  paddingEndClass,
+  marginClass,
+  marginXClass,
+  marginYClass,
+  marginTopClass,
+  marginBottomClass,
+  marginStartClass,
+  marginEndClass,
+]
+  .filter(Boolean)
+  .join(' ')
 
 const allVars = {
-    ...widthVars,
-    ...heightVars,
-    ...maxWidthVars,
-    ...maxHeightVars,
-    ...directionVars,
-    ...positionVars,
-    ...justifyVars,
-    ...alignVars,
-    ...gapVars,
-    ...paddingVars,
-    ...paddingXVars,
-    ...paddingYVars,
-    ...paddingTopVars,
-    ...paddingBottomVars,
-    ...paddingStartVars,
-    ...paddingEndVars,
-    ...marginVars,
-    ...marginXVars,
-    ...marginYVars,
-    ...marginTopVars,
-    ...marginBottomVars,
-    ...marginStartVars,
-    ...marginEndVars,
-    ...topVars,
-    ...rightVars,
-    ...bottomVars,
-    ...leftVars,
-};
+  ...widthVars,
+  ...heightVars,
+  ...maxWidthVars,
+  ...maxHeightVars,
+  ...directionVars,
+  ...positionVars,
+  ...justifyVars,
+  ...alignVars,
+  ...gapVars,
+  ...paddingVars,
+  ...paddingXVars,
+  ...paddingYVars,
+  ...paddingTopVars,
+  ...paddingBottomVars,
+  ...paddingStartVars,
+  ...paddingEndVars,
+  ...marginVars,
+  ...marginXVars,
+  ...marginYVars,
+  ...marginTopVars,
+  ...marginBottomVars,
+  ...marginStartVars,
+  ...marginEndVars,
+  ...topVars,
+  ...rightVars,
+  ...bottomVars,
+  ...leftVars,
+}
 
-const {id, role, 'data-testid': dataTestId} = Astro.props;
+const { id, role, 'data-testid': dataTestId } = Astro.props
 ---
 
 <div
-        class={allClasses}
-        id={id}
-        role={role}
-        style={allVars}
-        data-testid={dataTestId}
+  class={allClasses}
+  id={id}
+  role={role}
+  style={allVars}
+  data-testid={dataTestId}
 >
-    <slot/>
+  <slot />
 </div>

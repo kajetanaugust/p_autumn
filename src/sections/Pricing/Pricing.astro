@@ -1,94 +1,130 @@
 ---
-import Box from "../../components/Box/Box.astro";
-import Text from "../../components/Text/Text.astro";
-import PriceTile from "./subcomponents/PriceTile.astro";
-import PriceFeature from "./subcomponents/PriceFeature.astro";
-import Button from "../../components/Button/Button.astro";
-import {Download} from "lucide-astro";
-import {pricingInfoItem} from "./styles.css";
-import SectionLayout from "../../layouts/SectionLayout.astro";
+import Box from '@components/Box/Box.astro'
+import Text from '@components/Text/Text.astro'
+import PriceTile from './subcomponents/PriceTile.astro'
+import PriceFeature from './subcomponents/PriceFeature.astro'
+import Button from '@components/Button/Button.astro'
+import { Download } from 'lucide-astro'
+import { pricingInfoItem } from './styles.css'
+import SectionLayout from '@layouts/SectionLayout.astro'
 ---
 
 <SectionLayout isCentered isWithBorder sectionId="cennik" isWithSmallPb>
+  <Box direction="column" gap={[20, 24]} align="center">
+    <Text variant="tagline">Cennik</Text>
+    <Text variant="heading-2" textAlign="center">
+      Koszt pobytu w naszym Domu
+    </Text>
+    <Text variant="text-medium" textAlign="center">
+      Przejrzysty cennik dla krótkoterminowych i długoterminowych pobytów
+    </Text>
+  </Box>
+  <Box direction={['column', 'row']} gap={48}>
     <Box direction="column" gap={[20, 24]} align="center">
-        <Text variant="tagline">Cennik</Text>
-        <Text variant="heading-2" textAlign="center">
-            Koszt pobytu w naszym Domu
+      <Text variant="heading-4" textAlign="center" tag="p">
+        Pobyt krótkoterminowy
+      </Text>
+      <Box direction="column" justify="space-between" gap={[20, 24]}>
+        <PriceTile price="260zł" title="Pokój jednoosobowy" period="za dobę">
+          <Box
+            direction="column"
+            align="start"
+            justify="center"
+            width="fit-content"
+            gap={16}
+          >
+            <PriceFeature text="Całodobowa opieka opiekunek" />
+            <PriceFeature text="Długość pobytu do miesiąca" />
+            <PriceFeature text="Pełne wyżywienie" />
+            <PriceFeature text="Opieka pielęgniarek i lekarza" />
+          </Box>
+        </PriceTile>
+        <PriceTile price="230zł" title="Pokój dwuosobowy" period="za dobę">
+          <Box
+            direction="column"
+            align="start"
+            justify="center"
+            width="fit-content"
+            gap={16}
+          >
+            <PriceFeature text="Całodobowa opieka opiekunek" />
+            <PriceFeature text="Długość pobytu do miesiąca" />
+            <PriceFeature text="Pełne wyżywienie" />
+            <PriceFeature text="Opieka pielęgniarek i lekarza" />
+          </Box>
+        </PriceTile>
+      </Box>
+    </Box>
+    <Box direction="column" gap={[20, 24]} align="center">
+      <Text variant="heading-4" textAlign="center" tag="p">
+        Pobyt długoterminowy
+      </Text>
+      <Box direction="column" justify="space-between" gap={[20, 24]}>
+        <PriceTile
+          price="od 5700zł"
+          title="Pokój jednoosobowy"
+          period="za miesiąc"
+        >
+          <Box
+            direction="column"
+            align="start"
+            justify="center"
+            width="fit-content"
+            gap={16}
+          >
+            <PriceFeature text="Całodobowa opieka opiekunek" />
+            <PriceFeature text="Zniżka za pobyt długoterminowy" />
+            <PriceFeature text="Pełne wyżywienie" />
+            <PriceFeature text="Opieka pielęgniarek i lekarza" />
+          </Box>
+        </PriceTile>
+        <PriceTile
+          price="od 5200zł"
+          title="Pokój dwuosobowy"
+          period="za miesiąc"
+        >
+          <Box
+            direction="column"
+            align="start"
+            justify="center"
+            width="fit-content"
+            gap={16}
+          >
+            <PriceFeature text="Całodobowa opieka opiekunek" />
+            <PriceFeature text="Zniżka za pobyt długoterminowy" />
+            <PriceFeature text="Pełne wyżywienie" />
+            <PriceFeature text="Opieka pielęgniarek i lekarza" />
+          </Box>
+        </PriceTile>
+      </Box>
+    </Box>
+  </Box>
+  <Box direction="column" gap={[20, 24]}>
+    <Text variant="heading-4" textAlign="center" tag="p"
+      >Dodatkowe Informacje</Text
+    >
+    <Box direction={['column', 'row']} gap={[64, 80]} justify="space-between">
+      <Text variant="text-medium" class={pricingInfoItem}>
+        Dla osób z chorobą Alzheimera, zaawansowaną demencją lub wymagających
+        szczególnej opieki obowiązuje dopłata w wysokości 600 zł miesięcznie.
+      </Text>
+      <Box direction="column" gap={16} class={pricingInfoItem}>
+        <Text variant="text-medium">
+          Przed przyjęciem prosimy o dostarczenie wypisu ze szpitala z
+          ostatniego miesiąca lub zaświadczenia lekarskiego o stanie zdrowia, do
+          pobrania poniżej:
         </Text>
-        <Text variant="text-medium" textAlign="center">
-            Przejrzysty cennik dla krótkoterminowych i długoterminowych pobytów
-        </Text>
-    </Box>
-    <Box direction={['column', 'row']} gap={48}>
-        <Box direction="column" gap={[20, 24]} align="center">
-            <Text variant="heading-4" textAlign="center" tag="p">
-                Pobyt krótkoterminowy
-            </Text>
-            <Box direction="column" justify="space-between" gap={[20, 24]}>
-                <PriceTile price="260zł" title="Pokój jednoosobowy" period="za dobę">
-                    <Box direction="column" align="start" justify="center" width="fit-content" gap={16}>
-                        <PriceFeature text="Całodobowa opieka opiekunek"/>
-                        <PriceFeature text="Długość pobytu do miesiąca"/>
-                        <PriceFeature text="Pełne wyżywienie"/>
-                        <PriceFeature text="Opieka pielęgniarek i lekarza"/>
-                    </Box>
-                </PriceTile>
-                <PriceTile price="230zł" title="Pokój dwuosobowy" period="za dobę">
-                    <Box direction="column" align="start" justify="center" width="fit-content" gap={16}>
-                        <PriceFeature text="Całodobowa opieka opiekunek"/>
-                        <PriceFeature text="Długość pobytu do miesiąca"/>
-                        <PriceFeature text="Pełne wyżywienie"/>
-                        <PriceFeature text="Opieka pielęgniarek i lekarza"/>
-                    </Box>
-                </PriceTile>
+        <a href="/zaswiadczenie.pdf" download="szablon-zaswiadczenia.pdf">
+          <Button variant="outline" size="small">
+            <Box direction="row" align="center" gap={10}>
+              <Download />
+              <Text variant="text-regular" weight={500}
+                >Pobierz szablon zaświadczenia</Text
+              >
             </Box>
-        </Box>
-        <Box direction="column" gap={[20, 24]} align="center">
-            <Text variant="heading-4" textAlign="center" tag="p">
-                Pobyt długoterminowy
-            </Text>
-            <Box direction="column" justify="space-between" gap={[20, 24]}>
-                <PriceTile price="od 5700zł" title="Pokój jednoosobowy" period="za miesiąc">
-                    <Box direction="column" align="start" justify="center" width="fit-content" gap={16}>
-                        <PriceFeature text="Całodobowa opieka opiekunek"/>
-                        <PriceFeature text="Zniżka za pobyt długoterminowy"/>
-                        <PriceFeature text="Pełne wyżywienie"/>
-                        <PriceFeature text="Opieka pielęgniarek i lekarza"/>
-                    </Box>
-                </PriceTile>
-                <PriceTile price="od 5200zł" title="Pokój dwuosobowy" period="za miesiąc">
-                    <Box direction="column" align="start" justify="center" width="fit-content" gap={16}>
-                        <PriceFeature text="Całodobowa opieka opiekunek"/>
-                        <PriceFeature text="Zniżka za pobyt długoterminowy"/>
-                        <PriceFeature text="Pełne wyżywienie"/>
-                        <PriceFeature text="Opieka pielęgniarek i lekarza"/>
-                    </Box>
-                </PriceTile>
-            </Box>
-        </Box>
+          </Button>
+        </a>
+      </Box>
     </Box>
-    <Box direction="column" gap={[20, 24]}>
-        <Text variant="heading-4" textAlign="center" tag="p">Dodatkowe Informacje</Text>
-        <Box direction={['column', 'row']} gap={[64, 80]} justify="space-between">
-            <Text variant="text-medium" class={pricingInfoItem}>
-                Dla osób z chorobą Alzheimera, zaawansowaną demencją lub wymagających szczególnej opieki obowiązuje
-                dopłata
-                w wysokości 600 zł miesięcznie.
-            </Text>
-            <Box direction="column" gap={16} class={pricingInfoItem}>
-                <Text variant="text-medium">
-                    Przed przyjęciem prosimy o dostarczenie wypisu ze szpitala z ostatniego miesiąca lub zaświadczenia
-                    lekarskiego o stanie zdrowia, do pobrania poniżej:
-                </Text>
-                <a href="/zaswiadczenie.pdf" download="szablon-zaswiadczenia.pdf">
-                    <Button variant="outline" size="small">
-                        <Box direction="row" align="center" gap={10}>
-                            <Download/>
-                            <Text variant="text-regular" weight={500}>Pobierz szablon zaświadczenia</Text>
-                        </Box>
-                    </Button>
-                </a>
-            </Box>
-        </Box>
-    </Box>
+  </Box>
 </SectionLayout>
