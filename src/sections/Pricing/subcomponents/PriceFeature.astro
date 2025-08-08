@@ -1,19 +1,19 @@
 ---
-import {Check} from "lucide-astro";
+import { Check } from 'lucide-astro'
 
-import Box from "../../../components/Box/Box.astro";
-import Text from "../../../components/Text/Text.astro";
+import Box from '@components/Box/Box.astro'
+import Text from '@components/Text/Text.astro'
 
 interface Props {
-    text: string;
+  text: string
 }
 
-const {text} = Astro.props;
+const { text } = Astro.props
 ---
 
 <Box direction="row" gap={8} width="fit-content">
-    <Check/>
-    <Text variant="text-regular">
-        {text}
-    </Text>
+  <Check />
+  <Text variant="text-regular">
+    {text}
+  </Text>
 </Box>
