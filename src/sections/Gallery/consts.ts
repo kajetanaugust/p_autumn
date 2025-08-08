@@ -7,20 +7,12 @@ import photo6 from '@assets/pictures/gallery/IMPREZA4.jpg'
 
 export const carouselOptions = {
   type: 'fade',
-  autoplay: false,
+  autoplay: true,
   autoHeight: true,
   interval: 4000,
   rewind: true,
   easing: 'linear',
   pagination: false,
-  intersection: {
-    inView: {
-      autoplay: true,
-    },
-    outView: {
-      autoplay: false,
-    },
-  },
 }
 
 export const carouselPhotos = [
