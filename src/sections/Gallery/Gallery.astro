@@ -1,23 +1,18 @@
 ---
 import { Splide, SplideSlide } from 'astro-splide'
+
 import Box from '@components/Box/Box.astro'
 import '@splidejs/splide/css'
+import Image from '@components/Image/Image.astro'
 import Text from '@components/Text/Text.astro'
 
-import photo1 from '@assets/pictures/gallery/POKOJ1.jpg'
-import photo2 from '@assets/pictures/gallery/POKOJ2.jpg'
-import photo3 from '@assets/pictures/gallery/KORYTARZ.jpg'
-import photo4 from '@assets/pictures/gallery/SWIETLICA.jpg'
-import photo5 from '@assets/pictures/gallery/IMPREZA2.jpg'
-import photo6 from '@assets/pictures/gallery/IMPREZA4.jpg'
+import { carouselOptions, carouselPhotos } from './consts'
+
 import {
   desktopCarousel,
   galleryImageStyles,
   mobileCarousel,
 } from './styles.css'
-import { Image } from 'astro:assets'
-
-const photos = [photo1, photo2, photo3, photo4, photo5, photo6]
 ---
 
 <Box
@@ -27,6 +22,7 @@ const photos = [photo1, photo2, photo3, photo4, photo5, photo6]
   py={[64, 112]}
   gap={[48, 80]}
   id="galeria"
+  align="center"
   bgColor="neutral_lightest"
 >
   <Box direction="column" gap={[20, 24]} justify="center" align="center">
@@ -36,32 +32,17 @@ const photos = [photo1, photo2, photo3, photo4, photo5, photo6]
       >Zobacz nasze przestrzenie i radosne chwile mieszkańców.</Text
     >
   </Box>
-  <Box maxHeight="700px" class={desktopCarousel}>
-    <Splide
-      options={{
-        type: 'fade',
-        autoplay: true,
-        autoHeight: true,
-        interval: 4000,
-        pauseOnHover: false,
-        height: '700px',
-        rewind: true,
-        easing: 'linear',
-        lazyLoad: 'nearby',
-        gap: '32px',
-        padding: '24px',
-        pagination: false,
-      }}
-    >
+  <Box maxHeight={700} maxWidth={1280} class={desktopCarousel}>
+    <Splide options={{ ...carouselOptions, arrows: true, padding: '24px' }}>
       {
-        photos.map(photo => (
+        carouselPhotos.map(photo => (
           <SplideSlide>
             <Image
               src={photo}
               alt="Gallery image 1"
               loading="lazy"
               quality={60}
-              class={galleryImageStyles}
+              className={galleryImageStyles}
             />
           </SplideSlide>
         ))
@@ -69,36 +50,16 @@ const photos = [photo1, photo2, photo3, photo4, photo5, photo6]
     </Splide>
   </Box>
   <Box class={mobileCarousel}>
-    <Splide
-      options={{
-        type: 'fade',
-        autoplay: false,
-        autoHeight: true,
-        interval: 4000,
-        rewind: true,
-        easing: 'linear',
-        lazyLoad: 'nearby',
-        arrows: false,
-        pagination: false,
-        intersection: {
-          inView: {
-            autoplay: true,
-          },
-          outView: {
-            autoplay: false,
-          },
-        },
-      }}
-    >
+    <Splide options={{ ...carouselOptions, arrows: false }}>
       {
-        photos.map(photo => (
+        carouselPhotos.map(photo => (
           <SplideSlide>
             <Image
               src={photo}
               alt="Gallery image 1"
               loading="lazy"
               quality={60}
-              class={galleryImageStyles}
+              className={galleryImageStyles}
             />
           </SplideSlide>
         ))
