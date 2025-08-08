@@ -1,26 +1,34 @@
 ---
-import Box from "../../../components/Box/Box.astro";
-import Button from "../../../components/Button/Button.astro";
-import Text from "../../../components/Text/Text.astro";
+import Box from '../../../components/Box/Box.astro'
+import Button from '../../../components/Button/Button.astro'
+import Text from '../../../components/Text/Text.astro'
 
 interface Props {
-    title: string;
-    price: string;
-    period: string
+  title: string
+  price: string
+  period: string
 }
 
-const {title, price, period} = Astro.props;
+const { title, price, period } = Astro.props
 ---
 
-<Box direction="column" justify="center" align="center" gap={[24, 32]} borderRadius="lg" bgColor="neutral_lightest"
-     px={[24, 32]} py={32}>
-    <Box direction="column" justify="center" align="center" gap={8}>
-        <Text variant="heading-6" tag="p">{title}</Text>
-        <Box direction="column" width="100%" align="center">
-            <Text variant="heading-2" tag="p">{price}</Text>
-            <Text variant="text-regular">{period}</Text>
-        </Box>
+<Box
+  direction="column"
+  justify="center"
+  align="center"
+  gap={[24, 32]}
+  borderRadius="lg"
+  bgColor="neutral_lightest"
+  px={[24, 32]}
+  py={32}
+>
+  <Box direction="column" justify="center" align="center" gap={8}>
+    <Text variant="heading-6" tag="p">{title}</Text>
+    <Box direction="column" width="100%" align="center">
+      <Text variant="heading-2" tag="p">{price}</Text>
+      <Text variant="text-regular">{period}</Text>
     </Box>
-    <slot/>
-    <Button variant="primary">Dowiedz się więcej</Button>
+  </Box>
+  <slot />
+  <Button variant="primary" href="#kontakt">Dowiedz się więcej</Button>
 </Box>
