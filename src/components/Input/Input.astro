@@ -1,0 +1,43 @@
+---
+interface Props {
+  type: 'tel' | 'email' | 'text'
+  placeholder: string
+  name: string
+  label: string
+  id: string
+  value?: string
+  required?: boolean
+  disabled?: boolean
+  class?: string
+  onChange?: (event: Event) => void
+  isError?: boolean
+}
+
+const {
+  type,
+  placeholder,
+  name,
+  label,
+  id,
+  value,
+  required,
+  disabled,
+  class: className,
+  onChange,
+  isError,
+} = Astro.props
+---
+
+<label for={id}>
+  {label}
+</label>
+<input
+  type={type}
+  placeholder={placeholder}
+  name={name}
+  id={id}
+  value={value}
+  required={required}
+  disabled={disabled}
+  class={className}
+/>
