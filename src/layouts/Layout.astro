@@ -1,6 +1,7 @@
 ---
 import '@styles/fonts.css'
 import '@splidejs/splide/css'
+
 import Footer from '@sections/Footer/Footer.astro'
 import Header from '@sections/Header/Header.astro'
 ---
@@ -32,21 +33,6 @@ import Header from '@sections/Header/Header.astro'
       name="description"
       content="Dom opieki dla seniorów w Tarnowskich Górach. Profesjonalna opieka, pokoje bez barier architektonicznych, lokalizacja przy parku. Pensjonat Pogodna Jesień od 2006 roku."
     />
-
-    <link
-      rel="preload"
-      href="/src/assets/fonts/Merriweather/Merriweather-Variable.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/src/assets/fonts/PublicSans/PublicSans-Variable.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -61,6 +47,9 @@ import Header from '@sections/Header/Header.astro'
     <Header />
     <slot />
     <Footer />
+    <script>
+      import '@scripts/menuHamburger.ts'
+    </script>
   </body>
 </html>
 
