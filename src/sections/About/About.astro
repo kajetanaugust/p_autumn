@@ -1,6 +1,7 @@
 ---
+import { Image } from 'astro:assets'
+
 import Box from '@components/Box/Box.astro'
-import Image from '@components/Image/Image.astro'
 import Text from '@components/Text/Text.astro'
 
 import SectionLayout from '@layouts/SectionLayout.astro'
@@ -34,9 +35,11 @@ import { AboutImageStyles } from './styles.css'
       src={careImage}
       alt="Our Halloween party"
       loading="lazy"
-      layout="constrained"
-      className={AboutImageStyles}
-      quality={75}
+      layout="full-width"
+      class={AboutImageStyles}
+      quality={90}
+      width={1920}
+      height={850}
     />
   </Box>
 </SectionLayout>

@@ -1,9 +1,10 @@
 ---
+import { Image } from 'astro:assets'
+
 import { Splide, SplideSlide } from 'astro-splide'
+import '@splidejs/splide/css'
 
 import Box from '@components/Box/Box.astro'
-import '@splidejs/splide/css'
-import Image from '@components/Image/Image.astro'
 import Text from '@components/Text/Text.astro'
 
 import { carouselOptions, carouselPhotos } from './consts'
@@ -41,8 +42,11 @@ import {
               src={photo.src}
               alt={photo.alt}
               loading="lazy"
-              quality={60}
-              className={galleryImageStyles}
+              layout="full-width"
+              quality={90}
+              width={1920}
+              height={850}
+              class={galleryImageStyles}
             />
           </SplideSlide>
         ))
@@ -58,8 +62,11 @@ import {
               src={photo.src}
               alt={photo.alt}
               loading="lazy"
-              quality={60}
-              className={galleryImageStyles}
+              layout="full-width"
+              quality={90}
+              width={1920}
+              height={850}
+              class={galleryImageStyles}
             />
           </SplideSlide>
         ))
