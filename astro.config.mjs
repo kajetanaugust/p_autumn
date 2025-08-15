@@ -9,6 +9,10 @@ export default defineConfig({
   integrations: [sitemap()],
   vite: {
     plugins: [vanillaExtractPlugin()],
+    build: {
+      cssCodeSplit: true,
+      cssMinify: 'esbuild',
+    },
     resolve: {
       alias: {
         '@': '/src',
