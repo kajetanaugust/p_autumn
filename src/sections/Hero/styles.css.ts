@@ -11,4 +11,9 @@ export const heroImageStyles = style({
   maxWidth: '100%',
   maxHeight: 450,
   objectFit: 'cover',
+  '@media': {
+    'screen and (min-width: 1920px)': {
+      maxHeight: 600,
+    },
+  },
 })

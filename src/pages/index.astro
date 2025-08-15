@@ -1,8 +1,9 @@
 ---
+import Box from '@components/Box/Box.astro'
+
 import About from '@sections/About/About.astro'
 import Care from '@sections/Care.astro'
 import Contact from '@sections/Contact/Contact.astro'
-import Footer from '@sections/Footer/Footer.astro'
 import Gallery from '@sections/Gallery/Gallery.astro'
 import Hero from '@sections/Hero/Hero.astro'
 import Offer from '@sections/Offer/Offer.astro'
@@ -13,13 +14,14 @@ import Layout from '@layouts/Layout.astro'
 ---
 
 <Layout>
-  <Hero />
-  <About />
-  <Care />
-  <Offer />
-  <SponsoredStays />
-  <Pricing />
-  <Gallery />
-  <Contact />
-  <Footer />
+  <Box direction="column" maxWidth={1920}>
+    <Hero />
+    <About />
+    <Care />
+    <Offer />
+    <SponsoredStays />
+    <Pricing />
+    <Gallery />
+    <Contact />
+  </Box>
 </Layout>

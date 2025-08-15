@@ -6,6 +6,8 @@ import Text from '@components/Text/Text.astro'
 import SectionLayout from '@layouts/SectionLayout.astro'
 
 import careImage from '@assets/care.jpg'
+
+import { AboutImageStyles } from './styles.css'
 ---
 
 <SectionLayout sectionId="historia" isFullWidth isWithSmallPb>
@@ -33,8 +35,8 @@ import careImage from '@assets/care.jpg'
       alt="Our Halloween party"
       loading="lazy"
       layout="constrained"
+      className={AboutImageStyles}
       quality={75}
-      maxHeight={738}
     />
   </Box>
 </SectionLayout>
