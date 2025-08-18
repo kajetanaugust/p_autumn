@@ -12,6 +12,16 @@ export default defineConfig({
     build: {
       cssCodeSplit: true,
       cssMinify: 'esbuild',
+      rollupOptions: {
+        output: {
+          assetFileNames: assetInfo => {
+            if (assetInfo.name && assetInfo.name.endsWith('.css')) {
+              return 'assets/[name]-[hash][extname]'
+            }
+            return 'assets/[name]-[hash][extname]'
+          },
+        },
+      },
     },
     resolve: {
       alias: {
@@ -27,5 +37,8 @@ export default defineConfig({
         '@scripts': '/src/scripts',
       },
     },
+  },
+  build: {
+    inlineStylesheets: 'auto',
   },
 })
