@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jesien.com.pl/sitemap.xml
+Sitemap: https://jesien.com.pl/sitemap-index.xml
