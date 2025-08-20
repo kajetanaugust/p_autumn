@@ -12,15 +12,19 @@ const currentYear = new Date().getFullYear()
 
 <Box
   width="100%"
-  direction={['column', 'row']}
   px={[16, 64]}
   py={20}
   align="center"
   justify="center"
   class={footerWrapper}
-  gap={24}
 >
-  <Box direction="row" justify="space-between" align="center" maxWidth={1920}>
+  <Box
+    direction={['column', 'row']}
+    gap={24}
+    justify="space-between"
+    align="center"
+    maxWidth={1920}
+  >
     <Text variant="text-small">©{currentYear} Pogodna Jesień Sp.z o o.</Text>
     <Text variant="text-small" textAlign="center"
       >Zezwolenie Wojewody Śląskiego na prowadzenie całodobowej opieki nad

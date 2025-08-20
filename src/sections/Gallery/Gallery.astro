@@ -8,11 +8,7 @@ import Text from '@components/Text/Text.astro'
 
 import { carouselOptions, carouselPhotos } from './consts'
 
-import {
-  desktopCarousel,
-  galleryImageStyles,
-  mobileCarousel,
-} from './styles.css'
+import { galleryImageStyles, galleryCarousel } from './styles.css'
 ---
 
 <Box
@@ -32,8 +28,17 @@ import {
       >Zobacz nasze przestrzenie i radosne chwile mieszkańców.</Text
     >
   </Box>
-  <Box maxHeight={700} maxWidth={1280} class={desktopCarousel}>
-    <Splide options={{ ...carouselOptions, arrows: true, padding: '24px' }}>
+  <Box class={galleryCarousel}>
+    <Splide
+      options={{
+        ...carouselOptions,
+        arrows: typeof window !== 'undefined' && window.innerWidth >= 768,
+        padding:
+          typeof window !== 'undefined' && window.innerWidth >= 768
+            ? '24px'
+            : '0px',
+      }}
+    >
       {
         carouselPhotos.map(photo => (
           <SplideSlide>
@@ -41,30 +46,9 @@ import {
               src={photo.src}
               alt={photo.alt}
               loading="lazy"
-              layout="full-width"
               quality={80}
-              width={1920}
-              height={850}
-              class={galleryImageStyles}
-            />
-          </SplideSlide>
-        ))
-      }
-    </Splide>
-  </Box>
-  <Box class={mobileCarousel}>
-    <Splide options={{ ...carouselOptions, arrows: false }}>
-      {
-        carouselPhotos.map(photo => (
-          <SplideSlide>
-            <Image
-              src={photo.src}
-              alt={photo.alt}
-              loading="lazy"
-              layout="full-width"
-              quality={80}
-              width={1920}
-              height={850}
+              widths={[400, 800, 1200, 1920]}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 60vw"
               class={galleryImageStyles}
             />
           </SplideSlide>

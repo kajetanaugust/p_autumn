@@ -8,7 +8,7 @@ import Text from '@components/Text/Text.astro'
 import SectionLayout from '@layouts/SectionLayout.astro'
 
 import ContactElement from './subcomponents/ContactElement/ContactElement.astro'
-
+import { mapStyles } from './styles.css'
 ---
 
 <SectionLayout sectionId="kontakt" isCentered isFullWidth isWithSmallPb>
@@ -58,7 +58,7 @@ import ContactElement from './subcomponents/ContactElement/ContactElement.astro'
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2100.907131393209!2d18.80668648938962!3d50.42088576458034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471129425abce421%3A0xcdabae3a73b40fa1!2sPensjonat+Seniora+%22Pogodna+Jesie%C5%84%22!5e0!3m2!1spl!2spl!4v1553370849561"
       width="100%"
-      height="640px"
+      class={mapStyles}
       style="border:0"
       allowfullscreen
       loading="lazy"

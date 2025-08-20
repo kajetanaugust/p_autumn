@@ -1,11 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
-    <g transform="translate(5, 5)">
-        <g fill="#DAA520">
-            <path d="M30 7.5 Q17.5 15 30 25 Q42.5 15 30 7.5"/>
-            <path d="M30 25 Q42.5 35 30 42.5 Q17.5 35 30 25"/>
-            <path d="M12.5 15 Q20 25 12.5 35 Q5 25 12.5 15"/>
-            <path d="M47.5 15 Q55 25 47.5 35 Q40 25 47.5 15"/>
-            <circle cx="30" cy="25" r="1.5"/>
-        </g>
+<svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>Layer 1</title>
+  <g id="svg_1" stroke="null">
+   <g id="svg_2" stroke="null">
+    <g id="svg_3" fill="#DAA520" stroke="null">
+     <path id="svg_4" d="m32,12.02941q-14.26471,8.55882 0,19.97059q14.26471,-11.41176 0,-19.97059" stroke="null"/>
+     <path id="svg_5" d="m32,32q14.26471,11.41176 0,19.97059q-14.26471,-8.55882 0,-19.97059" stroke="null"/>
+     <path id="svg_6" d="m12.02941,20.58823q8.55882,11.41176 0,22.82353q-8.55882,-11.41176 0,-22.82353" stroke="null"/>
+     <path id="svg_7" d="m51.97059,20.58823q8.55882,11.41176 0,22.82353q-8.55882,-11.41176 0,-22.82353" stroke="null"/>
+     <circle id="svg_8" cx="32" cy="32" r="1.71176" stroke="null"/>
     </g>
+   </g>
+  </g>
+ </g>
+
 </svg>

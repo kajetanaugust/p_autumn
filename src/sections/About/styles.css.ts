@@ -3,11 +3,13 @@ import { style } from '@vanilla-extract/css'
 export const AboutImageStyles = style({
   width: '100%',
   height: 'auto',
-  display: 'block',
   maxWidth: '100%',
-  maxHeight: 738,
   objectFit: 'cover',
+  maxHeight: 400,
   '@media': {
+    'screen and (min-width: 768px)': {
+      maxHeight: 600,
+    },
     'screen and (min-width: 1920px)': {
       maxHeight: 900,
     },

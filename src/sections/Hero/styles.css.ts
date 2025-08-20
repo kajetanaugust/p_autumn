@@ -7,10 +7,9 @@ export const heroCopyElement = style({
 export const heroImageStyles = style({
   width: '100%',
   height: 'auto',
-  display: 'block',
   maxWidth: '100%',
-  maxHeight: 450,
   objectFit: 'cover',
+  maxHeight: 450,
   '@media': {
     'screen and (min-width: 1920px)': {
       maxHeight: 600,
