@@ -9,10 +9,11 @@ export const carouselOptions = {
   type: 'fade',
   autoplay: true,
   autoHeight: true,
-  interval: 4000,
+  interval: 3000,
   rewind: true,
   easing: 'linear',
   pagination: false,
+  arrows: true,
 }
 
 export const carouselPhotos = [

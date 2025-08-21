@@ -32,11 +32,7 @@ import { galleryImageStyles, galleryCarousel } from './styles.css'
     <Splide
       options={{
         ...carouselOptions,
-        arrows: typeof window !== 'undefined' && window.innerWidth >= 768,
-        padding:
-          typeof window !== 'undefined' && window.innerWidth >= 768
-            ? '24px'
-            : '0px',
+        padding: 24,
       }}
     >
       {
@@ -47,7 +43,7 @@ import { galleryImageStyles, galleryCarousel } from './styles.css'
               alt={photo.alt}
               loading="lazy"
               quality={80}
-              widths={[400, 800, 1200, 1920]}
+              widths={[320, 400, 600, 800, 1024, 1200, 1600, 1920, 2400]}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 60vw"
               class={galleryImageStyles}
             />

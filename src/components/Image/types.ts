@@ -1,6 +1,0 @@
-export type ObjectFit = 'cover' | 'contain' | 'fill' | 'scale-down' | 'none'
-export type ObjectPosition = 'top' | 'right' | 'bottom' | 'left' | 'center'
-export type ResponsiveType = 'fluid' | 'fixed' | 'fullWidth' | 'fullHeight'
-export type FetchPriority = 'auto' | 'high' | 'low'
-export type Layout = 'constrained' | 'full-width' | 'fixed' | 'none'
-export type Loading = 'eager' | 'lazy'
