@@ -1,102 +1,42 @@
 ---
-import type { Color } from '@tokens/Colors/types'
-import type { Radius } from '@tokens/Radius/types'
-import type { Shadow } from '@tokens/Shadows/types'
+import type { Color, Shadow, Radius } from '@tokens/types'
 
-import {
-  Overflow,
-  Align,
-  Direction,
-  Display,
-  Justify,
-  Position,
-  Wrap,
-} from '@utils/types'
-import type { Spacings } from '@utils/types'
+import type { Overflow, Display, Wrap, Spacings } from '@utils/types'
 
-import {
-  getDimensionClass,
-  getDimensionVars,
-  getDirectionClass,
-  getDirectionVars,
-  getGapVars,
-  getPaddingVars,
-  getPaddingClass,
-  getPaddingXVars,
-  getPaddingXClass,
-  getPaddingYVars,
-  getPaddingYClass,
-  getPaddingTopVars,
-  getPaddingTopClass,
-  getPaddingBottomVars,
-  getPaddingBottomClass,
-  getPaddingStartVars,
-  getPaddingStartClass,
-  getPaddingEndVars,
-  getPaddingEndClass,
-  getMarginVars,
-  getMarginClass,
-  getMarginXVars,
-  getMarginXClass,
-  getMarginYVars,
-  getMarginYClass,
-  getMarginTopVars,
-  getMarginTopClass,
-  getMarginBottomVars,
-  getMarginBottomClass,
-  getMarginStartVars,
-  getMarginStartClass,
-  getMarginEndVars,
-  getMarginEndClass,
-  getTopClass,
-  getRightClass,
-  getBottomClass,
-  getLeftClass,
-  getTopVars,
-  getRightVars,
-  getBottomVars,
-  getLeftVars,
-  getPositionClass,
-  getPositionVars,
-  getJustifyClass,
-  getJustifyVars,
-  getAlignClass,
-  getAlignVars,
-} from './helpers'
-import {
-  boxRecipe,
-  bgColorVariants,
-  shadowVariants,
-  radiusVariants,
-  responsiveGapStyle,
-  zIndexVariants,
-} from './styles.css.ts'
+import { getResponsiveValues } from './helpers'
 
-import type { DimensionVariants, ZIndexVariant } from './types'
+import styles from './Box.module.css'
 
+import type {
+  ResponsiveAlign,
+  ResponsiveDimensionVariants,
+  ResponsiveDirection,
+  ResponsiveGap,
+  ResponsiveJustify,
+  ResponsivePosition,
+  ResponsivePositionProperty,
+  ZIndexVariant,
+} from './types'
 
 interface Props extends Spacings {
   bgColor?: Color
   shadow?: Shadow
-  position?: Position | [Position, Position]
+  position?: ResponsivePosition
   borderRadius?: Radius
   isWithBorder?: boolean
-  direction?:
-    | Direction
-    | [Direction, Direction]
-    | [Direction, Direction, Direction]
-  justify?: Justify | [Justify, Justify]
-  align?: Align | [Align, Align]
-  gap?: number | [number, number]
-  width?: DimensionVariants | [DimensionVariants, DimensionVariants]
-  height?: DimensionVariants | [DimensionVariants, DimensionVariants]
-  maxWidth?: DimensionVariants | [DimensionVariants, DimensionVariants]
-  maxHeight?: DimensionVariants | [DimensionVariants, DimensionVariants]
+  direction?: ResponsiveDirection
+  justify?: ResponsiveJustify
+  align?: ResponsiveAlign
+  gap?: ResponsiveGap
+  width?: ResponsiveDimensionVariants
+  height?: ResponsiveDimensionVariants
+  maxWidth?: ResponsiveDimensionVariants
+  maxHeight?: ResponsiveDimensionVariants
   zIndex?: ZIndexVariant
-  top?: number
-  right?: number
-  bottom?: number
-  left?: number
+  top?: ResponsivePositionProperty
+  right?: ResponsivePositionProperty
+  bottom?: ResponsivePositionProperty
+  left?: ResponsivePositionProperty
   wrap?: Wrap
   overflow?: Overflow
   display?: Display
@@ -145,170 +85,54 @@ const {
   me,
 } = Astro.props
 
-const recipeDirection = typeof direction === 'string' ? direction : null
-const recipePosition = typeof position === 'string' ? position : null
-const recipeJustify = typeof justify === 'string' ? justify : null
-const recipeAlign = typeof align === 'string' ? align : null
-
-const directionClass = getDirectionClass(direction)
-const directionVars = getDirectionVars(direction)
-const positionClass = getPositionClass(position)
-const positionVars = getPositionVars(position)
-const justifyClass = getJustifyClass(justify)
-const justifyVars = getJustifyVars(justify)
-const alignClass = getAlignClass(align)
-const alignVars = getAlignVars(align)
-
-const responsiveGapClass = gap ? responsiveGapStyle : ''
-const gapVars = getGapVars(gap)
-
-const baseClass = boxRecipe({
-  display,
-  position: recipePosition,
-  direction: recipeDirection,
-  justify: recipeJustify,
-  align: recipeAlign,
+const responsiveValues = getResponsiveValues({
+  p,
+  ps,
+  pe,
+  pt,
+  pb,
+  px,
+  py,
+  m,
+  ms,
+  me,
+  mt,
+  mb,
+  mx,
+  my,
+  position,
+  top,
+  bottom,
+  right,
+  left,
+  align,
+  justify,
   wrap,
-  overflow,
-  isWithBorder,
+  direction,
+  gap,
 })
-
-const bgColorClass = bgColor ? bgColorVariants[bgColor] : ''
-const shadowClass =
-  shadow && shadow in shadowVariants ? shadowVariants[shadow] : ''
-const radiusClass =
-  borderRadius && typeof borderRadius === 'string'
-    ? radiusVariants[borderRadius]
-    : ''
-const zIndexClass = zIndex ? zIndexVariants[zIndex] : ''
-const topClass = getTopClass(top)
-const topVars = getTopVars(top)
-const rightClass = getRightClass(right)
-const rightVars = getRightVars(right)
-const bottomClass = getBottomClass(bottom)
-const bottomVars = getBottomVars(bottom)
-const leftClass = getLeftClass(left)
-const leftVars = getLeftVars(left)
-
-// Dimension classes and vars
-const widthClass = getDimensionClass(width, 'width')
-const widthVars = getDimensionVars(width, 'width')
-const heightClass = getDimensionClass(height, 'height')
-const heightVars = getDimensionVars(height, 'height')
-const maxWidthClass = maxWidth ? getDimensionClass(maxWidth, 'maxWidth') : ''
-const maxWidthVars = maxWidth ? getDimensionVars(maxWidth, 'maxWidth') : ''
-const maxHeightClass = maxHeight
-  ? getDimensionClass(maxHeight, 'maxHeight')
-  : ''
-const maxHeightVars = maxHeight ? getDimensionVars(maxHeight, 'maxHeight') : {}
-
-// Responsive spacing classes and vars
-const paddingClass = getPaddingClass(p)
-const paddingVars = getPaddingVars(p)
-const paddingXClass = getPaddingXClass(px)
-const paddingXVars = getPaddingXVars(px)
-const paddingYClass = getPaddingYClass(py)
-const paddingYVars = getPaddingYVars(py)
-const paddingTopClass = getPaddingTopClass(pt)
-const paddingTopVars = getPaddingTopVars(pt)
-const paddingBottomClass = getPaddingBottomClass(pb)
-const paddingBottomVars = getPaddingBottomVars(pb)
-const paddingStartClass = getPaddingStartClass(ps)
-const paddingStartVars = getPaddingStartVars(ps)
-const paddingEndClass = getPaddingEndClass(pe)
-const paddingEndVars = getPaddingEndVars(pe)
-
-const marginClass = getMarginClass(m)
-const marginVars = getMarginVars(m)
-const marginXClass = getMarginXClass(mx)
-const marginXVars = getMarginXVars(mx)
-const marginYClass = getMarginYClass(my)
-const marginYVars = getMarginYVars(my)
-const marginTopClass = getMarginTopClass(mt)
-const marginTopVars = getMarginTopVars(mt)
-const marginBottomClass = getMarginBottomClass(mb)
-const marginBottomVars = getMarginBottomVars(mb)
-const marginStartClass = getMarginStartClass(ms)
-const marginStartVars = getMarginStartVars(ms)
-const marginEndClass = getMarginEndClass(me)
-const marginEndVars = getMarginEndVars(me)
-
-const allClasses = [
-  baseClass,
-  bgColorClass,
-  shadowClass,
-  radiusClass,
-  responsiveGapClass,
-  directionClass,
-  positionClass,
-  justifyClass,
-  alignClass,
-  widthClass,
-  heightClass,
-  maxWidthClass,
-  maxHeightClass,
-  zIndexClass,
-  topClass,
-  rightClass,
-  bottomClass,
-  leftClass,
-  className,
-  paddingClass,
-  paddingXClass,
-  paddingYClass,
-  paddingTopClass,
-  paddingBottomClass,
-  paddingStartClass,
-  paddingEndClass,
-  marginClass,
-  marginXClass,
-  marginYClass,
-  marginTopClass,
-  marginBottomClass,
-  marginStartClass,
-  marginEndClass,
-]
-  .filter(Boolean)
-  .join(' ')
-
-const allVars = {
-  ...widthVars,
-  ...heightVars,
-  ...maxWidthVars,
-  ...maxHeightVars,
-  ...directionVars,
-  ...positionVars,
-  ...justifyVars,
-  ...alignVars,
-  ...gapVars,
-  ...paddingVars,
-  ...paddingXVars,
-  ...paddingYVars,
-  ...paddingTopVars,
-  ...paddingBottomVars,
-  ...paddingStartVars,
-  ...paddingEndVars,
-  ...marginVars,
-  ...marginXVars,
-  ...marginYVars,
-  ...marginTopVars,
-  ...marginBottomVars,
-  ...marginStartVars,
-  ...marginEndVars,
-  ...topVars,
-  ...rightVars,
-  ...bottomVars,
-  ...leftVars,
-}
 
 const { id, role, 'data-testid': dataTestId } = Astro.props
 ---
 
 <div
-  class={allClasses}
+  class={`${styles.box} ${className}`}
   id={id}
   role={role}
-  style={allVars}
+  style={{
+    '--display': display,
+    '--background-color': `var(--${bgColor})`,
+    '--box-shadow': `var(--${shadow})`,
+    '--border-radius': `var(--${borderRadius})`,
+    '--border': isWithBorder && '1px solid var(--neutral-light)',
+    '--width': width,
+    '--height': height,
+    '--max-width': maxWidth,
+    '--max-height': maxHeight,
+    '--z-index': zIndex,
+    '--overflow': overflow,
+    ...responsiveValues,
+  }}
   data-testid={dataTestId}
 >
   <slot />

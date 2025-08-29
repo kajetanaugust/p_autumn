@@ -1,458 +1,252 @@
-import {
-  alignDesktopVar,
-  alignMobileVar,
-  bottomVar,
-  dynamicAlignStyle,
-  dynamicBottomStyle,
-  dynamicFlexDirectionStyle,
-  dynamicHeightStyle,
-  dynamicJustifyStyle,
-  dynamicLeftStyle,
-  dynamicMaxHeightStyle,
-  dynamicMaxWidthStyle,
-  dynamicPositionStyle,
-  dynamicRightStyle,
-  dynamicTopStyle,
-  dynamicWidthStyle,
-  flexDirectionDesktopVar,
-  flexDirectionMobileVar,
-  flexDirectionTabletVar,
-  gapVars,
-  heightDesktopVar,
-  heightMobileVar,
-  heightVar,
-  heightVariants,
-  justifyDesktopVar,
-  justifyMobileVar,
-  leftVar,
-  marginBottomVars,
-  marginEndVars,
-  marginStartVars,
-  marginTopVars,
-  marginVars,
-  marginXVars,
-  marginYVars,
-  maxHeightDesktopVar,
-  maxHeightMobileVar,
-  maxHeightVar,
-  maxWidthDesktopVar,
-  maxWidthMobileVar,
-  maxWidthVar,
-  paddingBottomVars,
-  paddingEndVars,
-  paddingStartVars,
-  paddingTopVars,
-  paddingVars,
-  paddingXVars,
-  paddingYVars,
-  positionDesktopVar,
-  positionMobileVar,
-  responsiveHeightStyle,
-  responsiveMarginBottomStyle,
-  responsiveMarginEndStyle,
-  responsiveMarginStartStyle,
-  responsiveMarginStyle,
-  responsiveMarginTopStyle,
-  responsiveMarginXStyle,
-  responsiveMarginYStyle,
-  responsiveMaxHeightStyle,
-  responsiveMaxWidthStyle,
-  responsivePaddingBottomStyle,
-  responsivePaddingEndStyle,
-  responsivePaddingStartStyle,
-  responsivePaddingStyle,
-  responsivePaddingTopStyle,
-  responsivePaddingXStyle,
-  responsivePaddingYStyle,
-  responsiveWidthStyle,
-  rightVar,
-  topVar,
-  widthDesktopVar,
-  widthMobileVar,
-  widthVar,
-  widthVariants,
-} from './styles.css.ts'
-import { assignInlineVars } from '@vanilla-extract/dynamic'
-import type { DimensionVariants } from './types.ts'
-import type { Align, Direction, Justify, Position } from '@utils/types.ts'
+import type { Spacings, Wrap } from '@utils/types.ts'
+import type {
+  ResponsiveAlign,
+  ResponsiveDirection,
+  ResponsiveGap,
+  ResponsiveJustify,
+  ResponsivePosition,
+  ResponsivePositionProperty,
+} from '@components/Box/types.ts'
 
-export const getDimensionClass = (
-  dimension: DimensionVariants | [DimensionVariants, DimensionVariants],
-  type: 'width' | 'height' | 'maxWidth' | 'maxHeight'
-) => {
-  if (!dimension) return ''
+const getResponsiveVariant = <T>(prop: T | [T, T] | [T, T, T]): [T, T, T] =>
+  Array.isArray(prop)
+    ? prop.length === 2
+      ? [prop[0], prop[0], prop[1]]
+      : prop
+    : [prop, prop, prop]
 
-  // If it's an array (responsive), use responsive styles
-  if (Array.isArray(dimension)) {
-    switch (type) {
-      case 'width':
-        return responsiveWidthStyle
-      case 'height':
-        return responsiveHeightStyle
-      case 'maxWidth':
-        return responsiveMaxWidthStyle
-      case 'maxHeight':
-        return responsiveMaxHeightStyle
-      default:
-        return ''
-    }
-  }
-
-  if (typeof dimension === 'string') {
-    switch (type) {
-      case 'width':
-        if (widthVariants && dimension in widthVariants) {
-          return widthVariants[dimension as keyof typeof widthVariants]
-        }
-        return dynamicWidthStyle
-      case 'height':
-        if (heightVariants && dimension in heightVariants) {
-          return heightVariants[dimension as keyof typeof heightVariants]
-        }
-        return dynamicHeightStyle
-      case 'maxWidth':
-        return dynamicMaxWidthStyle
-      case 'maxHeight':
-        return dynamicMaxHeightStyle
-      default:
-        return ''
-    }
-  }
-
-  switch (type) {
-    case 'width':
-      return dynamicWidthStyle
-    case 'height':
-      return dynamicHeightStyle
-    case 'maxWidth':
-      return dynamicMaxWidthStyle
-    case 'maxHeight':
-      return dynamicMaxHeightStyle
-    default:
-      return ''
-  }
+interface ResponsiveValues extends Spacings {
+  position?: ResponsivePosition
+  top?: ResponsivePositionProperty
+  right?: ResponsivePositionProperty
+  bottom?: ResponsivePositionProperty
+  left?: ResponsivePositionProperty
+  align?: ResponsiveAlign
+  justify?: ResponsiveJustify
+  wrap?: Wrap
+  direction?: ResponsiveDirection
+  gap?: ResponsiveGap
 }
 
-export const getDimensionVars = (
-  dimension: DimensionVariants | [DimensionVariants, DimensionVariants],
-  type: 'width' | 'height' | 'maxWidth' | 'maxHeight'
-) => {
-  if (!dimension) return {}
+export const getResponsiveValues = ({
+  p,
+  ps,
+  pe,
+  pt,
+  pb,
+  px,
+  py,
+  m,
+  ms,
+  me,
+  mt,
+  mb,
+  mx,
+  my,
+  position,
+  top,
+  bottom,
+  right,
+  left,
+  align,
+  justify,
+  wrap,
+  direction,
+  gap,
+}: ResponsiveValues) => {
+  const [paddingMobile, paddingTablet, paddingDesktop] =
+    p === undefined
+      ? [undefined, undefined, undefined]
+      : getResponsiveVariant(p)
 
-  const varMaps = {
-    width: {
-      single: widthVar,
-      mobile: widthMobileVar,
-      desktop: widthDesktopVar,
-    },
-    height: {
-      single: heightVar,
-      mobile: heightMobileVar,
-      desktop: heightDesktopVar,
-    },
-    maxWidth: {
-      single: maxWidthVar,
-      mobile: maxWidthMobileVar,
-      desktop: maxWidthDesktopVar,
-    },
-    maxHeight: {
-      single: maxHeightVar,
-      mobile: maxHeightMobileVar,
-      desktop: maxHeightDesktopVar,
-    },
-  }
+  const [paddingStartMobile, paddingStartTablet, paddingStartDesktop] =
+    ps === undefined
+      ? [undefined, undefined, undefined]
+      : getResponsiveVariant(ps)
 
-  const vars = varMaps[type]
+  const [paddingEndMobile, paddingEndTablet, paddingEndDesktop] =
+    pe === undefined
+      ? [undefined, undefined, undefined]
+      : getResponsiveVariant(pe)
 
-  // Handle responsive values (array)
-  if (Array.isArray(dimension)) {
-    const [mobile, desktop] = dimension
+  const [paddingTopMobile, paddingTopTablet, paddingTopDesktop] =
+    pt === undefined
+      ? [undefined, undefined, undefined]
+      : getResponsiveVariant(pt)
 
-    const mobileValue = typeof mobile === 'number' ? `${mobile}px` : mobile
-    const desktopValue = typeof desktop === 'number' ? `${desktop}px` : desktop
+  const [paddingBottomMobile, paddingBottomTablet, paddingBottomDesktop] =
+    pb === undefined
+      ? [undefined, undefined, undefined]
+      : getResponsiveVariant(pb)
 
-    return assignInlineVars({
-      [vars.mobile]: mobileValue,
-      [vars.desktop]: desktopValue,
-    })
-  }
+  const [paddingInlineMobile, paddingInlineTablet, paddingInlineDesktop] =
+    px === undefined
+      ? [undefined, undefined, undefined]
+      : getResponsiveVariant(px)
+  const [paddingBlockMobile, paddingBlockTablet, paddingBlockDesktop] =
+    py === undefined
+      ? [undefined, undefined, undefined]
+      : getResponsiveVariant(py)
 
-  // Handle single values
-  if (typeof dimension === 'number') {
-    return assignInlineVars({
-      [vars.single]: `${dimension}px`,
-    })
-  }
+  const [marginMobile, marginTablet, marginDesktop] =
+    m === undefined
+      ? [undefined, undefined, undefined]
+      : getResponsiveVariant(m)
 
-  if (typeof dimension === 'string') {
-    const isWidthVariant =
-      type === 'width' && widthVariants && dimension in widthVariants
-    const isHeightVariant =
-      type === 'height' && heightVariants && dimension in heightVariants
+  const [marginStartMobile, marginStartTablet, marginStartDesktop] =
+    ms === undefined
+      ? [undefined, undefined, undefined]
+      : getResponsiveVariant(ms)
 
-    if (!isWidthVariant && !isHeightVariant) {
-      return assignInlineVars({
-        [vars.single]: dimension,
-      })
-    }
-  }
+  const [marginEndMobile, marginEndTablet, marginEndDesktop] =
+    me === undefined
+      ? [undefined, undefined, undefined]
+      : getResponsiveVariant(me)
 
-  return {}
-}
+  const [marginTopMobile, marginTopTablet, marginTopDesktop] =
+    mt === undefined
+      ? [undefined, undefined, undefined]
+      : getResponsiveVariant(mt)
 
-export const getDirectionClass = (
-  direction:
-    | Direction
-    | [Direction, Direction]
-    | [Direction, Direction, Direction]
-) => {
-  if (!Array.isArray(direction)) {
-    return '' // Use recipe variant for a single direction
-  }
+  const [marginBottomMobile, marginBottomTablet, marginBottomDesktop] =
+    mb === undefined
+      ? [undefined, undefined, undefined]
+      : getResponsiveVariant(mb)
 
-  // Use dynamic class for responsive directions
-  return dynamicFlexDirectionStyle
-}
+  const [marginInlineMobile, marginInlineTablet, marginInlineDesktop] =
+    mx === undefined
+      ? [undefined, undefined, undefined]
+      : getResponsiveVariant(mx)
 
-export const getDirectionVars = (
-  direction:
-    | Direction
-    | [Direction, Direction]
-    | [Direction, Direction, Direction]
-) => {
-  if (!Array.isArray(direction)) {
-    return {}
-  }
+  const [marginBlockMobile, marginBlockTablet, marginBlockDesktop] =
+    my === undefined
+      ? [undefined, undefined, undefined]
+      : getResponsiveVariant(my)
 
-  if (direction.length === 2) {
-    const [mobile, desktop] = direction
-    return assignInlineVars({
-      [flexDirectionMobileVar]: mobile,
-      [flexDirectionDesktopVar]: desktop,
-    })
-  }
+  const [positionMobile, positionTablet, positionDesktop] =
+    position === undefined
+      ? [undefined, undefined, undefined]
+      : getResponsiveVariant(position)
 
-  if (direction.length === 3) {
-    const [mobile, tablet, desktop] = direction
+  const [topMobile, topTablet, topDesktop] =
+    top === undefined
+      ? [undefined, undefined, undefined]
+      : getResponsiveVariant(top)
 
-    return assignInlineVars({
-      [flexDirectionMobileVar]: mobile,
-      [flexDirectionTabletVar]: tablet,
-      [flexDirectionDesktopVar]: desktop,
-    })
-  }
-}
+  const [rightMobile, rightTablet, rightDesktop] =
+    right === undefined
+      ? [undefined, undefined, undefined]
+      : getResponsiveVariant(right)
 
-export const getPositionClass = (position: Position | [Position, Position]) => {
-  if (!Array.isArray(position)) {
-    return '' // Use recipe variant for single position
-  }
+  const [bottomMobile, bottomTablet, bottomDesktop] =
+    bottom === undefined
+      ? [undefined, undefined, undefined]
+      : getResponsiveVariant(bottom)
 
-  return dynamicPositionStyle
-}
+  const [leftMobile, leftTablet, leftDesktop] =
+    left === undefined
+      ? [undefined, undefined, undefined]
+      : getResponsiveVariant(left)
 
-export const getPositionVars = (position: Position | [Position, Position]) => {
-  if (!Array.isArray(position)) {
-    return {}
-  }
+  const [alignMobile, alignTablet, alignDesktop] =
+    align === undefined
+      ? [undefined, undefined, undefined]
+      : getResponsiveVariant(align)
 
-  const [mobile, desktop] = position
+  const [justifyMobile, justifyTablet, justifyDesktop] =
+    justify === undefined
+      ? [undefined, undefined, undefined]
+      : getResponsiveVariant(justify)
 
-  return assignInlineVars({
-    [positionMobileVar]: mobile,
-    [positionDesktopVar]: desktop,
-  })
-}
+  const [wrapMobile, wrapTablet, wrapDesktop] =
+    wrap === undefined
+      ? [undefined, undefined, undefined]
+      : getResponsiveVariant(wrap)
 
-export const getJustifyClass = (justify: Justify | [Justify, Justify]) => {
-  if (!Array.isArray(justify)) {
-    return '' // Use recipe variant for single justify
-  }
+  const [directionMobile, directionTablet, directionDesktop] =
+    direction === undefined
+      ? [undefined, undefined, undefined]
+      : getResponsiveVariant(direction)
 
-  return dynamicJustifyStyle
-}
+  const [gapMobile, gapTablet, gapDesktop] =
+    gap === undefined
+      ? [undefined, undefined, undefined]
+      : getResponsiveVariant(gap)
 
-export const getJustifyVars = (justify: Justify | [Justify, Justify]) => {
-  if (!Array.isArray(justify)) {
-    return {}
-  }
-
-  const [mobile, desktop] = justify
-
-  return assignInlineVars({
-    [justifyMobileVar]: mobile,
-    [justifyDesktopVar]: desktop,
-  })
-}
-
-export const getAlignClass = (align: Align | [Align, Align]) => {
-  if (!Array.isArray(align)) {
-    return '' // Use recipe variant for single align
-  }
-
-  return dynamicAlignStyle
-}
-
-export const getAlignVars = (align: Align | [Align, Align]) => {
-  if (!Array.isArray(align)) {
-    return {}
-  }
-
-  const [mobile, desktop] = align
-
-  return assignInlineVars({
-    [alignMobileVar]: mobile,
-    [alignDesktopVar]: desktop,
-  })
-}
-
-export function getGapVars(
-  gap?: number | [number, number]
-): Record<string, string> {
-  if (!gap) return {}
-
-  if (typeof gap === 'number') {
-    return assignInlineVars(gapVars, {
-      mobile: `${gap}px`,
-      desktop: `${gap}px`,
-    })
-  }
-
-  if (Array.isArray(gap) && gap.length === 2) {
-    const [mobileGap, desktopGap] = gap
-
-    return assignInlineVars(gapVars, {
-      mobile: `${mobileGap}px`,
-      desktop: `${desktopGap}px`,
-    })
-  }
-
-  return {}
-}
-
-// Fixed the function signature and parameter order
-function createSpacingVars(
-  value?: number | [number, number],
-  vars?: {
-    mobile: any
-    desktop: any
-  }
-): Record<string, string> {
-  if (!value || !vars) return {}
-
-  if (typeof value === 'number') {
-    return assignInlineVars(vars, {
-      mobile: `${value}px`,
-      desktop: `${value}px`,
-    })
-  }
-
-  if (Array.isArray(value) && value.length === 2) {
-    const [mobile, desktop] = value
-    return assignInlineVars(vars, {
-      mobile: `${mobile}px`,
-      desktop: `${desktop}px`,
-    })
-  }
-
-  return {}
-}
-
-// Spacing helper functions - Fixed parameter order
-export const getPaddingVars = (value?: number | [number, number]) =>
-  createSpacingVars(value, paddingVars)
-export const getPaddingXVars = (value?: number | [number, number]) =>
-  createSpacingVars(value, paddingXVars)
-export const getPaddingYVars = (value?: number | [number, number]) =>
-  createSpacingVars(value, paddingYVars)
-export const getPaddingTopVars = (value?: number | [number, number]) =>
-  createSpacingVars(value, paddingTopVars)
-export const getPaddingBottomVars = (value?: number | [number, number]) =>
-  createSpacingVars(value, paddingBottomVars)
-export const getPaddingStartVars = (value?: number | [number, number]) =>
-  createSpacingVars(value, paddingStartVars)
-export const getPaddingEndVars = (value?: number | [number, number]) =>
-  createSpacingVars(value, paddingEndVars)
-
-export const getMarginVars = (value?: number | [number, number]) =>
-  createSpacingVars(value, marginVars)
-export const getMarginXVars = (value?: number | [number, number]) =>
-  createSpacingVars(value, marginXVars)
-export const getMarginYVars = (value?: number | [number, number]) =>
-  createSpacingVars(value, marginYVars)
-export const getMarginTopVars = (value?: number | [number, number]) =>
-  createSpacingVars(value, marginTopVars)
-export const getMarginBottomVars = (value?: number | [number, number]) =>
-  createSpacingVars(value, marginBottomVars)
-export const getMarginStartVars = (value?: number | [number, number]) =>
-  createSpacingVars(value, marginStartVars)
-export const getMarginEndVars = (value?: number | [number, number]) =>
-  createSpacingVars(value, marginEndVars)
-
-// Class helper functions
-export const getPaddingClass = (value?: number | [number, number]) =>
-  value ? responsivePaddingStyle : ''
-export const getPaddingXClass = (value?: number | [number, number]) =>
-  value ? responsivePaddingXStyle : ''
-export const getPaddingYClass = (value?: number | [number, number]) =>
-  value ? responsivePaddingYStyle : ''
-export const getPaddingTopClass = (value?: number | [number, number]) =>
-  value ? responsivePaddingTopStyle : ''
-export const getPaddingBottomClass = (value?: number | [number, number]) =>
-  value ? responsivePaddingBottomStyle : ''
-export const getPaddingStartClass = (value?: number | [number, number]) =>
-  value ? responsivePaddingStartStyle : ''
-export const getPaddingEndClass = (value?: number | [number, number]) =>
-  value ? responsivePaddingEndStyle : ''
-
-export const getMarginClass = (value?: number | [number, number]) =>
-  value ? responsiveMarginStyle : ''
-export const getMarginXClass = (value?: number | [number, number]) =>
-  value ? responsiveMarginXStyle : ''
-export const getMarginYClass = (value?: number | [number, number]) =>
-  value ? responsiveMarginYStyle : ''
-export const getMarginTopClass = (value?: number | [number, number]) =>
-  value ? responsiveMarginTopStyle : ''
-export const getMarginBottomClass = (value?: number | [number, number]) =>
-  value ? responsiveMarginBottomStyle : ''
-export const getMarginStartClass = (value?: number | [number, number]) =>
-  value ? responsiveMarginStartStyle : ''
-export const getMarginEndClass = (value?: number | [number, number]) =>
-  value ? responsiveMarginEndStyle : ''
-
-export const getTopClass = (value?: number) =>
-  value !== undefined ? dynamicTopStyle : ''
-export const getRightClass = (value?: number) =>
-  value !== undefined ? dynamicRightStyle : ''
-export const getBottomClass = (value?: number) =>
-  value !== undefined ? dynamicBottomStyle : ''
-export const getLeftClass = (value?: number) =>
-  value !== undefined ? dynamicLeftStyle : ''
-
-export const getTopVars = (value?: number) => {
-  if (value === undefined) return {}
-  return assignInlineVars({
-    [topVar]: `${value}px`,
-  })
-}
-
-export const getRightVars = (value?: number) => {
-  if (value === undefined) return {}
-  return assignInlineVars({
-    [rightVar]: `${value}px`,
-  })
-}
-
-export const getBottomVars = (value?: number) => {
-  if (value === undefined) return {}
-  return assignInlineVars({
-    [bottomVar]: `${value}px`,
-  })
-}
-
-export const getLeftVars = (value?: number) => {
-  if (value === undefined) return {}
-  return assignInlineVars({
-    [leftVar]: `${value}px`,
-  })
+  return Object.fromEntries(
+    Object.entries({
+      '--padding-mobile': paddingMobile,
+      '--padding-tablet': paddingTablet,
+      '--padding-desktop': paddingDesktop,
+      '--padding-start-mobile': paddingStartMobile,
+      '--padding-start-tablet': paddingStartTablet,
+      '--padding-start-desktop': paddingStartDesktop,
+      '--padding-end-mobile': paddingEndMobile,
+      '--padding-end-tablet': paddingEndTablet,
+      '--padding-end-desktop': paddingEndDesktop,
+      '--padding-top-mobile': paddingTopMobile,
+      '--padding-top-tablet': paddingTopTablet,
+      '--padding-top-desktop': paddingTopDesktop,
+      '--padding-bottom-mobile': paddingBottomMobile,
+      '--padding-bottom-tablet': paddingBottomTablet,
+      '--padding-bottom-desktop': paddingBottomDesktop,
+      '--padding-inline-mobile': paddingInlineMobile,
+      '--padding-inline-tablet': paddingInlineTablet,
+      '--padding-inline-desktop': paddingInlineDesktop,
+      '--padding-block-mobile': paddingBlockMobile,
+      '--padding-block-tablet': paddingBlockTablet,
+      '--padding-block-desktop': paddingBlockDesktop,
+      '--margin-mobile': marginMobile,
+      '--margin-tablet': marginTablet,
+      '--margin-desktop': marginDesktop,
+      '--margin-start-mobile': marginStartMobile,
+      '--margin-start-tablet': marginStartTablet,
+      '--margin-start-desktop': marginStartDesktop,
+      '--margin-end-mobile': marginEndMobile,
+      '--margin-end-tablet': marginEndTablet,
+      '--margin-end-desktop': marginEndDesktop,
+      '--margin-top-mobile': marginTopMobile,
+      '--margin-top-tablet': marginTopTablet,
+      '--margin-top-desktop': marginTopDesktop,
+      '--margin-bottom-mobile': marginBottomMobile,
+      '--margin-bottom-tablet': marginBottomTablet,
+      '--margin-bottom-desktop': marginBottomDesktop,
+      '--margin-inline-mobile': marginInlineMobile,
+      '--margin-inline-tablet': marginInlineTablet,
+      '--margin-inline-desktop': marginInlineDesktop,
+      '--margin-block-mobile': marginBlockMobile,
+      '--margin-block-tablet': marginBlockTablet,
+      '--margin-block-desktop': marginBlockDesktop,
+      '--position-mobile': positionMobile,
+      '--position-tablet': positionTablet,
+      '--position-desktop': positionDesktop,
+      '--top-mobile': topMobile,
+      '--top-tablet': topTablet,
+      '--top-desktop': topDesktop,
+      '--right-mobile': rightMobile,
+      '--right-tablet': rightTablet,
+      '--right-desktop': rightDesktop,
+      '--bottom-mobile': bottomMobile,
+      '--bottom-tablet': bottomTablet,
+      '--bottom-desktop': bottomDesktop,
+      '--left-mobile': leftMobile,
+      '--left-tablet': leftTablet,
+      '--left-desktop': leftDesktop,
+      '--align-items-mobile': alignMobile,
+      '--align-items-tablet': alignTablet,
+      '--align-items-desktop': alignDesktop,
+      '--justify-content-mobile': justifyMobile,
+      '--justify-content-tablet': justifyTablet,
+      '--justify-content-desktop': justifyDesktop,
+      '--gap-mobile': gapMobile,
+      '--gap-tablet': gapTablet,
+      '--gap-desktop': gapDesktop,
+      '--flex-wrap-mobile': wrapMobile,
+      '--flex-wrap-tablet': wrapTablet,
+      '--flex-wrap-desktop': wrapDesktop,
+      '--flex-direction-mobile': directionMobile,
+      '--flex-direction-tablet': directionTablet,
+      '--flex-direction-desktop': directionDesktop,
+    }).filter(([_, value]) => value !== undefined)
+  )
 }

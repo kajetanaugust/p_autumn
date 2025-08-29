@@ -1,0 +1,94 @@
+.box {
+    box-sizing: border-box;
+    display: var(--display, flex);
+    position: var(--position-mobile, relative);
+    flex-direction: var(--flex-direction-mobile, column);
+    align-items: var(--align-items-mobile, center);
+    justify-content: var(--justify-content-mobile, center);
+    flex-wrap: var(--flex-wrap-mobile, wrap);
+    gap: var(--gap-mobile, 0);
+    overflow: var(--overflow, hidden);
+    border: var(--border, none);
+    background-color: var(--background-color, transparent);
+    box-shadow: var(--box-shadow, none);
+    border-radius: var(--border-radius, 0);
+    padding: var(--padding-mobile, 0);
+    margin-inline: var(--margin-inline-mobile, 0);
+    margin-block: var(--margin-block-mobile, 0);
+    padding-block-start: var(--padding-top-mobile, 0);
+    padding-inline-end: var(--padding-end-mobile, 0);
+    padding-block-end: var(--padding-bottom-mobile, 0);
+    padding-inline-start: var(--padding-start-mobile, 0);
+    padding-inline: var(--padding-inline-mobile, 0);
+    padding-block: var(--padding-block-mobile, 0);
+    margin: var(--margin-mobile, 0);
+    margin-block-start: var(--margin-top-mobile, 0);
+    margin-inline-end: var(--margin-end-mobile, 0);
+    margin-block-end: var(--margin-bottom-mobile, 0);
+    margin-inline-start: var(--margin-start-mobile, 0);
+    width: var(--width, 100%);
+    height: var(--height, 100%);
+    max-width: var(--max-width, 100%);
+    max-height: var(--max-height, 100%);
+    min-width: var(--min-width, 0);
+    min-height: var(--min-height, 0);
+    z-index: var(--z-index, 0);
+    top: var(--top-mobile, 0);
+    left: var(--left-mobile, 0);
+    right: var(--right-mobile, 0);
+    bottom: var(--bottom-mobile, 0);
+
+    @media (min-width: 768px) {
+        position: var(--position-tablet);
+        top: var(--top-tablet);
+        left: var(--left-tablet);
+        right: var(--right-tablet);
+        bottom: var(--bottom-tablet);
+        align-items: var(--align-items-tablet);
+        justify-content: var(--justify-content-tablet);
+        flex-wrap: var(--flex-wrap-tablet);
+        flex-direction: var(--flex-direction-tablet);
+        gap: var(--gap-tablet);
+        padding: var(--padding-tablet);
+        padding-block-start: var(--padding-top-tablet);
+        padding-inline-end: var(--padding-end-tablet);
+        padding-block-end: var(--padding-bottom-tablet);
+        padding-inline-start: var(--padding-start-tablet);
+        padding-inline: var(--padding-inline-tablet);
+        padding-block: var(--padding-block-tablet);
+        margin: var(--margin-tablet);
+        margin-block-start: var(--margin-top-tablet);
+        margin-inline-end: var(--margin-end-tablet);
+        margin-block-end: var(--margin-bottom-tablet);
+        margin-inline-start: var(--margin-start-tablet);
+        margin-inline: var(--margin-inline-tablet);
+        margin-block: var(--margin-block-tablet);
+    }
+
+    @media (min-width: 1024px) {
+        position: var(--position-desktop);
+        top: var(--top-desktop);
+        left: var(--left-desktop);
+        right: var(--right-desktop);
+        bottom: var(--bottom-desktop);
+        align-items: var(--align-items-desktop);
+        justify-content: var(--justify-content-desktop);
+        flex-wrap: var(--flex-wrap-desktop);
+        flex-direction: var(--flex-direction-desktop);
+        gap: var(--gap-desktop);
+        padding: var(--padding-desktop);
+        padding-block-start: var(--padding-top-desktop);
+        padding-inline-end: var(--padding-end-desktop);
+        padding-block-end: var(--padding-bottom-desktop);
+        padding-inline-start: var(--padding-start-desktop);
+        padding-inline: var(--padding-inline-desktop);
+        padding-block: var(--padding-block-desktop);
+        margin: var(--margin-desktop);
+        margin-block-start: var(--margin-top-desktop);
+        margin-inline-end: var(--margin-end-desktop);
+        margin-block-end: var(--margin-bottom-desktop);
+        margin-inline-start: var(--margin-start-desktop);
+        margin-inline: var(--margin-inline-desktop);
+        margin-block: var(--margin-block-desktop);
+    }
+}
