@@ -1,11 +1,10 @@
 ---
 import type { Color } from '@tokens/types'
+import styles from './Text.module.css'
 
 import { getDefaultTag } from './helpers'
-import { textColorVariants, textRecipe } from './styles.css.ts'
 
 import type { FontWeight, FontStyle, TextTag, TextVariant } from './types'
-
 
 interface Props {
   variant?: TextVariant
@@ -35,21 +34,20 @@ const {
 } = Astro.props
 
 const Tag = tag || getDefaultTag(variant)
-
-const textClass = textRecipe({
-  variant,
-  weight,
-  style,
-  wrap: textWrap,
-  textAlign,
-  decoration: textDecoration,
-})
-
-const colorClass = textColorVariants[color]
-
-const allClasses = [textClass, colorClass, className].filter(Boolean).join(' ')
 ---
 
-<Tag class={allClasses} {...rest} x-apple-data-detectors="false">
+<Tag
+  class={`text--${styles[variant]} ${className}`}
+  style={{
+    '--text-color': `var(--${color})`,
+    '--text-weight': weight,
+    '--text-style': style,
+    '--text-decoration': textDecoration,
+    '--text-wrap': textWrap,
+    '--text-align': textAlign,
+  }}
+  {...rest}
+  x-apple-data-detectors="false"
+>
   <slot />
 </Tag>
