@@ -1,0 +1,21 @@
+@import "../tokens/_colors.css";
+@import "../tokens/_typography.css";
+@import "../tokens/_radius.css";
+@import "../tokens/_shadows.css";
+
+
+html,
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    width: 100vw;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}

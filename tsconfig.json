@@ -9,6 +9,9 @@
   ],
   "compilerOptions": {
     "strict": true,
+    "types": [
+      "vite/client"
+    ],
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "plugins": [
