@@ -1,7 +1,7 @@
 ---
 import Box from '@components/Box/Box.astro'
 
-import type { Color } from '@tokens/Colors/types'
+import type { Color } from '../tokens/types'
 
 interface Props {
   isCentered?: boolean
@@ -20,17 +20,17 @@ const {
   isFullWidth,
   isWithSmallPb,
   isWithSmallPt,
-  bgColor = 'neutral_white',
+  bgColor = 'neutral-white',
 } = Astro.props
 ---
 
 <Box
-  px={[20, 80]}
-  pt={isWithSmallPt ? [48, 80] : [64, 112]}
-  pb={isWithSmallPb ? [48, 80] : [64, 112]}
-  gap={[48, 80]}
+  px={['20px', '80px']}
+  pt={isWithSmallPt ? ['48px', '80px'] : ['64px', '112px']}
+  pb={isWithSmallPb ? ['48px', '80px'] : ['64px', '112px']}
+  gap={['48px', '80px']}
   direction="column"
-  align={isCentered ? 'center' : 'start'}
+  align={isCentered ? 'center' : 'flex-start'}
   isWithBorder={isWithBorder}
   id={sectionId}
   width={isFullWidth ? '100%' : 'fit-content'}

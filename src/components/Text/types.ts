@@ -5,11 +5,11 @@ export type TextVariant =
   | 'heading-4'
   | 'heading-5'
   | 'heading-6'
-  | 'text-large'
-  | 'text-medium'
-  | 'text-regular'
-  | 'text-small'
-  | 'text-tiny'
+  | 'body-large'
+  | 'body-medium'
+  | 'body-regular'
+  | 'body-small'
+  | 'body-tiny'
   | 'tagline'
 
 export type FontWeight = 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900

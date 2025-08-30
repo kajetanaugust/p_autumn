@@ -20,28 +20,28 @@ import { pricingInfoItem } from './styles.css'
   isWithSmallPb
   isWithSmallPt
 >
-  <Box direction="column" gap={[20, 24]} align="center">
+  <Box direction="column" gap={['20px', '24px']} align="center">
     <Text variant="tagline">Cennik</Text>
     <Text variant="heading-2" textAlign="center">
       Koszt pobytu w naszym Domu
     </Text>
-    <Text variant="text-medium" textAlign="center">
+    <Text variant="body-medium" textAlign="center">
       Przejrzysty cennik dla krótkoterminowych i długoterminowych pobytów
     </Text>
   </Box>
-  <Box direction={['column', 'row']} gap={48}>
-    <Box direction="column" gap={[20, 24]} align="center">
+  <Box direction={['column', 'row']} gap="48px">
+    <Box direction="column" gap={['20px', '24px']} align="center">
       <Text variant="heading-4" textAlign="center" tag="p">
         Pobyt krótkoterminowy
       </Text>
-      <Box direction="column" justify="space-between" gap={[20, 24]}>
+      <Box direction="column" justify="space-between" gap={['20px', '24px']}>
         <PriceTile price="270zł" title="Pokój jednoosobowy" period="za dobę">
           <Box
             direction="column"
-            align="start"
+            align="flex-start"
             justify="center"
             width="fit-content"
-            gap={16}
+            gap="16px"
           >
             <PriceFeature text="Całodobowa opieka opiekunek" />
             <PriceFeature text="Długość pobytu do miesiąca" />
@@ -52,10 +52,10 @@ import { pricingInfoItem } from './styles.css'
         <PriceTile price="240zł" title="Pokój dwuosobowy" period="za dobę">
           <Box
             direction="column"
-            align="start"
+            align="flex-start"
             justify="center"
             width="fit-content"
-            gap={16}
+            gap="16px"
           >
             <PriceFeature text="Całodobowa opieka opiekunek" />
             <PriceFeature text="Długość pobytu do miesiąca" />
@@ -65,11 +65,11 @@ import { pricingInfoItem } from './styles.css'
         </PriceTile>
       </Box>
     </Box>
-    <Box direction="column" gap={[20, 24]} align="center">
+    <Box direction="column" gap={['20px', '24px']} align="center">
       <Text variant="heading-4" textAlign="center" tag="p">
         Pobyt długoterminowy
       </Text>
-      <Box direction="column" justify="space-between" gap={[20, 24]}>
+      <Box direction="column" justify="space-between" gap={['20px', '24px']}>
         <PriceTile
           price="od 6000zł"
           title="Pokój jednoosobowy"
@@ -77,10 +77,10 @@ import { pricingInfoItem } from './styles.css'
         >
           <Box
             direction="column"
-            align="start"
+            align="flex-start"
             justify="center"
             width="fit-content"
-            gap={16}
+            gap="16px"
           >
             <PriceFeature text="Całodobowa opieka opiekunek" />
             <PriceFeature text="Zniżka za pobyt długoterminowy" />
@@ -95,10 +95,10 @@ import { pricingInfoItem } from './styles.css'
         >
           <Box
             direction="column"
-            align="start"
+            align="flex-start"
             justify="center"
             width="fit-content"
-            gap={16}
+            gap="16px"
           >
             <PriceFeature text="Całodobowa opieka opiekunek" />
             <PriceFeature text="Zniżka za pobyt długoterminowy" />
@@ -109,26 +109,30 @@ import { pricingInfoItem } from './styles.css'
       </Box>
     </Box>
   </Box>
-  <Box direction="column" gap={[20, 24]}>
+  <Box direction="column" gap={['20px', '24px']}>
     <Text variant="heading-4" textAlign="center" tag="p"
       >Dodatkowe Informacje</Text
     >
-    <Box direction={['column', 'row']} gap={[64, 80]} justify="space-between">
-      <Text variant="text-medium" class={pricingInfoItem}>
+    <Box
+      direction={['column', 'row']}
+      gap={['64px', '80px']}
+      justify="space-between"
+    >
+      <Text variant="body-medium" class={pricingInfoItem}>
         Dla osób z chorobą Alzheimera, zaawansowaną demencją lub wymagających
         szczególnej opieki obowiązuje dopłata w wysokości 600 zł miesięcznie.
       </Text>
-      <Box direction="column" gap={16} class={pricingInfoItem}>
-        <Text variant="text-medium">
+      <Box direction="column" gap="16px" class={pricingInfoItem}>
+        <Text variant="body-medium">
           Przed przyjęciem prosimy o dostarczenie wypisu ze szpitala z
           ostatniego miesiąca lub zaświadczenia lekarskiego o stanie zdrowia, do
           pobrania poniżej:
         </Text>
         <a href="/zaswiadczenie.pdf" download="szablon-zaswiadczenia.pdf">
           <Button variant="outline" size="small">
-            <Box direction="row" align="center" gap={10}>
+            <Box direction="row" align="center" gap="10px">
               <Download />
-              <Text variant="text-regular" weight={500}
+              <Text variant="body-regular" weight={500}
                 >Pobierz szablon zaświadczenia</Text
               >
             </Box>

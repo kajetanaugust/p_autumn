@@ -14,11 +14,11 @@ export const getDefaultTag = (variant: TextVariant): TextTag => {
       return 'h5'
     case 'heading-6':
       return 'h6'
-    case 'text-large':
-    case 'text-medium':
-    case 'text-regular':
-    case 'text-small':
-    case 'text-tiny':
+    case 'body-large':
+    case 'body-medium':
+    case 'body-regular':
+    case 'body-small':
+    case 'body-tiny':
       return 'p'
     case 'tagline':
       return 'span'

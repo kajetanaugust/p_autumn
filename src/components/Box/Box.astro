@@ -112,6 +112,22 @@ const responsiveValues = getResponsiveValues({
   gap,
 })
 
+const staticValues = Object.fromEntries(
+  Object.entries({
+    '--display': display,
+    '--background-color': bgColor ? `var(--${bgColor})` : undefined,
+    '--box-shadow': shadow ? `var(--${shadow})` : undefined,
+    '--border-radius': borderRadius ? `var(--${borderRadius})` : undefined,
+    '--border': isWithBorder ? '1px solid var(--neutral-light)' : undefined,
+    '--width': width,
+    '--height': height,
+    '--max-width': maxWidth,
+    '--max-height': maxHeight,
+    '--z-index': zIndex,
+    '--overflow': overflow,
+  }).filter(([_, value]) => value !== undefined)
+)
+
 const { id, role, 'data-testid': dataTestId } = Astro.props
 ---
 
@@ -120,17 +136,7 @@ const { id, role, 'data-testid': dataTestId } = Astro.props
   id={id}
   role={role}
   style={{
-    '--display': display,
-    '--background-color': `var(--${bgColor})`,
-    '--box-shadow': `var(--${shadow})`,
-    '--border-radius': `var(--${borderRadius})`,
-    '--border': isWithBorder && '1px solid var(--neutral-light)',
-    '--width': width,
-    '--height': height,
-    '--max-width': maxWidth,
-    '--max-height': maxHeight,
-    '--z-index': zIndex,
-    '--overflow': overflow,
+    ...staticValues,
     ...responsiveValues,
   }}
   data-testid={dataTestId}

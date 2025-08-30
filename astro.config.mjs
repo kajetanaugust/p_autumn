@@ -9,19 +9,16 @@ export default defineConfig({
   integrations: [sitemap()],
   vite: {
     plugins: [vanillaExtractPlugin()],
+    css: {
+      modules: {
+        scopeBehaviour: 'local',
+        generateScopedName: '[name]__[local]___[hash:base64:5]',
+      },
+      postcss: true,
+    },
     build: {
       cssCodeSplit: true,
       cssMinify: 'esbuild',
-      rollupOptions: {
-        output: {
-          assetFileNames: assetInfo => {
-            if (assetInfo.name && assetInfo.name.endsWith('.css')) {
-              return 'assets/[name]-[hash][extname]'
-            }
-            return 'assets/[name]-[hash][extname]'
-          },
-        },
-      },
     },
     resolve: {
       alias: {
@@ -37,8 +34,5 @@ export default defineConfig({
         '@scripts': '/src/scripts',
       },
     },
-  },
-  build: {
-    inlineStylesheets: 'auto',
   },
 })

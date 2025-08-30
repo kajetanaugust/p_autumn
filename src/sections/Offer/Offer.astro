@@ -18,18 +18,23 @@ import { offerCardIcon } from './subcomponents/OfferCard/styles.css'
 ---
 
 <SectionLayout sectionId="oferta" isCentered isFullWidth isWithSmallPb>
-  <Box direction="column" gap={[16, 20]} align="center" maxWidth="768px">
+  <Box
+    direction="column"
+    gap={['16px', '20px']}
+    align="center"
+    maxWidth="768px"
+  >
     <Text variant="tagline">Oferta</Text>
     <Text variant="heading-2" textAlign="center">
       Nasze usługi w zakresie opieki zdrowotnej
     </Text>
-    <Text variant="text-medium" textAlign="center">
+    <Text variant="body-medium" textAlign="center">
       Oferujemy kompleksową opiekę pielęgniarską, która zapewnia wsparcie w
       codziennych potrzebach. Nasz zespół specjalistów dba o zdrowie i komfort
       naszych mieszkańców.
     </Text>
   </Box>
-  <Box gap={48} width="fit-content" justify="center" wrap="wrap">
+  <Box gap="48px" width="fit-content" justify="center" wrap="wrap">
     <OfferCard
       title="Komfortowe pokoje"
       description="Pokojach jedno- i dwuosobowych z łazienkami, których umeblowanie i wystrój stwarza domową atmosferę"

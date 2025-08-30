@@ -1,7 +1,7 @@
 ---
 import Text from '@components/Text/Text.astro'
 
-import { buttonRecipe } from './styles.css.ts'
+import styles from './Button.module.css'
 
 import type {
   ButtonSize,
@@ -66,40 +66,40 @@ const buttonAttrs = !isLink
     }
   : {}
 
-const buttonClass = buttonRecipe({
-  variant,
-  size,
-})
+const buttonSize = {
+  '--button-padding': size === 'small' ? '4px 10px' : '6px 12px',
+}
 
-const allClasses = [buttonClass, className].filter(Boolean).join(' ')
-
-const commonAttrs = {
-  class: allClasses,
-  'aria-label': ariaLabel,
-  'data-testid': dataTestId,
-  ...rest,
+const styleAttrs = {
+  ...buttonSize,
 }
 
 const allAttrs = {
-  ...commonAttrs,
   ...linkAttrs,
   ...buttonAttrs,
   ...(disabled && { disabled }),
+  ...rest,
 }
 
-const textColor = variant === 'primary' ? 'neutral_white' : 'neutral_darkest'
+const textColor = variant === 'primary' ? 'neutral-white' : 'neutral-darkest'
 ---
 
-<Tag {...allAttrs}>
+<Tag
+  {...allAttrs}
+  class={`${styles.button} ${className}`}
+  aria-label={ariaLabel}
+  data-testid={dataTestId}
+  style={styleAttrs}
+>
   {
     variant.includes('icon') ? (
       <slot />
     ) : (
       <Text
-        variant="text-regular"
+        variant="body-regular"
         weight={500}
-        color={textColor}
         textWrap="nowrap"
+        color={textColor}
       >
         <slot />
       </Text>

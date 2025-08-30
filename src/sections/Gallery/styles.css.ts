@@ -1,5 +1,4 @@
 import { style } from '@vanilla-extract/css'
-import { theme } from '@styles/theme.css.ts'
 
 export const galleryImageStyles = style({
   width: '100%',
@@ -8,7 +7,7 @@ export const galleryImageStyles = style({
   maxWidth: '100%',
   maxHeight: '100%',
   objectFit: 'cover',
-  borderRadius: theme.radius.md,
+  borderRadius: 'var(--radius-lg)',
 })
 
 export const galleryCarousel = style({

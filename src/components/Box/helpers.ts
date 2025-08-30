@@ -83,6 +83,7 @@ export const getResponsiveValues = ({
     px === undefined
       ? [undefined, undefined, undefined]
       : getResponsiveVariant(px)
+
   const [paddingBlockMobile, paddingBlockTablet, paddingBlockDesktop] =
     py === undefined
       ? [undefined, undefined, undefined]

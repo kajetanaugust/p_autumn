@@ -12,6 +12,7 @@
 }
 
 .text--heading-1 {
+    composes: text;
     font-family: var(--font-primary);
     font-size: 2.5rem;
     font-weight: 400;
@@ -23,6 +24,7 @@
 }
 
 .text--heading-2 {
+    composes: text;
     font-family: var(--font-primary);
     font-size: 2.25rem;
     font-weight: 400;
@@ -33,7 +35,8 @@
     }
 }
 
-.text--heading-3{
+.text--heading-3 {
+    composes: text;
     font-family: var(--font-primary);
     font-size: 2rem;
     font-weight: 400;
@@ -46,6 +49,7 @@
 
 
 .text--heading-4 {
+    composes: text;
     font-family: var(--font-primary);
     font-size: 1.5rem;
     font-weight: 400;
@@ -57,6 +61,7 @@
 }
 
 .text--heading-5 {
+    composes: text;
     font-family: var(--font-primary);
     font-size: 1.25rem;
     font-weight: 400;
@@ -68,6 +73,7 @@
 }
 
 .text--heading-6 {
+    composes: text;
     font-family: var(--font-primary);
     font-size: 1.125rem;
     font-weight: 400;
@@ -79,6 +85,7 @@
 }
 
 .text--body-large {
+    composes: text;
     font-family: var(--font-secondary);
     font-size: 1.25rem;
     font-weight: 300;
@@ -86,6 +93,7 @@
 }
 
 .text--body-medium {
+    composes: text;
     font-family: var(--font-secondary);
     font-size: 1.125rem;
     font-weight: 300;
@@ -93,6 +101,7 @@
 }
 
 .text--body-regular {
+    composes: text;
     font-family: var(--font-secondary);
     font-size: 1rem;
     font-weight: 300;
@@ -100,6 +109,7 @@
 }
 
 .text--body-small {
+    composes: text;
     font-family: var(--font-secondary);
     font-size: 0.875rem;
     font-weight: 300;
@@ -107,6 +117,7 @@
 }
 
 .text--body-tiny {
+    composes: text;
     font-family: var(--font-secondary);
     font-size: 0.75rem;
     font-weight: 300;
@@ -114,6 +125,7 @@
 }
 
 .text-tagline {
+    composes: text;
     font-family: var(--font-secondary);
     font-size: 1rem;
     font-weight: 500;

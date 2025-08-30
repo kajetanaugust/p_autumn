@@ -8,24 +8,25 @@ import Text from '@components/Text/Text.astro'
 import SectionLayout from '@layouts/SectionLayout.astro'
 
 import ContactElement from './subcomponents/ContactElement/ContactElement.astro'
+
 import { mapStyles } from './styles.css'
 ---
 
 <SectionLayout sectionId="kontakt" isCentered isFullWidth isWithSmallPb>
-  <Box direction="column" gap={[48, 80]}>
-    <Box direction="column" gap={24} align="stretch" height="100%">
-      <Box direction="column" gap={16}>
+  <Box direction="column" gap={['48px', '80px']}>
+    <Box direction="column" gap="24px" align="stretch" height="100%">
+      <Box direction="column" gap="16px">
         <Text variant="tagline">Kontakt</Text>
-        <Box direction="column" gap={24}>
+        <Box direction="column" gap="24px">
           <Text variant="heading-2">Skontaktuj się</Text>
-          <Text variant="text-medium"
+          <Text variant="body-medium"
             >Jesteśmy tutaj, aby odpowiedzieć na Twoje pytania i pomóc w każdej
             sytuacji.
           </Text>
         </Box>
       </Box>
     </Box>
-    <Box direction={['column', 'column', 'row']} gap={24} wrap="wrap">
+    <Box direction={['column', 'column', 'row']} gap="24px" wrap="wrap">
       <ContactElement elementName="E-mail">
         <Mail slot="icon" />
         <Link href="mailto:pogodna@jesien.com.pl">pogodna@jesien.com.pl</Link>
@@ -37,20 +38,20 @@ import { mapStyles } from './styles.css'
       </ContactElement>
       <ContactElement elementName="Adres">
         <MapPin slot="icon" />
-        <Text variant="text-regular">ul. ks. H. Renka 63</Text>
-        <Text variant="text-regular">42-603 Tarnowskie Góry</Text>
+        <Text variant="body-regular">ul. ks. H. Renka 63</Text>
+        <Text variant="body-regular">42-603 Tarnowskie Góry</Text>
       </ContactElement>
       <ContactElement elementName="NIP">
         <Landmark slot="icon" />
-        <Text variant="text-regular">645 249 78 64</Text>
+        <Text variant="body-regular">645 249 78 64</Text>
       </ContactElement>
       <ContactElement elementName="Bank">
         <Banknote slot="icon" />
-        <Text variant="text-regular">Santander BP S.A.</Text>
-        <Text variant="text-regular" textWrap="nowrap"
+        <Text variant="body-regular">Santander BP S.A.</Text>
+        <Text variant="body-regular" textWrap="nowrap"
           >09 1090 2011 0000 0001 1302 4243</Text
         >
-        <Text variant="text-regular">SWIFT: WBKPPLPP</Text>
+        <Text variant="body-regular">SWIFT: WBKPPLPP</Text>
       </ContactElement>
     </Box>
   </Box>

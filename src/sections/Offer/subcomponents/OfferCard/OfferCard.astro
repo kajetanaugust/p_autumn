@@ -13,7 +13,7 @@ const { title, description } = Astro.props
 ---
 
 <Box
-  gap={[20, 24]}
+  gap={['20px', '24px']}
   direction="column"
   justify="space-between"
   align="center"
@@ -24,11 +24,11 @@ const { title, description } = Astro.props
     direction="column"
     justify="center"
     align="center"
-    gap={[20, 24]}
+    gap={['20px', '24px']}
     class={offerCardTitle}
   >
     <slot />
     <Text variant="heading-4" textAlign="center" tag="p">{title}</Text>
   </Box>
-  <Text variant="text-regular" textAlign="center">{description}</Text>
+  <Text variant="body-regular" textAlign="center">{description}</Text>
 </Box>

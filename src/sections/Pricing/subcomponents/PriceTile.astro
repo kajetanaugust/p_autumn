@@ -16,17 +16,17 @@ const { title, price, period } = Astro.props
   direction="column"
   justify="center"
   align="center"
-  gap={[24, 32]}
-  borderRadius="lg"
-  bgColor="neutral_lightest"
-  px={[24, 32]}
-  py={32}
+  gap={['24px', '32px']}
+  borderRadius="radius-lg"
+  bgColor="neutral-lightest"
+  px={['24px', '32px']}
+  py="32px"
 >
-  <Box direction="column" justify="center" align="center" gap={8}>
+  <Box direction="column" justify="center" align="center" gap="8px">
     <Text variant="heading-6" tag="p">{title}</Text>
     <Box direction="column" width="100%" align="center">
       <Text variant="heading-2" tag="p">{price}</Text>
-      <Text variant="text-regular">{period}</Text>
+      <Text variant="body-regular">{period}</Text>
     </Box>
   </Box>
   <slot />

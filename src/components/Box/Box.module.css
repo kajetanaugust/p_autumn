@@ -27,12 +27,12 @@
     margin-block-end: var(--margin-bottom-mobile, 0);
     margin-inline-start: var(--margin-start-mobile, 0);
     width: var(--width, 100%);
-    height: var(--height, 100%);
+    height: var(--height, fit-content);
     max-width: var(--max-width, 100%);
     max-height: var(--max-height, 100%);
     min-width: var(--min-width, 0);
     min-height: var(--min-height, 0);
-    z-index: var(--z-index, 0);
+    z-index: var(--z-index, initial);
     top: var(--top-mobile, 0);
     left: var(--left-mobile, 0);
     right: var(--right-mobile, 0);

@@ -11,11 +11,11 @@ interface Props {
 const { elementName } = Astro.props
 ---
 
-<Box direction="row" gap={16} width="fit-content" class={contactElement}>
-  <Box direction="column" gap={16} align="center" width="fit-content">
+<Box direction="row" gap="16px" width="fit-content" class={contactElement}>
+  <Box direction="column" gap="16px" align="center" width="fit-content">
     <slot name="icon" />
   </Box>
-  <Box direction="column" width="fit-content" gap={8}>
+  <Box direction="column" width="fit-content" gap="8px">
     <Text variant="heading-6" tag="p">{elementName}</Text>
     <slot />
   </Box>

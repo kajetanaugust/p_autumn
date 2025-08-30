@@ -1,6 +1,5 @@
 ---
 import type { Color } from '@tokens/types'
-import styles from './Text.module.css'
 
 import { getDefaultTag } from './helpers'
 
@@ -21,13 +20,13 @@ interface Props {
 }
 
 const {
-  variant = 'text-medium',
+  variant = 'body-medium',
   textWrap = 'wrap',
   textAlign = 'left',
   weight,
   style,
   textDecoration = 'none',
-  color = 'neutral_darkest',
+  color = 'neutral-darkest',
   tag,
   class: className = '',
   ...rest
@@ -37,7 +36,7 @@ const Tag = tag || getDefaultTag(variant)
 ---
 
 <Tag
-  class={`text--${styles[variant]} ${className}`}
+  class={`text--${variant} ${className}`}
   style={{
     '--text-color': `var(--${color})`,
     '--text-weight': weight,
