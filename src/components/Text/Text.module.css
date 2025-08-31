@@ -124,7 +124,7 @@
     line-height: 1.5;
 }
 
-.text-tagline {
+.text--tagline {
     composes: text;
     font-family: var(--font-secondary);
     font-size: 1rem;

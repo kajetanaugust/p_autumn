@@ -8,32 +8,27 @@ import Text from '@components/Text/Text.astro'
 
 import { carouselOptions, carouselPhotos } from './consts'
 
-import { galleryImageStyles, galleryCarousel } from './styles.css'
+import styles from './Gallery.module.css'
 ---
 
 <Box
   direction="column"
-  width="100%"
-  px={['20px', '80px']}
-  py={['64px', '112px']}
-  gap={['48px', '80px']}
+  width="full"
+  px={[20, 80]}
+  py={[64, 112]}
+  gap={[48, 80]}
   id="galeria"
   align="center"
   bgColor="neutral-lightest"
 >
-  <Box
-    direction="column"
-    gap={['20px', '24px']}
-    justify="center"
-    align="center"
-  >
+  <Box direction="column" gap={[20, 24]} justify="center" align="center">
     <Text variant="tagline">Galeria</Text>
     <Text variant="heading-2">Galeria Zdjęć</Text>
     <Text variant="body-regular" textAlign="center"
       >Zobacz nasze przestrzenie i radosne chwile mieszkańców.</Text
     >
   </Box>
-  <Box class={galleryCarousel}>
+  <Box class={styles.galleryCarousel}>
     <Splide
       options={{
         ...carouselOptions,
@@ -50,7 +45,7 @@ import { galleryImageStyles, galleryCarousel } from './styles.css'
               quality={80}
               widths={[320, 400, 600, 800, 1024, 1200, 1600, 1920, 2400]}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 60vw"
-              class={galleryImageStyles}
+              class={styles.galleryImage}
             />
           </SplideSlide>
         ))

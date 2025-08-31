@@ -7,19 +7,18 @@ import Text from '@components/Text/Text.astro'
 
 import heroImage from '@assets/widokowe_crop.jpg'
 
-import { heroCopyElement, heroImageStyles } from './styles.css'
+import styles from './Hero.module.css'
 ---
 
 <Box
   direction="column"
   justify="center"
   align="flex-start"
-  gap={['48px', '80px']}
-  width="100%"
-  maxWidth="100%"
+  gap={[48, 80]}
+  width="full"
   overflow="hidden"
-  pb={['48px', '80px']}
-  mt={'84px'}
+  py={[48, 80]}
+  class={styles.heroWrapper}
 >
   <Image
     alt="Birds eye view of the facility"
@@ -28,25 +27,25 @@ import { heroCopyElement, heroImageStyles } from './styles.css'
     quality={75}
     widths={[320, 400, 600, 800, 1024, 1200, 1600, 1920, 2400]}
     sizes="100vw"
-    class={heroImageStyles}
+    class={styles.heroImage}
     fetchpriority="high"
   />
   <Box
     direction={['column', 'row']}
     justify="space-between"
     align="flex-start"
-    px={['20px', '80px']}
-    gap={['20px', '80px']}
+    px={[20, 80]}
+    gap={[20, 80]}
   >
-    <Text variant="heading-1" class={heroCopyElement}>
+    <Text variant="heading-1" class={styles.heroCopyElement}>
       Opieka, komfort i wspólnota dla seniorów
     </Text>
     <Box
       direction="column"
       justify="flex-start"
       align="flex-start"
-      gap={['24px', '32px']}
-      class={heroCopyElement}
+      gap={[24, 32]}
+      class={styles.heroCopyElement}
     >
       <Text variant="body-medium">
         W naszym rodzinnym domu opieki oferujemy możliwość spędzenia kilku dni,
@@ -56,7 +55,7 @@ import { heroCopyElement, heroImageStyles } from './styles.css'
         aktywności, pragniemy pomóc, uspokoić i wsłuchać się w ich potrzeby oraz
         stworzyć przyjazną atmosferę.
       </Text>
-      <Box direction="row" justify="flex-start" gap="16px" width="100%">
+      <Box direction="row" justify="flex-start" gap={16} width="full">
         <Button variant="primary" href="#kontakt">Umów się</Button>
         <Button variant="outline" href="#oferta">Dowiedz się</Button>
       </Box>

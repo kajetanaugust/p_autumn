@@ -5,10 +5,14 @@ import Text from '@components/Text/Text.astro'
 import SectionLayout from '@layouts/SectionLayout.astro'
 ---
 
-<SectionLayout sectionId="sponsored-stays" bgColor="luxor-gold-lightest">
-  <Box direction={['column', 'row']} gap="48px">
+<SectionLayout
+  sectionId="sponsored-stays"
+  bgColor="luxor-gold-lightest"
+  isWithSmallPy={false}
+>
+  <Box direction={['column', 'row']} gap={48}>
     <Text variant="heading-2">Program Opieki Wytchnieniowej</Text>
-    <Box direction="column" gap="8px">
+    <Box direction="column" gap={8}>
       <Text variant="body-medium">
         Z radością informujemy, że nasz pensjonat "Pogodna Jesień" oferuje
         bezpłatne pobyty w ramach programu Opieki Wytchnieniowej. To wspaniała

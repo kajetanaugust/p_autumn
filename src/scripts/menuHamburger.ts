@@ -1,4 +1,4 @@
-import { mobileMenuVisible } from '../sections/Header/styles.css.ts'
+import styles from '../sections/Header/Header.module.css'
 
 const hamburger = document.getElementById('mobile-menu-hamburger')
 const mobileMenu = document.getElementById('mobile-menu')
@@ -8,15 +8,15 @@ const body = document.querySelector('body')
 function closeMobileMenu() {
   if (!mobileMenu || !hamburger || !html || !body) return
 
-  mobileMenu.classList.remove(mobileMenuVisible)
+  mobileMenu.classList.remove(styles.mobileMenuVisible)
   hamburger.setAttribute('aria-expanded', 'false')
   html.style.overflowY = 'auto'
   body.style.overflowY = 'auto'
 }
 
 hamburger?.addEventListener('click', () => {
-  mobileMenu?.classList.toggle(mobileMenuVisible)
-  const isMenuVisible = mobileMenu?.classList.contains(mobileMenuVisible)
+  mobileMenu?.classList.toggle(styles.mobileMenuVisible)
+  const isMenuVisible = mobileMenu?.classList.contains(styles.mobileMenuVisible)
 
   hamburger?.toggleAttribute('aria-expanded', isMenuVisible)
 

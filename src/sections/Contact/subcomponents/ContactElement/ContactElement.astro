@@ -2,7 +2,7 @@
 import Box from '@components/Box/Box.astro'
 import Text from '@components/Text/Text.astro'
 
-import { contactElement } from './styles.css'
+import styles from './ContactElement.module.css'
 
 interface Props {
   elementName: string
@@ -11,11 +11,11 @@ interface Props {
 const { elementName } = Astro.props
 ---
 
-<Box direction="row" gap="16px" width="fit-content" class={contactElement}>
-  <Box direction="column" gap="16px" align="center" width="fit-content">
+<Box direction="row" gap={16} width="fit" class={styles.contactElement}>
+  <Box direction="column" gap={16} align="center" width="fit">
     <slot name="icon" />
   </Box>
-  <Box direction="column" width="fit-content" gap="8px">
+  <Box direction="column" width="fit" gap={8}>
     <Text variant="heading-6" tag="p">{elementName}</Text>
     <slot />
   </Box>

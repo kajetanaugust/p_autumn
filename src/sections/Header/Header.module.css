@@ -1,0 +1,67 @@
+.header {
+    top: 0;
+    left: 0;
+    height: 84px;
+}
+
+.headerContent {
+    max-width: 1920px;
+}
+
+.headerLogoDesktop {
+    display: none;
+    height: 52px;
+    max-width: 285px;
+
+    @media (min-width: 576px) {
+        display: block;
+    }
+    @media (min-width: 768px) {
+        display: none;
+    }
+    @media (min-width: 992px) {
+        display: block;
+    }
+}
+
+.headerLogoMobile {
+    display: block;
+    height: 52px;
+    max-width: 60px;
+    @media (min-width: 576px) {
+        display: none;
+    }
+    @media (min-width: 768px) {
+        display: block;
+    }
+    @media (min-width: 992px) {
+        display: none;
+    }
+}
+
+.mobileMenu {
+    display: none;
+    top: 84px;
+    left: 0;
+}
+
+.mobileMenuVisible {
+    display: flex !important;
+    opacity: 1;
+}
+
+.desktopMenu {
+    display: none;
+
+    @media (min-width: 768px) {
+        display: flex;
+    }
+}
+
+.mobileMenuHamburger {
+    display: block;
+    @media (min-width: 768px) {
+        display: none;
+    }
+}
+

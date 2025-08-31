@@ -86,7 +86,7 @@ const textColor = variant === 'primary' ? 'neutral-white' : 'neutral-darkest'
 
 <Tag
   {...allAttrs}
-  class={`${styles.button} ${className}`}
+  class={`${styles[`button--${variant.replace('icon', 'icon-').toLowerCase()}`]} ${className}`}
   aria-label={ariaLabel}
   data-testid={dataTestId}
   style={styleAttrs}

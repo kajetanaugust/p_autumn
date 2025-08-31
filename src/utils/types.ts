@@ -6,13 +6,9 @@ export type Justify =
   | 'space-between'
   | 'space-around'
   | 'space-evenly'
-  | 'stretch'
-export type Align =
-  | 'flex-start'
-  | 'flex-end'
-  | 'center'
-  | 'baseline'
-  | 'stretch'
+
+export type Align = 'flex-start' | 'flex-end' | 'center' | 'stretch'
+
 export type Display =
   | 'block'
   | 'inline-block'
@@ -22,23 +18,18 @@ export type Display =
   | 'grid'
   | 'inline-grid'
   | 'none'
+
 export type Position = 'static' | 'relative' | 'absolute' | 'fixed' | 'sticky'
-export type Overflow = 'visible' | 'hidden' | 'clip' | 'scroll' | 'auto'
-export type Wrap = 'nowrap' | 'wrap' | 'wrap-reverse'
+
+export type Overflow = 'visible' | 'hidden' | 'scroll' | 'auto'
+
+export type Wrap = 'nowrap' | 'wrap'
 
 export interface Spacings {
-  p?: string | [string, string] | [string, string, string]
-  px?: string | [string, string] | [string, string, string]
-  py?: string | [string, string] | [string, string, string]
-  pt?: string | [string, string] | [string, string, string]
-  pb?: string | [string, string] | [string, string, string]
-  ps?: string | [string, string] | [string, string, string]
-  pe?: string | [string, string] | [string, string, string]
-  m?: string | [string, string] | [string, string, string]
-  mx?: string | [string, string] | [string, string, string]
-  my?: string | [string, string] | [string, string, string]
-  mt?: string | [string, string] | [string, string, string]
-  mb?: string | [string, string] | [string, string, string]
-  ms?: string | [string, string] | [string, string, string]
-  me?: string | [string, string] | [string, string, string]
+  p?: number | [number, number]
+  px?: number | [number, number]
+  py?: number | [number, number]
+  m?: number | [number, number]
+  mx?: number | [number, number]
+  my?: number | [number, number]
 }

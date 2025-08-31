@@ -1,0 +1,7 @@
+.footer {
+    border-top: 1px solid var(--neutral-light);
+}
+
+.footerContent {
+    max-width: 1920px;
+}

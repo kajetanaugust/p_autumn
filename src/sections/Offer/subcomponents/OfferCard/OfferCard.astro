@@ -2,7 +2,7 @@
 import Box from '@components/Box/Box.astro'
 import Text from '@components/Text/Text.astro'
 
-import { offerCard, offerCardTitle } from './styles.css'
+import styles from './OfferCard.module.css'
 
 interface Props {
   title: string
@@ -13,19 +13,18 @@ const { title, description } = Astro.props
 ---
 
 <Box
-  gap={['20px', '24px']}
+  gap={[20, 24]}
   direction="column"
   justify="space-between"
   align="center"
-  class={offerCard}
-  maxWidth={['100%', '390px']}
+  class={styles.offerCard}
 >
   <Box
     direction="column"
     justify="center"
     align="center"
-    gap={['20px', '24px']}
-    class={offerCardTitle}
+    gap={[20, 24]}
+    class={styles.offerCardTitle}
   >
     <slot />
     <Text variant="heading-4" textAlign="center" tag="p">{title}</Text>

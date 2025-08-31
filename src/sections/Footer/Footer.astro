@@ -5,25 +5,25 @@ import Box from '@components/Box/Box.astro'
 import Button from '@components/Button/Button.astro'
 import Text from '@components/Text/Text.astro'
 
-import { footerWrapper } from './styles.css'
+import styles from './Footer.module.css'
 
 const currentYear = new Date().getFullYear()
 ---
 
 <Box
-  width="100%"
-  px={['16px', '64px']}
-  py="20px"
+  width="full"
+  px={[16, 64]}
+  py={20}
   align="center"
   justify="center"
-  class={footerWrapper}
+  class={styles.footer}
 >
   <Box
     direction={['column', 'row']}
-    gap="24px"
+    gap={24}
     justify="space-between"
     align="center"
-    maxWidth="1920px"
+    class={styles.footerContent}
   >
     <Text variant="body-small">©{currentYear} Pogodna Jesień Sp.z o o.</Text>
     <Text variant="body-small" textAlign="center"

@@ -8,17 +8,17 @@ import SectionLayout from '@layouts/SectionLayout.astro'
 
 import careImage from '@assets/care.jpg'
 
-import { AboutImageStyles } from './styles.css'
+import styles from './About.module.css'
 ---
 
-<SectionLayout sectionId="historia" isFullWidth isWithSmallPb>
-  <Box direction={['column', 'row']} gap={['20px', '80px']}>
-    <Box direction="column" justify="flex-start" gap={['12px', '16px']}>
+<SectionLayout sectionId="historia" isFullWidth isWithSmallPy>
+  <Box direction={['column', 'row']} gap={[20, 80]}>
+    <Box direction="column" justify="flex-start" gap={[12, 16]}>
       <Text variant="tagline">Historia</Text>
       <Text variant="heading-2">Nasze doświadczenie w opiece nad seniorami</Text
       >
     </Box>
-    <Box direction="column" justify="flex-start" gap={['24px', '32px']}>
+    <Box direction="column" justify="flex-start" gap={[24, 32]}>
       <Text variant="body-medium"
         >Nasz pensjonat powstał w sierpniu 2006 r. w Tarnowskich Górach, w sercu
         województwa śląskiego, z myślą o zapewnieniu Państwa bliskim pogodnej
@@ -43,7 +43,7 @@ import { AboutImageStyles } from './styles.css'
       quality={75}
       widths={[320, 400, 600, 800, 1024, 1200, 1600, 1920, 2400]}
       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-      class={AboutImageStyles}
+      class={styles.aboutImage}
     />
   </Box>
 </SectionLayout>

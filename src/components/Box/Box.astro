@@ -1,19 +1,16 @@
 ---
 import type { Color, Shadow, Radius } from '@tokens/types'
 
-import type { Overflow, Display, Wrap, Spacings } from '@utils/types'
-
-import { getResponsiveValues } from './helpers'
+import type { Overflow, Display, Wrap, Spacings, Position } from '@utils/types'
 
 import styles from './Box.module.css'
 
 import type {
+  DimensionVariants,
   ResponsiveAlign,
-  ResponsiveDimensionVariants,
   ResponsiveDirection,
   ResponsiveGap,
   ResponsiveJustify,
-  ResponsivePosition,
   ResponsivePositionProperty,
   ZIndexVariant,
 } from './types'
@@ -21,17 +18,15 @@ import type {
 interface Props extends Spacings {
   bgColor?: Color
   shadow?: Shadow
-  position?: ResponsivePosition
+  position?: Position
   borderRadius?: Radius
   isWithBorder?: boolean
   direction?: ResponsiveDirection
   justify?: ResponsiveJustify
   align?: ResponsiveAlign
   gap?: ResponsiveGap
-  width?: ResponsiveDimensionVariants
-  height?: ResponsiveDimensionVariants
-  maxWidth?: ResponsiveDimensionVariants
-  maxHeight?: ResponsiveDimensionVariants
+  width?: DimensionVariants | '100vw'
+  height?: DimensionVariants | '100vh'
   zIndex?: ZIndexVariant
   top?: ResponsivePositionProperty
   right?: ResponsivePositionProperty
@@ -56,90 +51,79 @@ const {
   justify = 'flex-start',
   align = 'flex-start',
   gap,
-  width = '100%',
-  height = 'fit-content',
-  maxWidth,
-  maxHeight,
-  zIndex,
-  top,
-  right,
-  bottom,
-  left,
+  width = 'full',
+  height = 'auto',
   wrap = 'nowrap',
   overflow = 'visible',
   display = 'flex',
   class: className = '',
   p,
-  pb,
-  ps,
-  pe,
-  pt,
   px,
   py,
   m,
   mx,
   my,
-  mt,
-  mb,
-  ms,
-  me,
 } = Astro.props
 
-const responsiveValues = getResponsiveValues({
-  p,
-  ps,
-  pe,
-  pt,
-  pb,
-  px,
-  py,
-  m,
-  ms,
-  me,
-  mt,
-  mb,
-  mx,
-  my,
-  position,
-  top,
-  bottom,
-  right,
-  left,
-  align,
-  justify,
-  wrap,
-  direction,
-  gap,
-})
-
-const staticValues = Object.fromEntries(
-  Object.entries({
-    '--display': display,
-    '--background-color': bgColor ? `var(--${bgColor})` : undefined,
-    '--box-shadow': shadow ? `var(--${shadow})` : undefined,
-    '--border-radius': borderRadius ? `var(--${borderRadius})` : undefined,
-    '--border': isWithBorder ? '1px solid var(--neutral-light)' : undefined,
-    '--width': width,
-    '--height': height,
-    '--max-width': maxWidth,
-    '--max-height': maxHeight,
-    '--z-index': zIndex,
-    '--overflow': overflow,
-  }).filter(([_, value]) => value !== undefined)
-)
-
 const { id, role, 'data-testid': dataTestId } = Astro.props
+
+const classList = [
+  Array.isArray(direction)
+    ? [styles[direction[0]], styles[`${direction[1]}-md`]].join(' ')
+    : styles[direction],
+
+  Array.isArray(justify)
+    ? [
+        styles[`justify-${justify[0]}`],
+        styles[`justify-${justify[1]}-md`],
+      ].join(' ')
+    : styles[`justify-${justify}`],
+
+  Array.isArray(align)
+    ? [styles[`align-${align[0]}`], styles[`align-${align[1]}-md`]].join(' ')
+    : styles[`align-${align}`],
+
+  Array.isArray(gap)
+    ? [styles[`gap-${gap[0]}`], styles[`gap-${gap[1]}-md`]].join(' ')
+    : gap && styles[`gap-${gap}`],
+
+  styles[`w-${width}`],
+  styles[`h-${height}`],
+  bgColor && styles[`bg-${bgColor}`],
+  shadow && styles[shadow],
+  position && styles[`position-${position}`],
+  borderRadius && styles[borderRadius],
+  isWithBorder && styles['bordered'],
+  wrap && styles[wrap],
+  overflow && styles[overflow],
+  display && styles[display],
+  Array.isArray(p)
+    ? [styles[`p-${p[0]}`], styles[`p-${p[1]}-md`]].join(' ')
+    : p && styles[`p-${p}`],
+  Array.isArray(px)
+    ? [styles[`px-${px[0]}`], styles[`px-${px[1]}-md`]].join(' ')
+    : px && styles[`px-${px}`],
+  Array.isArray(py)
+    ? [styles[`py-${py[0]}`], styles[`py-${py[1]}-md`]].join(' ')
+    : py && styles[`py-${py}`],
+  Array.isArray(m)
+    ? [styles[`m-${m[0]}`], styles[`m-${m[1]}-md`]].join(' ')
+    : m && styles[`m-${m}`],
+  Array.isArray(mx)
+    ? [styles[`mx-${mx[0]}`], styles[`mx-${mx[1]}-md`]].join(' ')
+    : mx && styles[`mx-${mx}`],
+  Array.isArray(my)
+    ? [styles[`my-${my[0]}`], styles[`my-${my[1]}-md`]].join(' ')
+    : my && styles[`my-${my}`],
+
+  styles['box'],
+
+  className,
+]
+  .filter(Boolean)
+  .join(' ')
 ---
 
-<div
-  class={`${styles.box} ${className}`}
-  id={id}
-  role={role}
-  style={{
-    ...staticValues,
-    ...responsiveValues,
-  }}
-  data-testid={dataTestId}
->
+<div class={classList} id={id} role={role} data-testid={dataTestId}>
   <slot />
 </div>

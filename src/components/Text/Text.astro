@@ -3,6 +3,9 @@ import type { Color } from '@tokens/types'
 
 import { getDefaultTag } from './helpers'
 
+import styles from './Text.module.css'
+
+
 import type { FontWeight, FontStyle, TextTag, TextVariant } from './types'
 
 interface Props {
@@ -36,7 +39,7 @@ const Tag = tag || getDefaultTag(variant)
 ---
 
 <Tag
-  class={`text--${variant} ${className}`}
+  class={`${styles[`text--${variant}`]} ${className}`}
   style={{
     '--text-color': `var(--${color})`,
     '--text-weight': weight,

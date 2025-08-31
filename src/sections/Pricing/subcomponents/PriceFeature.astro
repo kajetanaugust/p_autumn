@@ -11,7 +11,7 @@ interface Props {
 const { text } = Astro.props
 ---
 
-<Box direction="row" gap="8px" width="fit-content">
+<Box direction="row" gap={8} width="fit">
   <Check />
   <Text variant="body-regular">
     {text}
