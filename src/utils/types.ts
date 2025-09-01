@@ -1,13 +1,13 @@
-export type Direction = 'row' | 'row-reverse' | 'column' | 'column-reverse'
+export type Direction = 'row' | 'row-reverse' | 'col' | 'col-reverse'
 export type Justify =
-  | 'flex-start'
-  | 'flex-end'
+  | 'start'
+  | 'end'
   | 'center'
-  | 'space-between'
-  | 'space-around'
-  | 'space-evenly'
+  | 'between'
+  | 'around'
+  | 'evenly'
 
-export type Align = 'flex-start' | 'flex-end' | 'center' | 'stretch'
+export type Align = 'start' | 'end' | 'center' | 'stretch'
 
 export type Display =
   | 'block'
@@ -26,10 +26,18 @@ export type Overflow = 'visible' | 'hidden' | 'scroll' | 'auto'
 export type Wrap = 'nowrap' | 'wrap'
 
 export interface Spacings {
-  p?: number | [number, number]
-  px?: number | [number, number]
-  py?: number | [number, number]
-  m?: number | [number, number]
-  mx?: number | [number, number]
-  my?: number | [number, number]
+  p?: number | [number, number] | [number, number, number]
+  px?: number | [number, number] | [number, number, number]
+  py?: number | [number, number] | [number, number, number]
+  pt?: number | [number, number] | [number, number, number]
+  pr?: number | [number, number] | [number, number, number]
+  pb?: number | [number, number] | [number, number, number]
+  pl?: number | [number, number] | [number, number, number]
+  m?: number | [number, number] | [number, number, number]
+  mx?: number | [number, number] | [number, number, number]
+  my?: number | [number, number] | [number, number, number]
+  mt?: number | [number, number] | [number, number, number]
+  mr?: number | [number, number] | [number, number, number]
+  mb?: number | [number, number] | [number, number, number]
+  ml?: number | [number, number] | [number, number, number]
 }

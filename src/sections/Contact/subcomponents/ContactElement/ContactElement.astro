@@ -12,10 +12,10 @@ const { elementName } = Astro.props
 ---
 
 <Box direction="row" gap={16} width="fit" class={styles.contactElement}>
-  <Box direction="column" gap={16} align="center" width="fit">
+  <Box direction="col" gap={16} align="center" width="fit">
     <slot name="icon" />
   </Box>
-  <Box direction="column" width="fit" gap={8}>
+  <Box direction="col" width="fit" gap={8}>
     <Text variant="heading-6" tag="p">{elementName}</Text>
     <slot />
   </Box>

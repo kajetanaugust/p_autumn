@@ -13,11 +13,11 @@ import styles from './Contact.module.css'
 ---
 
 <SectionLayout sectionId="kontakt" isCentered isFullWidth isWithSmallPy>
-  <Box direction="column" gap={[48, 80]} width="full">
-    <Box direction="column" gap={24} align="stretch" height="full">
-      <Box direction="column" gap={16}>
+  <Box direction="col" gap={[48, 80]} width="full">
+    <Box direction="col" gap={24} align="stretch" height="full">
+      <Box direction="col" gap={16}>
         <Text variant="tagline">Kontakt</Text>
-        <Box direction="column" gap={24}>
+        <Box direction="col" gap={24}>
           <Text variant="heading-2">Skontaktuj się</Text>
           <Text variant="body-medium"
             >Jesteśmy tutaj, aby odpowiedzieć na Twoje pytania i pomóc w każdej
@@ -26,7 +26,7 @@ import styles from './Contact.module.css'
         </Box>
       </Box>
     </Box>
-    <Box direction={['column', 'row']} gap={24} wrap="wrap" width="full">
+    <Box direction={['col', 'row']} gap={24} wrap="wrap" width="full">
       <ContactElement elementName="E-mail">
         <Mail slot="icon" />
         <Link href="mailto:pogodna@jesien.com.pl">pogodna@jesien.com.pl</Link>
@@ -55,7 +55,7 @@ import styles from './Contact.module.css'
       </ContactElement>
     </Box>
   </Box>
-  <Box direction="column" height="full" width="full" align="stretch">
+  <Box direction="col" height="full" width="full" align="stretch">
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2100.907131393209!2d18.80668648938962!3d50.42088576458034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471129425abce421%3A0xcdabae3a73b40fa1!2sPensjonat+Seniora+%22Pogodna+Jesie%C5%84%22!5e0!3m2!1spl!2spl!4v1553370849561"
       width="100%"

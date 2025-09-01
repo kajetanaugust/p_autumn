@@ -14,7 +14,7 @@ import styles from './Header.module.css'
   position="fixed"
   zIndex="50"
   bgColor="neutral-white"
-  shadow="shadow-md"
+  shadow="md"
   px={[16, 64]}
   py={20}
   width="full"
@@ -25,7 +25,7 @@ import styles from './Header.module.css'
   <Box
     width="full"
     direction="row"
-    justify="space-between"
+    justify="between"
     align="center"
     class={styles.headerContent}
   >
@@ -67,15 +67,15 @@ import styles from './Header.module.css'
       <Menu />
     </Button>
     <Box
-      direction="column"
+      direction="col"
       justify="center"
-      align="flex-start"
+      align="start"
       gap={16}
       class={styles.mobileMenu}
       position="absolute"
       zIndex="50"
       width="full"
-      height="100vh"
+      height="screen"
       bgColor="neutral-white"
       shadow="shadow-md"
       px={20}

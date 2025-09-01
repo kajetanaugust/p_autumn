@@ -3,11 +3,11 @@ import type { Color, Shadow, Radius } from '@tokens/types'
 
 import type { Overflow, Display, Wrap, Spacings, Position } from '@utils/types'
 
-import styles from './Box.module.css'
+import { getResponsiveProp } from './helpers'
 
 import type {
-  DimensionVariants,
   ResponsiveAlign,
+  ResponsiveDimension,
   ResponsiveDirection,
   ResponsiveGap,
   ResponsiveJustify,
@@ -25,8 +25,8 @@ interface Props extends Spacings {
   justify?: ResponsiveJustify
   align?: ResponsiveAlign
   gap?: ResponsiveGap
-  width?: DimensionVariants | '100vw'
-  height?: DimensionVariants | '100vh'
+  width?: ResponsiveDimension
+  height?: ResponsiveDimension
   zIndex?: ZIndexVariant
   top?: ResponsivePositionProperty
   right?: ResponsivePositionProperty
@@ -44,84 +44,92 @@ interface Props extends Spacings {
 const {
   bgColor,
   shadow,
-  position = 'static',
+  position,
+  p,
+  px,
+  py,
+  pt,
+  pr,
+  pb,
+  pl,
+  m,
+  mx,
+  my,
+  mt,
+  mr,
+  mb,
+  ml,
   borderRadius,
-  isWithBorder = false,
   direction = 'row',
-  justify = 'flex-start',
-  align = 'flex-start',
+  justify = 'start',
+  align = 'start',
   gap,
   width = 'full',
   height = 'auto',
   wrap = 'nowrap',
-  overflow = 'visible',
+  overflow,
   display = 'flex',
-  class: className = '',
-  p,
-  px,
-  py,
-  m,
-  mx,
-  my,
 } = Astro.props
 
 const { id, role, 'data-testid': dataTestId } = Astro.props
 
+const padding = (p && getResponsiveProp(p, 'p')) || []
+const paddingX = (px && getResponsiveProp(px, 'px')) || []
+const paddingY = (py && getResponsiveProp(py, 'py')) || []
+const paddingTop = (pt && getResponsiveProp(pt, 'pt')) || []
+const paddingRight = (pr && getResponsiveProp(pr, 'pr')) || []
+const paddingBottom = (pb && getResponsiveProp(pb, 'pb')) || []
+const paddingLeft = (pl && getResponsiveProp(pl, 'pl')) || []
+const margin = (m && getResponsiveProp(m, 'm')) || []
+const marginX = (mx && getResponsiveProp(mx, 'mx')) || []
+const marginY = (my && getResponsiveProp(my, 'my')) || []
+const marginTop = (mt && getResponsiveProp(mt, 'mt')) || []
+const marginRight = (mr && getResponsiveProp(mr, 'mr')) || []
+const marginBottom = (mb && getResponsiveProp(mb, 'mb')) || []
+const marginLeft = (ml && getResponsiveProp(ml, 'ml')) || []
+const bg = (bgColor && [`bg-${bgColor}`]) || []
+const shadowValue = (shadow && [`shadow-${shadow}`]) || []
+const positionValue = (position && [position]) || []
+const radius = (borderRadius && [`radius-${borderRadius}`]) || []
+const displayValue = (display && [display]) || []
+const directionValue = (direction && getResponsiveProp(direction, 'flex')) || []
+const justifyValue = (justify && getResponsiveProp(justify, 'justify')) || []
+const alignValue = (align && getResponsiveProp(align, 'align')) || []
+const gapValue = (gap && getResponsiveProp(gap, 'gap')) || []
+const overflowValue = (overflow && [`overflow-${overflow}`]) || []
+const wrapValue = (wrap && [`wrap-${wrap}`]) || []
+const widthValue = (width && getResponsiveProp(width, 'w')) || []
+const heightValue = (height && getResponsiveProp(height, 'h')) || []
+
 const classList = [
-  Array.isArray(direction)
-    ? [styles[direction[0]], styles[`${direction[1]}-md`]].join(' ')
-    : styles[direction],
-
-  Array.isArray(justify)
-    ? [
-        styles[`justify-${justify[0]}`],
-        styles[`justify-${justify[1]}-md`],
-      ].join(' ')
-    : styles[`justify-${justify}`],
-
-  Array.isArray(align)
-    ? [styles[`align-${align[0]}`], styles[`align-${align[1]}-md`]].join(' ')
-    : styles[`align-${align}`],
-
-  Array.isArray(gap)
-    ? [styles[`gap-${gap[0]}`], styles[`gap-${gap[1]}-md`]].join(' ')
-    : gap && styles[`gap-${gap}`],
-
-  styles[`w-${width}`],
-  styles[`h-${height}`],
-  bgColor && styles[`bg-${bgColor}`],
-  shadow && styles[shadow],
-  position && styles[`position-${position}`],
-  borderRadius && styles[borderRadius],
-  isWithBorder && styles['bordered'],
-  wrap && styles[wrap],
-  overflow && styles[overflow],
-  display && styles[display],
-  Array.isArray(p)
-    ? [styles[`p-${p[0]}`], styles[`p-${p[1]}-md`]].join(' ')
-    : p && styles[`p-${p}`],
-  Array.isArray(px)
-    ? [styles[`px-${px[0]}`], styles[`px-${px[1]}-md`]].join(' ')
-    : px && styles[`px-${px}`],
-  Array.isArray(py)
-    ? [styles[`py-${py[0]}`], styles[`py-${py[1]}-md`]].join(' ')
-    : py && styles[`py-${py}`],
-  Array.isArray(m)
-    ? [styles[`m-${m[0]}`], styles[`m-${m[1]}-md`]].join(' ')
-    : m && styles[`m-${m}`],
-  Array.isArray(mx)
-    ? [styles[`mx-${mx[0]}`], styles[`mx-${mx[1]}-md`]].join(' ')
-    : mx && styles[`mx-${mx}`],
-  Array.isArray(my)
-    ? [styles[`my-${my[0]}`], styles[`my-${my[1]}-md`]].join(' ')
-    : my && styles[`my-${my}`],
-
-  styles['box'],
-
-  className,
-]
-  .filter(Boolean)
-  .join(' ')
+  ...padding,
+  ...paddingX,
+  ...paddingY,
+  ...paddingTop,
+  ...paddingRight,
+  ...paddingBottom,
+  ...paddingLeft,
+  ...margin,
+  ...marginX,
+  ...marginY,
+  ...marginTop,
+  ...marginRight,
+  ...marginBottom,
+  ...marginLeft,
+  ...bg,
+  ...shadowValue,
+  ...positionValue,
+  ...radius,
+  ...displayValue,
+  ...directionValue,
+  ...justifyValue,
+  ...alignValue,
+  ...gapValue,
+  ...overflowValue,
+  ...wrapValue,
+  ...widthValue,
+  ...heightValue,
+].join(' ')
 ---
 
 <div class={classList} id={id} role={role} data-testid={dataTestId}>

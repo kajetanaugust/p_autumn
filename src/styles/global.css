@@ -1,8 +1,5 @@
-@import "../tokens/_colors.css";
-@import "../tokens/_typography.css";
-@import "../tokens/_radius.css";
-@import "../tokens/_shadows.css";
-
+@import './app.css';
+@import 'tailwindcss';
 
 html,
 body {

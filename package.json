@@ -18,6 +18,7 @@
   "dependencies": {
     "@astrojs/sitemap": "^3.4.2",
     "@astrojs/ts-plugin": "^1.10.4",
+    "@tailwindcss/vite": "^4.1.12",
     "@vanilla-extract/css": "^1.17.4",
     "@vanilla-extract/css-utils": "^0.1.6",
     "@vanilla-extract/dynamic": "^2.1.5",
@@ -25,7 +26,8 @@
     "astro": "^5.12.2",
     "astro-capo": "^0.0.1",
     "astro-splide": "^2.0.0",
-    "lucide-astro": "^0.525.0"
+    "lucide-astro": "^0.525.0",
+    "tailwindcss": "^4.1.12"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^8.39.0",

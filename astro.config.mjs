@@ -1,24 +1,13 @@
 // @ts-check
 import { defineConfig } from 'astro/config'
-
 import sitemap from '@astrojs/sitemap'
+import tailwindcss from '@tailwindcss/vite'
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://jesien.com.pl',
   integrations: [sitemap()],
   vite: {
-    css: {
-      modules: {
-        scopeBehaviour: 'local',
-        generateScopedName: '[name]__[local]___[hash:base64:5]',
-      },
-      postcss: true,
-    },
-    build: {
-      cssCodeSplit: true,
-      cssMinify: 'esbuild',
-    },
     resolve: {
       alias: {
         '@': '/src',
@@ -33,8 +22,6 @@ export default defineConfig({
         '@scripts': '/src/scripts',
       },
     },
-  },
-  build: {
-    inlineStylesheets: 'auto',
+    plugins: [tailwindcss()],
   },
 })

@@ -11,9 +11,9 @@ import styles from './Hero.module.css'
 ---
 
 <Box
-  direction="column"
+  direction="col"
   justify="center"
-  align="flex-start"
+  align="start"
   gap={[48, 80]}
   width="full"
   overflow="hidden"
@@ -31,9 +31,9 @@ import styles from './Hero.module.css'
     fetchpriority="high"
   />
   <Box
-    direction={['column', 'row']}
-    justify="space-between"
-    align="flex-start"
+    direction={['col', 'row']}
+    justify="between"
+    align="start"
     px={[20, 80]}
     gap={[20, 80]}
   >
@@ -41,9 +41,9 @@ import styles from './Hero.module.css'
       Opieka, komfort i wspólnota dla seniorów
     </Text>
     <Box
-      direction="column"
-      justify="flex-start"
-      align="flex-start"
+      direction="col"
+      justify="start"
+      align="start"
       gap={[24, 32]}
       class={styles.heroCopyElement}
     >
@@ -55,7 +55,7 @@ import styles from './Hero.module.css'
         aktywności, pragniemy pomóc, uspokoić i wsłuchać się w ich potrzeby oraz
         stworzyć przyjazną atmosferę.
       </Text>
-      <Box direction="row" justify="flex-start" gap={16} width="full">
+      <Box direction="row" justify="start" gap={16} width="full">
         <Button variant="primary" href="#kontakt">Umów się</Button>
         <Button variant="outline" href="#oferta">Dowiedz się</Button>
       </Box>
