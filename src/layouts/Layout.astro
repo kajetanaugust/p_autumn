@@ -4,8 +4,6 @@ import '@splidejs/splide/css'
 
 import { Head } from 'astro-capo'
 
-const gtmId = import.meta.env.GTM_ID
-
 import Footer from '@sections/Footer/Footer.astro'
 import Header from '@sections/Header/Header.astro'
 ---
@@ -24,7 +22,7 @@ import Header from '@sections/Header/Header.astro'
         j.async = true
         j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl
         f.parentNode.insertBefore(j, f)
-      })(window, document, 'script', 'dataLayer', gtmId)
+      })(window, document, 'script', 'dataLayer', 'GTM-54QJC2MJ')
     </script>
     <!-- End Google Tag Manager -->
 
@@ -46,7 +44,7 @@ import Header from '@sections/Header/Header.astro'
     <!-- Google Tag Manager (noscript) -->
     <noscript
       ><iframe
-        src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+        src="https://www.googletagmanager.com/ns.html?id=GTM-54QJC2MJ"
         height="0"
         width="0"
         style="display:none;visibility:hidden"></iframe></noscript
