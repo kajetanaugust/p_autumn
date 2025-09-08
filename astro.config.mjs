@@ -18,8 +18,17 @@ export default defineConfig({
             if (assetInfo.name && assetInfo.name.endsWith('.css')) {
               return 'assets/[name]-[hash][extname]'
             }
+
+            if (
+              assetInfo.name &&
+              (assetInfo.name.endsWith('.woff2') ||
+                assetInfo.name.endsWith('.woff'))
+            ) {
+              return 'assets/fonts/[name]-[hash][extname]'
+            }
             return 'assets/[name]-[hash][extname]'
           },
+
           entryFileNames: 'assets/[name]-[hash].js',
         },
       },
