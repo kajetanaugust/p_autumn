@@ -6,6 +6,10 @@ import { Head } from 'astro-capo'
 
 import Footer from '@sections/Footer/Footer.astro'
 import Header from '@sections/Header/Header.astro'
+import Modal from '../components/Modal/Modal.astro'
+import Box from '../components/Box/Box.astro'
+import Text from '../components/Text/Text.astro'
+import Input from '../components/Input/Input.astro'
 ---
 
 <!doctype html>
@@ -56,6 +60,43 @@ import Header from '@sections/Header/Header.astro'
     <script>
       import '@scripts/menuHamburger.ts'
     </script>
+    <Modal id="kontakt-modal">
+      <Box direction="column" gap={16} align="center" slot="modal-header">
+        <Text variant="heading-2">Napisz do nas</Text>
+        <Text variant="text-medium"
+          >Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </Text>
+      </Box>
+      <Box direction="column" gap={24} align="center" slot="modal-content">
+        <Input
+          type="text"
+          id="contact-name"
+          placeholder="Name"
+          required
+          name="contact-name"
+          label="Name"
+          isWithLabel={false}
+        />
+        <Input
+          type="text"
+          id="contact-email"
+          placeholder="Email"
+          required
+          name="contact-email"
+          label="Email"
+          isWithLabel={false}
+        />
+        <Input
+          type="text"
+          id="contact-phone"
+          placeholder="Phone"
+          required
+          name="contact-phone"
+          label="Phone"
+          isWithLabel={false}
+        />
+      </Box>
+    </Modal>
   </body>
 </html>
 

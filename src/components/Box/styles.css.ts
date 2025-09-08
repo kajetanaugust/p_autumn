@@ -111,6 +111,11 @@ export const zIndexVariants = styleVariants({
   30: { zIndex: 30 },
   40: { zIndex: 40 },
   50: { zIndex: 50 },
+  60: { zIndex: 60 },
+  70: { zIndex: 70 },
+  80: { zIndex: 80 },
+  90: { zIndex: 90 },
+  100: { zIndex: 100 },
 })
 
 export const topVar = createVar()

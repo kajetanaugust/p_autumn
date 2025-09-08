@@ -1,16 +1,20 @@
 ---
+import { styledInput } from './styles.css'
+import Box from '../Box/Box.astro'
+import Text from '../Text/Text.astro'
 interface Props {
   type: 'tel' | 'email' | 'text'
-  placeholder: string
   name: string
   label: string
   id: string
   value?: string
+  placeholder?: string
   required?: boolean
   disabled?: boolean
   class?: string
   onChange?: (event: Event) => void
   isError?: boolean
+  isWithLabel?: boolean
 }
 
 const {
@@ -22,22 +26,32 @@ const {
   value,
   required,
   disabled,
-  class: className,
-  onChange,
-  isError,
+  class: className = '',
+  // onChange,
+  // isError,
+  isWithLabel = true,
 } = Astro.props
 ---
 
-<label for={id}>
-  {label}
-</label>
-<input
-  type={type}
-  placeholder={placeholder}
-  name={name}
-  id={id}
-  value={value}
-  required={required}
-  disabled={disabled}
-  class={className}
-/>
+<Box direction="column" gap={8} justify="start">
+  {
+    isWithLabel && (
+      <label for={id}>
+        <Text variant="text-regular" color="neutral_darkest">
+          {label}
+        </Text>
+      </label>
+    )
+  }
+  <input
+    aria-label={label}
+    type={type}
+    placeholder={placeholder}
+    name={name}
+    id={id}
+    value={value}
+    required={required}
+    disabled={disabled}
+    class={`${styledInput} ${className}`}
+  />
+</Box>
