@@ -20,6 +20,7 @@ export default defineConfig({
             }
             return 'assets/[name]-[hash][extname]'
           },
+          entryFileNames: 'assets/[name]-[hash].js',
         },
       },
     },
@@ -39,6 +40,7 @@ export default defineConfig({
     },
   },
   build: {
-    inlineStylesheets: 'auto',
+    inlineStylesheets: 'always',
   },
+  compressHTML: true,
 })
