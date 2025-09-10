@@ -1,0 +1,54 @@
+---
+import { styledTextArea } from '../styles.css'
+import Box from '@components/Box/Box.astro'
+import Text from '@components/Text/Text.astro'
+
+interface Props {
+  name: string
+  label: string
+  id: string
+  value?: string
+  placeholder?: string
+  required?: boolean
+  disabled?: boolean
+  class?: string
+  isWithLabel?: boolean
+}
+
+const {
+  placeholder,
+  name,
+  label,
+  id,
+  value,
+  required,
+  disabled,
+  class: className = '',
+  isWithLabel = true,
+} = Astro.props
+---
+
+<Box direction="column" gap={8} justify="start">
+  {
+    isWithLabel && (
+      <Box ps={4}>
+        <label for={id}>
+          <Text variant="text-regular" color="neutral_darkest">
+            {label}
+          </Text>
+        </label>
+      </Box>
+    )
+  }
+  <textarea
+    aria-label={label}
+    placeholder={placeholder}
+    name={name}
+    id={id}
+    value={value}
+    required={required}
+    disabled={disabled}
+    class={`${styledTextArea} ${className}`}
+  >
+  </textarea>
+</Box>

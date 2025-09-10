@@ -1,7 +1,7 @@
 ---
-import { styledInput } from './styles.css'
-import Box from '../Box/Box.astro'
-import Text from '../Text/Text.astro'
+import { styledInput } from '../styles.css'
+import Box from '../../Box/Box.astro'
+import Text from '../../Text/Text.astro'
 interface Props {
   type: 'tel' | 'email' | 'text'
   name: string
@@ -12,8 +12,6 @@ interface Props {
   required?: boolean
   disabled?: boolean
   class?: string
-  onChange?: (event: Event) => void
-  isError?: boolean
   isWithLabel?: boolean
 }
 
@@ -27,8 +25,7 @@ const {
   required,
   disabled,
   class: className = '',
-  // onChange,
-  // isError,
+
   isWithLabel = true,
 } = Astro.props
 ---
@@ -36,11 +33,13 @@ const {
 <Box direction="column" gap={8} justify="start">
   {
     isWithLabel && (
-      <label for={id}>
-        <Text variant="text-regular" color="neutral_darkest">
-          {label}
-        </Text>
-      </label>
+      <Box ps={4}>
+        <label for={id}>
+          <Text variant="text-regular" color="neutral_darkest">
+            {label}
+          </Text>
+        </label>
+      </Box>
     )
   }
   <input

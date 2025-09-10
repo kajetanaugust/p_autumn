@@ -9,7 +9,9 @@ import Header from '@sections/Header/Header.astro'
 import Modal from '../components/Modal/Modal.astro'
 import Box from '../components/Box/Box.astro'
 import Text from '../components/Text/Text.astro'
-import Input from '../components/Input/Input.astro'
+import Input from '../components/Inputs/Input/Input.astro'
+import TextArea from '../components/Inputs/TextArea/TextArea.astro'
+import Button from '../components/Button/Button.astro'
 ---
 
 <!doctype html>
@@ -71,30 +73,38 @@ import Input from '../components/Input/Input.astro'
         <Input
           type="text"
           id="contact-name"
-          placeholder="Imię i nazwisko"
           required
           name="contact-name"
-          label="Name"
-          isWithLabel={false}
+          label="Imię i nazwisko"
         />
         <Input
           type="text"
           id="contact-email"
-          placeholder="E-mail"
           required
           name="contact-email"
-          label="Email"
-          isWithLabel={false}
+          label="E-mail"
         />
         <Input
           type="text"
           id="contact-phone"
-          placeholder="Numer telefonu"
           required
           name="contact-phone"
-          label="Phone"
-          isWithLabel={false}
+          placeholder="Twoja wiadomość"
+          label="Numer telefonu"
         />
+        <TextArea
+          name="message"
+          required
+          label="Twoja wiadomość"
+          placeholder="Twoja wiadomość"
+          id="contact-message"
+        />
+        <Button
+          type="submit"
+          variant="primary"
+          form="contact-form"
+          id="contact-submit">Wyślij</Button
+        >
       </Box>
     </Modal>
   </body>

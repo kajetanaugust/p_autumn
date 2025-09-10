@@ -9,6 +9,23 @@ export default defineConfig({
   integrations: [sitemap()],
   vite: {
     plugins: [vanillaExtractPlugin()],
+    server: {
+      hmr: true,
+      watch: {
+        usePolling: false,
+      },
+    },
+    css: {
+      devSourcemap: true,
+    },
+    optimizeDeps: {
+      exclude: [
+        '@vanilla-extract/css',
+        '@vanilla-extract/recipes',
+        '@vanilla-extract/css-utils',
+        '@vanilla-extract/dynamic',
+      ],
+    },
     build: {
       cssCodeSplit: true,
       cssMinify: 'esbuild',
