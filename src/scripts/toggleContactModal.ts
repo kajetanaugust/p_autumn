@@ -1,7 +1,9 @@
 import { modalHidden, modalVisible } from '@components/Modal/styles.css.ts'
 
 const contactModal = document.getElementById('contact-modal')
-const contactButton = document.querySelector('[data-trigger="contact-modal"]')
+const contactButton = document.querySelectorAll(
+  '[data-trigger="contact-modal"]'
+)
 
 const toggleModal = (modal: HTMLElement): void => {
   const isCurrentlyVisible = modal.classList.contains(modalVisible)
@@ -15,8 +17,9 @@ const toggleModal = (modal: HTMLElement): void => {
   }
 }
 
-contactButton?.addEventListener('click', () => {
-  if (!contactModal) return
-
-  toggleModal(contactModal)
-})
+contactButton?.forEach(button =>
+  button.addEventListener('click', () => {
+    if (!contactModal) return
+    toggleModal(contactModal)
+  })
+)

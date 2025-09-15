@@ -15,6 +15,7 @@ const { id, className } = Astro.props
 ---
 
 <Box
+  id={id}
   position="absolute"
   zIndex="100"
   width="100dvw"
@@ -23,7 +24,6 @@ const { id, className } = Astro.props
   class={className}
 >
   <Box
-    id={id}
     position="absolute"
     top={0}
     right={0}
@@ -46,7 +46,11 @@ const { id, className } = Astro.props
         width="fit-content"
         height="fit-content"
       >
-        <Button variant="iconGhost">
+        <Button
+          variant="iconGhost"
+          data-trigger="contact-modal"
+          aria-label="close modal"
+        >
           <X />
         </Button>
       </Box>
