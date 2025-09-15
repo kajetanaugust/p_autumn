@@ -1,0 +1,63 @@
+---
+import Box from '@components/Box/Box.astro'
+import Button from '@components/Button/Button.astro'
+import Input from '@components/Inputs/Input/Input.astro'
+import TextArea from '@components/Inputs/TextArea/TextArea.astro'
+import Modal from '@components/Modal/Modal.astro'
+import Text from '@components/Text/Text.astro'
+---
+
+<Modal id="kontakt-modal">
+  <Box direction="column" gap={16} align="center" slot="modal-header">
+    <Text variant="heading-2">Napisz do nas</Text>
+    <Text variant="text-medium"
+      >Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </Text>
+  </Box>
+  <Box
+    direction="column"
+    gap={24}
+    align="center"
+    slot="modal-content"
+    maxWidth="100%"
+  >
+    <Input
+      type="text"
+      id="contact-name"
+      required
+      name="contact-name"
+      label="Imię i nazwisko"
+      placeholder="Imię i nazwisko"
+    />
+    <Input
+      type="text"
+      id="contact-email"
+      required
+      name="contact-email"
+      label="E-mail"
+      placeholder="E-mail"
+    />
+    <Input
+      type="text"
+      id="contact-phone"
+      required
+      name="contact-phone"
+      label="Numer telefonu"
+      placeholder="Numer telefonu"
+    />
+    <TextArea
+      name="message"
+      required
+      label="Twoja wiadomość"
+      id="contact-message"
+      placeholder="Twoja wiadomość"
+    />
+    <Button
+      type="submit"
+      variant="primary"
+      form="contact-form"
+      id="contact-submit"
+      >Wyślij
+    </Button>
+  </Box>
+</Modal>

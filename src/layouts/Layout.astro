@@ -6,12 +6,8 @@ import { Head } from 'astro-capo'
 
 import Footer from '@sections/Footer/Footer.astro'
 import Header from '@sections/Header/Header.astro'
-import Modal from '../components/Modal/Modal.astro'
-import Box from '../components/Box/Box.astro'
-import Text from '../components/Text/Text.astro'
-import Input from '../components/Inputs/Input/Input.astro'
-import TextArea from '../components/Inputs/TextArea/TextArea.astro'
-import Button from '../components/Button/Button.astro'
+
+import ContactModal from '../sections/ContactModal/ContactModal.astro'
 ---
 
 <!doctype html>
@@ -59,54 +55,10 @@ import Button from '../components/Button/Button.astro'
     <Header />
     <slot />
     <Footer />
+    <ContactModal />
     <script>
       import '@scripts/menuHamburger.ts'
     </script>
-    <Modal id="kontakt-modal">
-      <Box direction="column" gap={16} align="center" slot="modal-header">
-        <Text variant="heading-2">Napisz do nas</Text>
-        <Text variant="text-medium"
-          >Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </Text>
-      </Box>
-      <Box direction="column" gap={24} align="center" slot="modal-content">
-        <Input
-          type="text"
-          id="contact-name"
-          required
-          name="contact-name"
-          label="Imię i nazwisko"
-        />
-        <Input
-          type="text"
-          id="contact-email"
-          required
-          name="contact-email"
-          label="E-mail"
-        />
-        <Input
-          type="text"
-          id="contact-phone"
-          required
-          name="contact-phone"
-          placeholder="Twoja wiadomość"
-          label="Numer telefonu"
-        />
-        <TextArea
-          name="message"
-          required
-          label="Twoja wiadomość"
-          placeholder="Twoja wiadomość"
-          id="contact-message"
-        />
-        <Button
-          type="submit"
-          variant="primary"
-          form="contact-form"
-          id="contact-submit">Wyślij</Button
-        >
-      </Box>
-    </Modal>
   </body>
 </html>
 

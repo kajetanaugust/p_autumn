@@ -1,7 +1,10 @@
 ---
+import { X } from 'lucide-astro'
+
 import Box from '@components/Box/Box.astro'
 import Button from '@components/Button/Button.astro'
-import { X } from 'lucide-astro'
+
+import { modalContent } from './styles.css'
 
 interface Props {
   id: string
@@ -13,7 +16,7 @@ const { id } = Astro.props
 <Box
   position="absolute"
   zIndex="100"
-  width="100vw"
+  width="100dvw"
   height="100dvh"
   bgColor="neutral_darkest_25"
 >
@@ -31,24 +34,24 @@ const { id } = Astro.props
     direction="column"
     gap={[32, 48]}
     bgColor="neutral_white"
+    class={modalContent}
   >
     <Box>
       <Box
-        position="absolute"
+        position="fixed"
         top={16}
         right={16}
         width="fit-content"
         height="fit-content"
       >
-        <Button variant="iconGhost"><X /></Button>
+        <Button variant="iconGhost">
+          <X />
+        </Button>
       </Box>
       <slot name="modal-header" />
     </Box>
     <Box>
       <slot name="modal-content" />
-    </Box>
-    <Box>
-      <slot name="modal-footer" />
     </Box>
   </Box>
 </Box>
