@@ -5,6 +5,8 @@ import { fonts } from '@tokens/Fonts'
 export const styledInput = style({
   height: '48px',
   width: '100%',
+  maxWidth: '100%',
+  boxSizing: 'border-box',
   border: 'none',
   borderBottom: `1px solid ${theme.colors.neutral_lighter}`,
   paddingLeft: '4px',

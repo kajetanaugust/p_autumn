@@ -1,7 +1,8 @@
 ---
-import { styledTextArea } from '../styles.css'
 import Box from '@components/Box/Box.astro'
-import Text from '@components/Text/Text.astro'
+
+import { styledTextArea } from '../styles.css'
+import InputLabel from '../subcomponents/InputLabel.astro'
 
 interface Props {
   name: string
@@ -29,17 +30,7 @@ const {
 ---
 
 <Box direction="column" gap={8} justify="start">
-  {
-    isWithLabel && (
-      <Box ps={4}>
-        <label for={id}>
-          <Text variant="text-regular" color="neutral_darkest">
-            {label}
-          </Text>
-        </label>
-      </Box>
-    )
-  }
+  {isWithLabel && <InputLabel label={label} id={id} required={required} />}
   <textarea
     aria-label={label}
     placeholder={placeholder}

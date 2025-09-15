@@ -1,0 +1,27 @@
+---
+import Box from '@components/Box/Box.astro'
+import Text from '@components/Text/Text.astro'
+
+interface Props {
+  label: string
+  id: string
+  required?: boolean
+}
+
+const { label, id, required } = Astro.props
+---
+
+<Box ps={4} direction="row" gap={4} align="center">
+  <label for={id}>
+    <Text variant="text-regular" color="neutral_darkest">
+      {label}
+    </Text>
+  </label>
+  {
+    required && (
+      <Text variant="text-regular" color="luxor_gold_dark">
+        *
+      </Text>
+    )
+  }
+</Box>
