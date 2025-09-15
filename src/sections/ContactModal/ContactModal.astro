@@ -6,21 +6,24 @@ import TextArea from '@components/Inputs/TextArea/TextArea.astro'
 import Modal from '@components/Modal/Modal.astro'
 import { modalHidden } from '@components/Modal/styles.css'
 import Text from '@components/Text/Text.astro'
+
+import { styledContactForm } from './styles.css'
 ---
 
 <Modal id="contact-modal" className={modalHidden}>
   <Box direction="column" gap={16} align="center" slot="modal-header">
     <Text variant="heading-2">Napisz do nas</Text>
-    <Text variant="text-medium"
-      >Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    </Text>
+    <Text variant="text-medium"> Chętnie odpowiemy na wszelkie pytania.</Text>
   </Box>
-  <Box
-    direction="column"
-    gap={24}
-    align="center"
+  <form
+    name="contact-form"
     slot="modal-content"
-    maxWidth="100%"
+    id="contact-form"
+    method="POST"
+    data-netlify="true"
+    data-netlify-recaptcha="true"
+    action="/#formularz-kontaktowy-wyslany"
+    class={styledContactForm}
   >
     <Input
       type="text"
@@ -60,5 +63,6 @@ import Text from '@components/Text/Text.astro'
       id="contact-submit"
       >Wyślij
     </Button>
-  </Box>
+    <div data-netlify-recaptcha="true"></div>
+  </form>
 </Modal>
