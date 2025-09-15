@@ -31,11 +31,13 @@ import { styledContactForm } from './styles.css'
         <input name="bot-field" />
       </label>
     </div>
-
     <Input
       type="text"
       id="contact-name"
       required
+      pattern="^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+(\s+[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+)*$"
+      errorMessage="Podaj imię i nazwisko."
+      requiredMessage="Imię i nazwisko jest wymagane."
       name="contact-name"
       label="Imię i nazwisko"
       placeholder="Imię i nazwisko"
@@ -44,6 +46,9 @@ import { styledContactForm } from './styles.css'
       type="text"
       id="contact-email"
       required
+      pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+      errorMessage="Podaj poprawny adres e-mail w formacie: example@example.com"
+      requiredMessage="E-mail jest wymagany."
       name="contact-email"
       label="E-mail"
       placeholder="E-mail"
@@ -52,6 +57,9 @@ import { styledContactForm } from './styles.css'
       type="text"
       id="contact-phone"
       required
+      pattern="^[\d\s\-\+\(\)]{9,15}$"
+      errorMessage="Podaj poprawny numer telefonu."
+      requiredMessage="Numer telefonu jest wymagany."
       name="contact-phone"
       label="Numer telefonu"
       placeholder="Numer telefonu"
