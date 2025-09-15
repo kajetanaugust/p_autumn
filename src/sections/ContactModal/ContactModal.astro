@@ -21,10 +21,17 @@ import { styledContactForm } from './styles.css'
     id="contact-form"
     method="POST"
     data-netlify="true"
-    data-netlify-recaptcha="true"
+    data-netlify-honeypot="bot-field"
     action="/#formularz-kontaktowy-wyslany"
     class={styledContactForm}
   >
+    <div style="display: none;">
+      <label
+        >Don't fill this out if you're human:
+        <input name="bot-field" />
+      </label>
+    </div>
+
     <Input
       type="text"
       id="contact-name"
@@ -63,6 +70,5 @@ import { styledContactForm } from './styles.css'
       id="contact-submit"
       >Wyślij
     </Button>
-    <div data-netlify-recaptcha="true"></div>
   </form>
 </Modal>
