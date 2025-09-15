@@ -8,9 +8,10 @@ import { modalContent } from './styles.css'
 
 interface Props {
   id: string
+  className?: string
 }
 
-const { id } = Astro.props
+const { id, className } = Astro.props
 ---
 
 <Box
@@ -19,6 +20,7 @@ const { id } = Astro.props
   width="100dvw"
   height="100dvh"
   bgColor="neutral_darkest_25"
+  class={className}
 >
   <Box
     id={id}

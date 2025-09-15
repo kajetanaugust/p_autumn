@@ -1,4 +1,4 @@
-import { mobileMenuVisible } from '../sections/Header/styles.css.ts'
+import { mobileMenuVisible } from '@/sections/Header/styles.css.ts'
 
 const hamburger = document.getElementById('mobile-menu-hamburger')
 const mobileMenu = document.getElementById('mobile-menu')

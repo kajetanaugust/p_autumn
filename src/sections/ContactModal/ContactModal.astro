@@ -4,10 +4,11 @@ import Button from '@components/Button/Button.astro'
 import Input from '@components/Inputs/Input/Input.astro'
 import TextArea from '@components/Inputs/TextArea/TextArea.astro'
 import Modal from '@components/Modal/Modal.astro'
+import { modalHidden } from '@components/Modal/styles.css'
 import Text from '@components/Text/Text.astro'
 ---
 
-<Modal id="kontakt-modal">
+<Modal id="contact-modal" className={modalHidden}>
   <Box direction="column" gap={16} align="center" slot="modal-header">
     <Text variant="heading-2">Napisz do nas</Text>
     <Text variant="text-medium"
