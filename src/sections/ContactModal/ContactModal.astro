@@ -15,13 +15,40 @@ import { styledContactForm } from './styles.css'
     <Text variant="heading-2">Napisz do nas</Text>
     <Text variant="text-medium"> Chętnie odpowiemy na wszelkie pytania.</Text>
   </Box>
+
+  <!-- Success Message  -->
+  <Box
+    direction="column"
+    gap={24}
+    mt={48}
+    align="center"
+    slot="modal-content"
+    id="success-message"
+    display="none"
+  >
+    <Text variant="heading-3" textAlign="center">Dziękujemy!</Text>
+    <Text variant="text-medium" textAlign="center">
+      Wiadomość została wysłana pomyślnie. Odpowiemy na nią tak szybko, jak to
+      możliwe.
+    </Text>
+    <Button
+      type="button"
+      variant="primary"
+      id="close-modal-btn"
+      size="large"
+      data-trigger="contact-modal"
+    >
+      Zamknij
+    </Button>
+  </Box>
+
+  <!-- Contact Form -->
   <form
     name="contact-form"
     slot="modal-content"
     id="contact-form"
     method="POST"
     data-netlify="true"
-    action="/#formularz-kontaktowy-success"
     data-netlify-honeypot="bot-field"
     class={styledContactForm}
   >
@@ -79,5 +106,80 @@ import { styledContactForm } from './styles.css'
       size="large"
       >Wyślij
     </Button>
+
+    <!-- Error message -->
+    <div id="form-error" style="display: none; margin-top: 1rem;">
+      <Text variant="text-regular" textAlign="center">
+        Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.
+      </Text>
+    </div>
   </form>
 </Modal>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('contact-form') as HTMLFormElement
+    const submitButton = document.getElementById(
+      'contact-submit'
+    ) as HTMLButtonElement
+    const errorDiv = document.getElementById('form-error') as HTMLDivElement
+    const successMessage = document.getElementById(
+      'success-message'
+    ) as HTMLDivElement
+    const closeModalBtn = document.getElementById(
+      'close-modal-btn'
+    ) as HTMLButtonElement
+
+    const submitButtonText = submitButton?.querySelector('p')
+    const originalButtonText = submitButtonText?.textContent || 'Wyślij'
+
+    if (form) {
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault()
+
+        // Disable submit button and show loading state
+        submitButton.disabled = true
+        if (submitButtonText) {
+          submitButtonText.textContent = 'Wysyłam...'
+        }
+        errorDiv.style.display = 'none'
+
+        try {
+          const formData = new FormData(form)
+
+          const response = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(formData as any).toString(),
+          })
+
+          if (response.ok) {
+            form.style.display = 'none'
+            successMessage.style.display = 'flex'
+          } else {
+            throw new Error('Network response was not ok')
+          }
+        } catch (error) {
+          console.error('Error:', error)
+          errorDiv.style.display = 'block'
+
+          submitButton.disabled = false
+          submitButton.textContent = 'Wyślij'
+        }
+      })
+    }
+
+    if (closeModalBtn) {
+      closeModalBtn.addEventListener('click', function () {
+        form.style.display = 'block'
+        successMessage.style.display = 'none'
+        form.reset()
+        submitButton.disabled = false
+        if (submitButtonText) {
+          submitButtonText.textContent = originalButtonText
+        }
+        errorDiv.style.display = 'none'
+      })
+    }
+  })
+</script>
