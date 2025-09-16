@@ -1,0 +1,63 @@
+---
+import { X } from 'lucide-astro'
+
+import Box from '@components/Box/Box.astro'
+import Button from '@components/Button/Button.astro'
+
+import { modalContent } from './styles.css'
+
+interface Props {
+  id: string
+  className?: string
+}
+
+const { id, className } = Astro.props
+---
+
+<Box
+  id={id}
+  position="absolute"
+  zIndex="100"
+  width="100dvw"
+  height="100dvh"
+  bgColor="neutral_darkest_25"
+  class={className}
+>
+  <Box
+    position="absolute"
+    top={0}
+    right={0}
+    height="100dvh"
+    width="100%"
+    maxWidth={['85%', 640]}
+    class="modal"
+    px={[20, 48]}
+    py={[48, 64]}
+    direction="column"
+    gap={[32, 48]}
+    bgColor="neutral_white"
+    class={modalContent}
+  >
+    <Box>
+      <Box
+        position="fixed"
+        top={16}
+        right={16}
+        width="fit-content"
+        height="fit-content"
+      >
+        <Button
+          variant="iconGhost"
+          data-trigger="contact-modal"
+          aria-label="close modal"
+        >
+          <X />
+        </Button>
+      </Box>
+      <slot name="modal-header" />
+    </Box>
+    <Box>
+      <slot name="modal-content" />
+    </Box>
+  </Box>
+</Box>

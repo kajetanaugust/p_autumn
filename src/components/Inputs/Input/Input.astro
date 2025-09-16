@@ -1,0 +1,80 @@
+---
+import Box from '@components/Box/Box.astro'
+
+import { styledInput } from '../styles.css'
+import InputLabel from '../subcomponents/InputLabel.astro'
+
+interface Props {
+  type: 'tel' | 'email' | 'text'
+  name: string
+  label: string
+  id: string
+  value?: string
+  pattern?: string
+  placeholder?: string
+  errorMessage?: string
+  requiredMessage?: string
+  required?: boolean
+  disabled?: boolean
+  class?: string
+  isWithLabel?: boolean
+}
+
+const {
+  type,
+  placeholder,
+  errorMessage,
+  requiredMessage,
+  pattern,
+  name,
+  label,
+  id,
+  value,
+  required,
+  disabled,
+  class: className = '',
+
+  isWithLabel = true,
+} = Astro.props
+
+const defaultRequiredMessage = requiredMessage || 'To pole jest wymagane.'
+const defaultErrorMessage = errorMessage || ''
+---
+
+<Box direction="column" gap={8} justify="start">
+  {isWithLabel && <InputLabel label={label} id={id} required={required} />}
+  <input
+    aria-label={label}
+    type={type}
+    placeholder={placeholder}
+    name={name}
+    id={id}
+    value={value}
+    oninput="window.inputValidation.clearValidation(this)"
+    oninvalid={`window.inputValidation.handleInputValidation(this, '${defaultRequiredMessage}', '${defaultErrorMessage}')`}
+    aria-errormessage={errorMessage ? `${id}-error` : undefined}
+    pattern={pattern}
+    required={required}
+    disabled={disabled}
+    width="100%"
+    class={`${styledInput} ${className}`}
+  />
+</Box>
+
+<script>
+  import { handleInputValidation, clearValidation } from '../helpers'
+
+  declare global {
+    interface Window {
+      inputValidation: {
+        handleInputValidation: typeof handleInputValidation
+        clearValidation: typeof clearValidation
+      }
+    }
+  }
+
+  window.inputValidation = {
+    handleInputValidation,
+    clearValidation,
+  }
+</script>

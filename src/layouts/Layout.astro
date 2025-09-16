@@ -6,6 +6,8 @@ import { Head } from 'astro-capo'
 
 import Footer from '@sections/Footer/Footer.astro'
 import Header from '@sections/Header/Header.astro'
+
+import ContactModal from '../sections/ContactModal/ContactModal.astro'
 ---
 
 <!doctype html>
@@ -53,8 +55,10 @@ import Header from '@sections/Header/Header.astro'
     <Header />
     <slot />
     <Footer />
+    <ContactModal />
     <script>
       import '@scripts/menuHamburger.ts'
+      import '@scripts/toggleContactModal.ts'
     </script>
   </body>
 </html>

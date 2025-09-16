@@ -8,6 +8,8 @@ export const colors = {
   neutral_darker: 'rgb(33, 28, 33)',
   neutral_darkest: 'rgb(9, 3, 9)',
 
+  neutral_darkest_25: 'rgba(9, 3, 9, 0.25)',
+
   luxor_gold_lightest: 'rgb(245, 243, 235)',
   luxor_gold_lighter: 'rgb(236, 231, 215)',
   luxor_gold_light: 'rgb(190, 171, 115)',
