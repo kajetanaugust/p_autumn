@@ -28,7 +28,7 @@ export const styledTextArea = style([
   styledInput,
   {
     paddingTop: '16px',
-    height: '180px',
+    height: '140px',
     fontFamily: fonts.secondary,
     fontSize: '1rem',
 

@@ -29,3 +29,9 @@ contactButton?.forEach(button =>
     toggleModal(contactModal)
   })
 )
+
+contactModal?.addEventListener('click', event => {
+  if (event.target === contactModal) {
+    toggleModal(contactModal)
+  }
+})

@@ -45,7 +45,5 @@ const defaultRequiredMessage = requiredMessage || 'To pole jest wymagane.'
     disabled={disabled}
     oninput="window.inputValidation.clearValidation(this)"
     oninvalid={`window.inputValidation.handleInputValidation(this, '${defaultRequiredMessage}', '')`}
-    class={`${styledTextArea} ${className}`}
-  >
-  </textarea>
+    class={`${styledTextArea} ${className}`}></textarea>
 </Box>
