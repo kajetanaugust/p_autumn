@@ -21,6 +21,7 @@ import { styledContactForm } from './styles.css'
     id="contact-form"
     method="POST"
     data-netlify="true"
+    action="/#formularz-kontaktowy-success"
     data-netlify-honeypot="bot-field"
     class={styledContactForm}
   >
@@ -34,10 +35,10 @@ import { styledContactForm } from './styles.css'
       type="text"
       id="contact-name"
       required
-      pattern="^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+(\s+[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+)*$"
+      pattern="^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+(\\s+[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ]+)*$"
       errorMessage="Podaj imię i nazwisko."
       requiredMessage="Imię i nazwisko jest wymagane."
-      name="contact-name"
+      name="name"
       label="Imię i nazwisko"
       placeholder="Imię i nazwisko"
     />
@@ -48,7 +49,7 @@ import { styledContactForm } from './styles.css'
       pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
       errorMessage="Podaj poprawny adres e-mail w formacie: example@example.com"
       requiredMessage="E-mail jest wymagany."
-      name="contact-email"
+      name="email"
       label="E-mail"
       placeholder="E-mail"
     />
@@ -59,7 +60,7 @@ import { styledContactForm } from './styles.css'
       pattern="^[\d\s\-\+\(\)]{9,15}$"
       errorMessage="Podaj poprawny numer telefonu."
       requiredMessage="Numer telefonu jest wymagany."
-      name="contact-phone"
+      name="phone"
       label="Numer telefonu"
       placeholder="Numer telefonu"
     />
