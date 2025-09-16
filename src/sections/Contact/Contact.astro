@@ -7,13 +7,16 @@ import Text from '@components/Text/Text.astro'
 
 import SectionLayout from '@layouts/SectionLayout.astro'
 
+import Button from '../../components/Button/Button.astro'
+
 import ContactElement from './subcomponents/ContactElement/ContactElement.astro'
+
 import { mapStyles } from './styles.css'
 ---
 
 <SectionLayout sectionId="kontakt" isCentered isFullWidth isWithSmallPb>
   <Box direction="column" gap={[48, 80]}>
-    <Box direction="column" gap={24} align="stretch" height="100%">
+    <Box direction="column" gap={36} align="stretch" height="100%">
       <Box direction="column" gap={16}>
         <Text variant="tagline">Kontakt</Text>
         <Box direction="column" gap={24}>
@@ -24,6 +27,9 @@ import { mapStyles } from './styles.css'
           </Text>
         </Box>
       </Box>
+      <Button variant="primary" size="large" data-trigger="contact-modal">
+        Napisz do nas
+      </Button>
     </Box>
     <Box direction={['column', 'column', 'row']} gap={24} wrap="wrap">
       <ContactElement elementName="E-mail">

@@ -57,8 +57,10 @@ import { heroCopyElement, heroImageStyles } from './styles.css'
         stworzyć przyjazną atmosferę.
       </Text>
       <Box direction="row" justify="start" gap={16} width="100%">
-        <Button variant="primary" href="#kontakt">Umów się</Button>
-        <Button variant="outline" href="#oferta">Dowiedz się</Button>
+        <Button variant="primary" data-trigger="contact-modal">
+          Napisz do nas
+        </Button>
+        <Button variant="outline" href="#oferta">Dowiedz się więcej</Button>
       </Box>
     </Box>
   </Box>
