@@ -160,7 +160,6 @@ import { styledContactForm } from './styles.css'
             throw new Error('Network response was not ok')
           }
         } catch (error) {
-          console.error('Error:', error)
           errorDiv.style.display = 'block'
 
           submitButton.disabled = false
@@ -171,7 +170,7 @@ import { styledContactForm } from './styles.css'
 
     if (closeModalBtn) {
       closeModalBtn.addEventListener('click', function () {
-        form.style.display = 'block'
+        form.style.display = 'flex'
         successMessage.style.display = 'none'
         form.reset()
         submitButton.disabled = false
