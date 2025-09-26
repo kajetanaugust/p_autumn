@@ -1,0 +1,17 @@
+[[redirects]]
+from = "http://www.jesien.com.pl/*"
+to = "https://jesien.com.pl/:splat"
+status = 301
+force = true
+
+[[redirects]]
+from = "https://www.jesien.com.pl/*"
+to = "https://jesien.com.pl/:splat"
+status = 301
+force = true
+
+[[redirects]]
+from = "http://jesien.com.pl/*"
+to = "https://jesien.com.pl/:splat"
+status = 301
+force = true

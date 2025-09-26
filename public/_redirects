@@ -1,6 +1,0 @@
-# Redirect www to non-www with HTTPS in one step
-http://www.jesien.com.pl/* https://jesien.com.pl/:splat 301!
-https://www.jesien.com.pl/* https://jesien.com.pl/:splat 301!
-
-# Force HTTPS for non-www
-http://jesien.com.pl/* https://jesien.com.pl/:splat 301!
